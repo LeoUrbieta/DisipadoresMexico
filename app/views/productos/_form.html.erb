@@ -1,0 +1,37 @@
+<%= form_with model: @producto, local: true do |form| %>
+
+  <% if @producto.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@producto.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @producto.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :nombre_producto, 'Nombre del producto' %> <br>
+    <%= form.text_field :nombre_producto %>
+  </p>
+   <p>
+    <%= form.label :clave_sat, 'Clave SAT' %> <br>
+    <%= form.text_field :clave_sat %>
+  </p>
+   <p>
+    <%= form.label :precio_unitario_mercado_libre %> <br>
+    <%= form.text_field :precio_unitario_mercado_libre %>
+  </p>
+   <p>
+    <%= form.label :precio_unitario_shopify %> <br>
+    <%= form.text_field :precio_unitario_shopify %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>

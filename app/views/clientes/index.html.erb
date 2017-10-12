@@ -1,0 +1,48 @@
+<h1>Lista de Clientes</h1>
+
+<%= link_to 'Ir a Ventas', ventas_path %>
+<br>
+<%= link_to 'Ver Productos', productos_path %>
+<br>
+<%= link_to 'Crear nuevo cliente', new_cliente_path %>
+<br>
+
+ <table>
+    <tr>
+      <th>Numero de Cliente</th>
+      <th>Cliente</th>
+      <th>RFC</th>
+      <th>Calle</th>
+      <th>Número Exterior</th>
+      <th>Número Interior</th>
+      <th>Colonia</th>
+      <th>Delegación o Municipio</th>
+      <th>Ciudad</th>
+      <th>Código Postal</th>
+      <th>Teléfono</th>
+      <th>E-mail</th>
+      <th>Persona de Contacto</th>
+    </tr>
+    
+    <% @clientes.each do |cliente| %>
+      <tr>
+        <td><%= cliente.id %></td>
+        <td><%= cliente.nombre %></td>
+        <td><%= cliente.rfc %></td>
+        <td><%= cliente.calle %></td>
+        <td><%= cliente.numero_exterior %></td>
+        <td><%= cliente.numero_interior %></td>
+        <td><%= cliente.colonia %></td>
+        <td><%= cliente.municipio_delegacion %></td>
+        <td><%= cliente.ciudad %></td>
+        <td><%= cliente.codigo_postal %></td>
+        <td><%= cliente.telefono %></td>
+        <td><%= cliente.email %></td>
+        <td><%= cliente.persona_contacto %></td>
+        <td><%= link_to 'Ver mas detalle', cliente_path(cliente) %></td>
+        <td><%= link_to 'Editar cliente', edit_cliente_path(cliente) %></td>
+        <td><%= link_to 'Eliminar cliente' , cliente_path(cliente), method: :delete, data: { confirm: 'Are you sure?'}%></td>
+      </tr>
+    <% end %>
+    
+  </table>

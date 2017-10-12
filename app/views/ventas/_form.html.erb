@@ -1,0 +1,188 @@
+<%= form_with model: @venta, local: true do |form| %>
+
+  <table>
+    <tr>
+      <th>Numero de Cliente</th>
+      <th>Cliente</th>
+    </tr>
+    
+    <% @clientes.each do |cliente| %>
+      <tr>
+        <td><%= cliente.id %></td>
+        <td><%= cliente.nombre %></td>
+      </tr>
+    <% end %>
+    
+  </table>
+
+  <% if @venta.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@venta.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @venta.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :cliente_id, 'Número de cliente' %> <br>
+    <%= form.text_field :cliente_id %>
+  </p>
+
+  <p>
+    <%= form.label :fecha %> <br>
+    <%= form.date_select(:fecha,
+                  include_blank: true,
+                  selected: Date.today,
+                  start_year: Date.today.year - 2,
+                  end_year: Date.today.year + 20) %>
+  </p>
+  
+  <p>
+    <%= form.label :longitud_75mm, 'Longitud 7.5 (cm)' %> <br>
+    <%= form.text_field :longitud_75mm %>
+  </p>
+  
+  <p>
+    <%= form.label :longitud_87mm, 'Longitud 8.7 (cm)' %> <br>
+    <%= form.text_field :longitud_87mm %>
+  </p>
+  
+  <p>
+    <%= form.label :longitud_136mm, 'Longitud 13.6 (cm)' %> <br>
+    <%= form.text_field :longitud_136mm %>
+  </p>
+  
+  <p>
+    <%= form.label :cantidad_peltier %> <br>
+    <%= form.text_field :cantidad_peltier %>
+  </p>
+  
+  <p>
+    <%= form.label :cantidad_pasta_termica %> <br>
+    <%= form.text_field :cantidad_pasta_termica %>
+  </p>
+  
+  <p>
+    <%= form.label :disipador136mm %> <br>
+    <%= form.text_field :disipador136mm %>
+  </p>
+  
+  <p>
+    <%= form.label :peltier_cantidad %> <br>
+    <%= form.text_field :peltier_cantidad %>
+  </p>
+  
+  <p>
+    <%= form.label :pasta_termica_cantidad %> <br>
+    <%= form.text_field :pasta_termica_cantidad %>
+  </p>
+  
+  <p>
+    <%= form.label :precio_75mm, 'Precio 7.5' %> <br>
+    <%= form.text_field :precio_75mm %>
+  </p>
+  
+  <p>
+    <%= form.label :precio_87mm, 'Precio 8.7' %> <br>
+    <%= form.text_field :precio_87mm %>
+  </p>
+  
+  <p>
+    <%= form.label :precio_136mm, 'Precio 13.6' %> <br>
+    <%= form.text_field :precio_136mm %>
+  </p>
+  <p>
+    <%= form.label :precio_peltier %> <br>
+    <%= form.text_field :precio_peltier %>
+  </p>
+  <p>
+    <%= form.label :precio_pasta_termica %> <br>
+    <%= form.text_field :precio_pasta_termica %>
+  </p>
+  <p>
+    <%= form.label :subtotal, 'Sub-total' %> <br>
+    <%= form.text_field :subtotal %>
+  </p>
+  <p>
+    <%= form.label :descuento_75mm, 'Descuento 7.5'  %> <br>
+    <%= form.text_field :descuento_75mm %>
+  </p>
+  <p>
+    <%= form.label :descuento_87mm, 'Descuento 8.7' %> <br>
+    <%= form.text_field :descuento_87mm %>
+  </p>
+  <p>
+    <%= form.label :descuento_136mm, 'Descuento 13.6' %> <br>
+    <%= form.text_field :descuento_136mm %>
+  </p>
+  <p>
+    <%= form.label :descuento_peltier %> <br>
+    <%= form.text_field :descuento_peltier %>
+  </p>
+  <p>
+    <%= form.label :descuento_pasta_termica %> <br>
+    <%= form.text_field :descuento_pasta_termica %>
+  </p>
+  <p>
+    <%= form.label :total_productos %> <br>
+    <%= form.text_field :total_productos %>
+  </p>
+  <p>
+    <%= form.label :envio, 'Costo de Envio'  %> <br>
+    <%= form.text_field :envio %>
+  </p>
+  <p>
+    <%= form.label :envio_incluido_en_precio, '¿Envío incluido en el precio?' %> <br>
+    <%= form.text_field :envio_incluido_en_precio %>
+  </p>
+  <p>
+    <%= form.label :total_envio_incluido_en_precio_mas_total_productos %> <br>
+    <%= form.text_field :total_envio_incluido_en_precio_mas_total_productos %>
+  </p>
+  <p>
+    <%= form.label :envio_a_mi_cargo, '¿Envío a mi cargo?'  %> <br>
+    <%= form.text_field :envio_a_mi_cargo %>
+  </p>
+  <p>
+    <%= form.label :total_incluyendo_envio %> <br>
+    <%= form.text_field :total_incluyendo_envio %>
+  </p>
+  <p>
+    <%= form.label :comisiones %> <br>
+    <%= form.text_field :comisiones %>
+  </p>
+  <p>
+    <%= form.label :comision_envio  %> <br>
+    <%= form.text_field :comision_envio %>
+  </p>
+  <p>
+    <%= form.label :total_post_comisiones %> <br>
+    <%= form.text_field :total_post_comisiones %>
+  </p>
+   <p>
+    <%= form.label :medio_de_venta %> <br>
+    <%= form.select :medio_de_venta, [['MercadoLibre','Mercadolibre'],['Shopify','Shopify'],['Entrega Personal', 'Entrega personal']] %>
+  </p>
+   <p>
+    <%= form.label :facturado, '¿Facturado?' %> <br>
+    <%= form.text_field :facturado %>
+  </p>
+   <p>
+    <%= form.label :folio_factura %> <br>
+    <%= form.text_field :folio_factura %>
+  </p>
+   <p>
+    <%= form.label :notas_adicionales %> <br>
+    <%= form.text_area :notas_adicionales %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>

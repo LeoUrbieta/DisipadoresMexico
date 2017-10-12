@@ -1,0 +1,69 @@
+<%= form_with model: @cliente, local: true do |form| %>
+
+  <% if @cliente.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@cliente.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @cliente.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :nombre, 'Nombre de cliente' %> <br>
+    <%= form.text_field :nombre %>
+  </p>
+   <p>
+    <%= form.label :rfc, 'RFC' %> <br>
+    <%= form.text_field :rfc %>
+  </p>
+   <p>
+    <%= form.label :calle %> <br>
+    <%= form.text_field :calle %>
+  </p>
+   <p>
+    <%= form.label :numero_exterior %> <br>
+    <%= form.text_field :numero_exterior %>
+  </p>
+   <p>
+    <%= form.label :numero_interior %> <br>
+    <%= form.text_field :numero_interior %>
+  </p>
+   <p>
+    <%= form.label :colonia %> <br>
+    <%= form.text_field :colonia %>
+  </p>
+   <p>
+    <%= form.label :municipio_delegacion, 'Municipio o delegación' %> <br>
+    <%= form.text_field :municipio_delegacion %>
+  </p>
+   <p>
+    <%= form.label :ciudad %> <br>
+    <%= form.text_field :ciudad %>
+  </p>
+  <p>
+    <%= form.label :codigo_postal %> <br>
+    <%= form.text_field :codigo_postal %>
+  </p>
+  <p>
+    <%= form.label :telefono %> <br>
+    <%= form.text_field :telefono %>
+  </p>
+  <p>
+    <%= form.label :email%> <br>
+    <%= form.text_field :email %>
+  </p>
+  <p>
+    <%= form.label :persona_contacto, 'Persona para contacto' %> <br>
+    <%= form.text_field :persona_contacto %>
+  </p>
+   <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
