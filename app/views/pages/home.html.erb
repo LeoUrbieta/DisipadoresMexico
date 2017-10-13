@@ -14,7 +14,6 @@
     <p>
       <%= form.label(:fecha_inicio, "Fecha de inicio:") %>
       <%= form.date_select(:fecha_inicio,
-                      include_blank: true,
                       selected: Date.today,
                       start_year: Date.today.year - 2,
                       end_year: Date.today.year + 20) %>
@@ -22,7 +21,6 @@
     <p>
       <%= form.label(:fecha_final, "Fecha de inicio:") %>
       <%= form.date_select(:fecha_final,
-                      include_blank: true,
                       selected: Date.today,
                       start_year: Date.today.year - 2,
                       end_year: Date.today.year + 20) %>
