@@ -1,0 +1,51 @@
+<h1>Bienvenido al software de Disipadores de Calor de Aluminio a Tu Medida</h1>
+
+<%= link_to 'Ir a Ventas', ventas_path %>
+
+
+<h2>Ingresos en intervalo de Fecha</h2>
+
+
+<a href="#" onclick="paintIt(this, '#990000')">Paint it red</a>
+
+<p>
+  <%= form_with url: pages_home_path, local: true do |form| %>
+  
+    <p>
+      <%= form.label(:fecha_inicio, "Fecha de inicio:") %>
+      <%= form.date_select(:fecha_inicio,
+                      include_blank: true,
+                      selected: Date.today,
+                      start_year: Date.today.year - 2,
+                      end_year: Date.today.year + 20) %>
+    </p>
+    <p>
+      <%= form.label(:fecha_final, "Fecha de inicio:") %>
+      <%= form.date_select(:fecha_final,
+                      include_blank: true,
+                      selected: Date.today,
+                      start_year: Date.today.year - 2,
+                      end_year: Date.today.year + 20) %>
+    </p>
+    <p>
+      <%= form.submit("Buscar") %>
+    </p>
+  <% end %>
+</p>
+
+<p>
+  <% @ventas.each do |venta| %>
+    <%= venta.fecha %>
+    <%= venta.cliente.nombre %> 
+    <%= @suma %><br>
+  <% end %>
+</p>
+
+
+
+
+
+
+
+
+                  
