@@ -37,57 +37,55 @@
   <p>
     <%= form.label :fecha %> <br>
     <%= form.date_select(:fecha,
-                  include_blank: true,
-                  selected: Date.today,
                   start_year: Date.today.year - 2,
                   end_year: Date.today.year + 20) %>
   </p>
   
   <p>
     <%= form.label :longitud_75mm, 'Longitud 7.5 (cm)' %> <br>
-    <%= form.text_field :longitud_75mm, :value => 0 %>
+    <%= form.text_field :longitud_75mm %>
   </p>
   
   <p>
     <%= form.label :longitud_87mm, 'Longitud 8.7 (cm)' %> <br>
-    <%= form.text_field :longitud_87mm, :value => 0 %>
+    <%= form.text_field :longitud_87mm%>
   </p>
   
   <p>
     <%= form.label :longitud_136mm, 'Longitud 13.6 (cm)' %> <br>
-    <%= form.text_field :longitud_136mm , :value => 0%>
+    <%= form.text_field :longitud_136mm %>
   </p>
   
   <p>
     <%= form.label :cantidad_peltier %> <br>
-    <%= form.text_field :cantidad_peltier, :value => 0 %>
+    <%= form.text_field :cantidad_peltier %>
   </p>
   
   <p>
     <%= form.label :cantidad_pasta_termica %> <br>
-    <%= form.text_field :cantidad_pasta_termica, :value => 0 %>
+    <%= form.text_field :cantidad_pasta_termica %>
   </p>
   <p>
     <%= form.label :precio_75mm, 'Precio 7.5' %> <br>
-    <%= form.text_field :precio_75mm, :value => 0.0 %>
+    <%= form.text_field :precio_75mm %>
   </p>
   
   <p>
     <%= form.label :precio_87mm, 'Precio 8.7' %> <br>
-    <%= form.text_field :precio_87mm, :value => 0.0 %>
+    <%= form.text_field :precio_87mm %>
   </p>
   
   <p>
     <%= form.label :precio_136mm, 'Precio 13.6' %> <br>
-    <%= form.text_field :precio_136mm, :value => 0.0 %>
+    <%= form.text_field :precio_136mm %>
   </p>
   <p>
     <%= form.label :precio_peltier %> <br>
-    <%= form.text_field :precio_peltier, :value => 0.0 %>
+    <%= form.text_field :precio_peltier %>
   </p>
   <p>
     <%= form.label :precio_pasta_termica %> <br>
-    <%= form.text_field :precio_pasta_termica, :value => 0.0 %>
+    <%= form.text_field :precio_pasta_termica %>
   </p>
   <p>
     <%= form.label :subtotal, 'Sub-total' %> <br>
@@ -119,11 +117,11 @@
   </p>
   <p>
     <%= form.label :envio, 'Costo de Envio'  %> <br>
-    <%= form.text_field :envio, :value => 0.0 %>
+    <%= form.text_field :envio %>
   </p>
   <p>
     <%= form.label :envio_incluido_en_precio, '¿Envío incluido en el precio?' %> <br>
-    <%= form.text_field :envio_incluido_en_precio, :value => true %>
+    <%= form.text_field :envio_incluido_en_precio %>
   </p>
   <p>
     <%= form.label :total_envio_incluido_en_precio_mas_total_productos %> <br>
@@ -131,7 +129,7 @@
   </p>
   <p>
     <%= form.label :envio_a_mi_cargo, '¿Envío a mi cargo?'  %> <br>
-    <%= form.text_field :envio_a_mi_cargo, :value => true %>
+    <%= form.text_field :envio_a_mi_cargo %>
   </p>
   <p>
     <%= form.label :total_incluyendo_envio %> <br>
@@ -155,7 +153,7 @@
   </p>
    <p>
     <%= form.label :facturado, '¿Facturado?' %> <br>
-    <%= form.text_field :facturado, :value => true %>
+    <%= form.text_field :facturado %>
   </p>
    <p>
     <%= form.label :folio_factura %> <br>
