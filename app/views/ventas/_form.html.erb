@@ -45,65 +45,49 @@
   
   <p>
     <%= form.label :longitud_75mm, 'Longitud 7.5 (cm)' %> <br>
-    <%= form.text_field :longitud_75mm %>
+    <%= form.text_field :longitud_75mm, :value => 0 %>
   </p>
   
   <p>
     <%= form.label :longitud_87mm, 'Longitud 8.7 (cm)' %> <br>
-    <%= form.text_field :longitud_87mm %>
+    <%= form.text_field :longitud_87mm, :value => 0 %>
   </p>
   
   <p>
     <%= form.label :longitud_136mm, 'Longitud 13.6 (cm)' %> <br>
-    <%= form.text_field :longitud_136mm %>
+    <%= form.text_field :longitud_136mm , :value => 0%>
   </p>
   
   <p>
     <%= form.label :cantidad_peltier %> <br>
-    <%= form.text_field :cantidad_peltier %>
+    <%= form.text_field :cantidad_peltier, :value => 0 %>
   </p>
   
   <p>
     <%= form.label :cantidad_pasta_termica %> <br>
-    <%= form.text_field :cantidad_pasta_termica %>
+    <%= form.text_field :cantidad_pasta_termica, :value => 0 %>
   </p>
-  
-  <p>
-    <%= form.label :disipador136mm %> <br>
-    <%= form.text_field :disipador136mm %>
-  </p>
-  
-  <p>
-    <%= form.label :peltier_cantidad %> <br>
-    <%= form.text_field :peltier_cantidad %>
-  </p>
-  
-  <p>
-    <%= form.label :pasta_termica_cantidad %> <br>
-    <%= form.text_field :pasta_termica_cantidad %>
-  </p>
-  
   <p>
     <%= form.label :precio_75mm, 'Precio 7.5' %> <br>
-    <%= form.text_field :precio_75mm %>
+    <%= form.text_field :precio_75mm, :value => 0.0 %>
   </p>
   
   <p>
     <%= form.label :precio_87mm, 'Precio 8.7' %> <br>
-    <%= form.text_field :precio_87mm %>
+    <%= form.text_field :precio_87mm, :value => 0.0 %>
   </p>
   
   <p>
     <%= form.label :precio_136mm, 'Precio 13.6' %> <br>
-    <%= form.text_field :precio_136mm %>
+    <%= form.text_field :precio_136mm, :value => 0.0 %>
   </p>
   <p>
     <%= form.label :precio_peltier %> <br>
-    <%= form.text_field :precio_peltier %>
+    <%= form.text_field :precio_peltier, :value => 0.0 %>
   </p>
   <p>
     <%= form.label :precio_pasta_termica %> <br>
-    <%= form.text_field :precio_pasta_termica %>
+    <%= form.text_field :precio_pasta_termica, :value => 0.0 %>
   </p>
   <p>
     <%= form.label :subtotal, 'Sub-total' %> <br>
@@ -135,11 +119,11 @@
   </p>
   <p>
     <%= form.label :envio, 'Costo de Envio'  %> <br>
-    <%= form.text_field :envio %>
+    <%= form.text_field :envio, :value => 0.0 %>
   </p>
   <p>
     <%= form.label :envio_incluido_en_precio, '¿Envío incluido en el precio?' %> <br>
-    <%= form.text_field :envio_incluido_en_precio %>
+    <%= form.text_field :envio_incluido_en_precio, :value => true %>
   </p>
   <p>
     <%= form.label :total_envio_incluido_en_precio_mas_total_productos %> <br>
@@ -147,7 +131,7 @@
   </p>
   <p>
     <%= form.label :envio_a_mi_cargo, '¿Envío a mi cargo?'  %> <br>
-    <%= form.text_field :envio_a_mi_cargo %>
+    <%= form.text_field :envio_a_mi_cargo, :value => true %>
   </p>
   <p>
     <%= form.label :total_incluyendo_envio %> <br>
@@ -171,7 +155,7 @@
   </p>
    <p>
     <%= form.label :facturado, '¿Facturado?' %> <br>
-    <%= form.text_field :facturado %>
+    <%= form.text_field :facturado, :value => true %>
   </p>
    <p>
     <%= form.label :folio_factura %> <br>

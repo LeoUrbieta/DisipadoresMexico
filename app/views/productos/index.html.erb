@@ -21,8 +21,8 @@
         <td><%= producto.precio_unitario_mercado_libre %></td>
         <td><%= producto.precio_unitario_shopify %></td>
         <td><%= link_to 'Ver mas detalle', producto_path(producto) %></td>
-        <td><%= link_to 'Editar cliente', edit_producto_path(producto) %></td>
-        <td><%= link_to 'Eliminar cliente' , producto_path(producto), method: :delete, data: { confirm: '¿Estás seguro?'}%></td>
+        <td><%= link_to 'Editar producto', edit_producto_path(producto) %></td>
+        <td><%= link_to 'Eliminar producto' , producto_path(producto), method: :delete, data: { confirm: '¿Estás seguro?'}%></td>
       </tr>
     <% end %>
     

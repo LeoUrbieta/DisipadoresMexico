@@ -5,9 +5,6 @@
 
 <h2>Ingresos en intervalo de Fecha</h2>
 
-
-<a href="#" onclick="paintIt(this, '#990000')">Paint it red</a>
-
 <p>
   <%= form_with url: pages_home_path, local: true do |form| %>
   
@@ -26,18 +23,80 @@
                       end_year: Date.today.year + 20) %>
     </p>
     <p>
+      <%= form.label(:facturado, "¿Facturado?") %>
+      <%= form.select(:facturado, [[],['Si','true'],['No','false']]) %>
+    </p>
+    <p>
+      <%= form.label(:envios, "¿Envío a mi cargo?") %>
+      <%= form.select(:envios, [[],['Si','true'],['No','false']]) %>
+    </p>
+    <p>
       <%= form.submit("Buscar") %>
     </p>
   <% end %>
 </p>
 
 <p>
-  <% @ventas.each do |venta| %>
-    <%= venta.fecha %>
-    <%= venta.cliente.nombre %> 
-    <%= @suma %><br>
+  <h3>Ventas</h3>
+  <table>
+  <% if @ventas.blank? %>
+    <tr>
+      <td>No hay ventas en este rango o con esas características</td>
+    </tr>
+  <% else %>
+    <tr>
+      <th>Fecha</th>
+      <th>Nombre de Cliente</th>
+      <th>¿Facturado?</th>
+      <th>¿Envío a mi cargo?</th>
+    </tr>
+  
+  
+    <% @ventas.each do |venta| %>
+      <tr>
+          <td><%= venta.fecha %></td>
+          <td><%= venta.cliente.nombre %></td> 
+          <td><%= venta.facturado %></td>
+          <td><%= venta.envio_a_mi_cargo %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</p>
+
+
+<p>
+  <% if @claveSAT != nil %>
+    <h3>Claves del SAT</h3>
+    <table>
+    <% @claveSAT.each do |clave| %>
+      <tr>
+        <td><%= clave.nombre_producto %></td>
+        <td><%= clave.clave_sat %></td> 
+      </tr>
+    <% end %>
+    </table>
+  <% end %>  
+</p>
+
+<p>
+  <% if @suma != nil %>
+    <h3>Suma por producto (precio con IVA)</h3>
+    <table>
+    <% @suma.each do |nombre,suma| %>
+      <tr>
+        <td> <%="#{nombre}"%> </td>
+        <td> <%="#{suma}"%> </td>
+      </tr>
+    <% end %>
+    </table>
   <% end %>
 </p>
+
+
+
+
+
 
 
 
