@@ -46,7 +46,7 @@ class ClientesController < ApplicationController
   
   def cliente_params
     params.require(:cliente).permit(:nombre, :rfc, :calle, :numero_exterior, :numero_interior, :colonia, :municipio_delegacion,
-    :ciudad, :codigo_postal, :telefono, :email, :persona_contacto)
+    :ciudad, :estado ,:codigo_postal, :telefono, :email, :persona_contacto)
   end
   
   

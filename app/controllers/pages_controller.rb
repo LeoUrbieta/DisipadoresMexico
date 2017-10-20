@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   
   def home
-    @ventas = Venta.all
+    @ventas = Venta.all.order("fecha")
     
   end
 

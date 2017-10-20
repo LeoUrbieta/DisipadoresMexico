@@ -41,7 +41,8 @@ class Venta < ApplicationRecord
     suma_productos = Hash.new
     nombre_productos = ["longitud_75mm","precio_75mm", "longitud_87mm",
     "precio_87mm", "longitud_136mm", "precio_136mm","cantidad_peltier",
-    "precio_peltier", "cantidad_pasta_termica" , "precio_pasta_termica", "envio"]
+    "precio_peltier", "cantidad_pasta_termica" , "precio_pasta_termica", 
+    "total_productos","envio"]
     
     nombre_productos.each do |suma_producto|
       suma_producto_actual = BigDecimal.new('0.0')

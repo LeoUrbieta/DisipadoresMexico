@@ -16,7 +16,7 @@
 
   <p>
     <%= form.label :nombre, 'Nombre de cliente' %> <br>
-    <%= form.text_field :nombre %>
+    <%= form.text_field :nombre, id: 'nombre_cliente' %>
   </p>
    <p>
     <%= form.label :rfc, 'RFC' %> <br>
@@ -45,6 +45,10 @@
    <p>
     <%= form.label :ciudad %> <br>
     <%= form.text_field :ciudad %>
+  </p>
+  <p>
+    <%= form.label :estado %> <br>
+    <%= form.text_field :estado %>
   </p>
   <p>
     <%= form.label :codigo_postal %> <br>

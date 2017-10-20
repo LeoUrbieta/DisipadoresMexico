@@ -1,6 +1,6 @@
 class VentasController < ApplicationController
   def index
-    @ventas = Venta.all
+    @ventas = Venta.all.order("fecha")
   end
   
   def new

@@ -11,6 +11,7 @@
 <table>
   <tr>
     <th>Fecha</th>
+    <th>Cliente</th>
     <th>75mm Longitud (cm)</th>
     <th>87mm Longitud (cm)</th>
     <th>136mm Longitud (cm)</th>
@@ -45,6 +46,7 @@
   <% @ventas.each do |venta| %>
     <tr>
       <td><%= venta.fecha %></td>
+      <td><%= venta.cliente.nombre %></td>
       <td><%= venta.longitud_75mm %></td>
       <td><%= venta.longitud_87mm %></td>
       <td><%= venta.longitud_136mm %></td>
