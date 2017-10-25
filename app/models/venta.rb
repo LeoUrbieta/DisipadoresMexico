@@ -7,34 +7,26 @@ class Venta < ApplicationRecord
             :precio_pasta_termica, :envio, :devolucion,
              presence: true
   
-  def self.busca_productos(fecha_inicial, fecha_final, factura, envios)
+  def self.busca_productos(fecha_inicial, fecha_final, factura)
     tipo_de_busqueda = "fecha >= :start_date AND fecha <= :end_date"
     facturado_bool = factura == "true"
-    envios_bool = envios == "true"
     
-    if(factura == "" && envios == "")
+    if(factura == "")
       return Venta.where(tipo_de_busqueda,
       {start_date: fecha_inicial, end_date: fecha_final})
     end
     
-    if((factura == "true" && envios == "") || (factura == "false" && envios == ""))
+    if((factura == "true") || (factura == "false"))
       tipo_de_busqueda << " AND facturado = :facturado_boolean"
       return Venta.where(tipo_de_busqueda,
              {start_date: fecha_inicial, end_date: fecha_final, 
              facturado_boolean: facturado_bool})
     end
     
-    if((envios == "true" && factura == "") || (envios == "false" && factura == ""))
-      tipo_de_busqueda << " AND envio_a_mi_cargo = :envios_boolean"
-        return Venta.where(tipo_de_busqueda,
-               {start_date: fecha_inicial, end_date: fecha_final, 
-               envios_boolean: envios_bool})
-    end
-    
     Venta.where("fecha >= :start_date AND fecha <= :end_date 
-    AND facturado = :facturado_boolean AND envio_a_mi_cargo = :envios_boolean",
+    AND facturado = :facturado_boolean",
     {start_date: fecha_inicial, end_date: fecha_final, 
-    facturado_boolean: facturado_bool, envios_boolean: envios_bool})
+    facturado_boolean: facturado_bool})
   end
   
   def self.suma_productos(ventas)
@@ -42,7 +34,7 @@ class Venta < ApplicationRecord
     nombre_productos = ["longitud_75mm","precio_75mm", "longitud_87mm",
     "precio_87mm", "longitud_136mm", "precio_136mm","cantidad_peltier",
     "precio_peltier", "cantidad_pasta_termica" , "precio_pasta_termica", 
-    "total_productos","envio"]
+    "total_productos","envio_explicito"]
     
     nombre_productos.each do |suma_producto|
       suma_producto_actual = BigDecimal.new('0.0')

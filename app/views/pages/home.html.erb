@@ -27,10 +27,6 @@
       <%= form.select(:facturado, [[],['Si','true'],['No','false']]) %>
     </p>
     <p>
-      <%= form.label(:envios, "¿Envío a mi cargo?") %>
-      <%= form.select(:envios, [[],['Si','true'],['No','false']]) %>
-    </p>
-    <p>
       <%= form.submit("Buscar") %>
     </p>
   <% end %>
@@ -48,7 +44,6 @@
       <th>Fecha</th>
       <th>Nombre de Cliente</th>
       <th>¿Facturado?</th>
-      <th>¿Envío a mi cargo?</th>
     </tr>
   
   
@@ -57,7 +52,6 @@
           <td><%= venta.fecha %></td>
           <td><%= venta.cliente.nombre %></td> 
           <td><%= venta.facturado %></td>
-          <td><%= venta.envio_a_mi_cargo %></td>
         <% end %>
       </tr>
     <% end %>

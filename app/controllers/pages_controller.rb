@@ -11,7 +11,7 @@ class PagesController < ApplicationController
     fecha_final = Date::civil(params['fecha_final(1i)'].to_i, params['fecha_final(2i)'].to_i, params['fecha_final(3i)'].to_i)
     
     @claveSAT = Producto.select("nombre_producto, clave_sat")
-    @ventas = Venta.busca_productos(fecha_inicio,fecha_final,params[:facturado], params[:envios]).order("fecha")
+    @ventas = Venta.busca_productos(fecha_inicio,fecha_final,params[:facturado]).order("fecha")
     @suma = Venta.suma_productos(@ventas)
     
     render 'home'
