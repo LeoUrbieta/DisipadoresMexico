@@ -31,13 +31,14 @@
     <th>Descuento Peltier</th>
     <th>Descuento Pasta térmica</th>
     <th>Total de Productos</th>
-    <th>Envío</th>
-    <th>¿Envío incluido en precio?</th>
-    <th>Total productos + envío incluido en precio</th>
+    <th>Envío Explícito</th>
+    <th>¿Envío agregado al precio?</th>
+    <th>Envío agregado al precio total</th>
     <th>¿Envío a mi cargo?</th>
-    <th>Total incluyendo envío</th>
+    <th>Total pagado por el Cliente</th>
     <th>Comisiones</th>
     <th>Comisiones envío</th>
+    <th>Devolucion</th>
     <th>Total post-comisiones</th>
     <th>Medio de Ventas</th>
     <th>¿Facturado?</th>
@@ -73,6 +74,7 @@
       <td><%= venta.total_incluyendo_envio %></td>
       <td><%= venta.comisiones %></td>
       <td><%= venta.comision_envio %></td>
+      <td><%= venta.devolucion %></td>
       <td><%= venta.total_post_comisiones %></td>
       <td><%= venta.medio_de_venta %></td>
       <td><%= venta.facturado %></td>

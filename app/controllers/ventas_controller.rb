@@ -52,7 +52,7 @@ class VentasController < ApplicationController
                                   :precio_136mm, :precio_peltier, :precio_pasta_termica, :subtotal, :descuento_75mm, :descuento_87mm, :descuento_136mm,
                                   :descuento_peltier, :descuento_pasta_termica, :total_productos, :envio, :envio_incluido_en_precio, :total_envio_incluido_en_precio_mas_total_productos,
                                   :envio_a_mi_cargo, :total_incluyendo_envio, :comisiones, :comision_envio, :total_post_comisiones, :medio_de_venta, :facturado,
-                                  :folio_factura, :notas_adicionales, :cliente_id)
+                                  :folio_factura, :notas_adicionales, :devolucion,:cliente_id)
   end
   
 end
