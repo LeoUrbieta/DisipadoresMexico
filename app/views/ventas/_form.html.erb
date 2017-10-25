@@ -116,23 +116,15 @@
     <%= form.text_field :total_productos %>
   </p>
   <p>
-    <%= form.label :envio_explicito, 'Costo de Envio'  %> <br>
+    <%= form.label :envio_explicito, 'Envío explícito (pagado por el cliente)'  %> <br>
     <%= form.text_field :envio_explicito %>
   </p>
   <p>
-    <%= form.label :envio_incluido_en_precio, '¿Envío incluido en el precio?' %> <br>
-    <%= form.text_field :envio_incluido_en_precio %>
-  </p>
-  <p>
-    <%= form.label :envio_agregado_a_precio_productos, 'Envio agregado al precio de los productos' %> <br>
+    <%= form.label :envio_agregado_a_precio_productos, 'Envio agregado al precio de los productos (pagado por el cliente)' %> <br>
     <%= form.text_field :envio_agregado_a_precio_productos %>
   </p>
   <p>
-    <%= form.label :envio_a_mi_cargo, '¿Envío a mi cargo?'  %> <br>
-    <%= form.text_field :envio_a_mi_cargo %>
-  </p>
-  <p>
-    <%= form.label :total_pagado_por_cliente %> <br>
+    <%= form.label :total_pagado_por_cliente, 'Total pagado por el cliente' %> <br>
     <%= form.text_field :total_pagado_por_cliente %>
   </p>
   <p>

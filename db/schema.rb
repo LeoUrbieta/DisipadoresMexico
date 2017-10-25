@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025224211) do
+ActiveRecord::Schema.define(version: 20171025231959) do
 
   create_table "clientes", force: :cascade do |t|
     t.string "nombre"
@@ -70,9 +70,7 @@ ActiveRecord::Schema.define(version: 20171025224211) do
     t.decimal "descuento_pasta_termica"
     t.decimal "total_productos"
     t.decimal "envio_explicito"
-    t.boolean "envio_incluido_en_precio"
     t.decimal "envio_agregado_a_precio_productos"
-    t.boolean "envio_a_mi_cargo"
     t.decimal "total_pagado_por_cliente"
     t.decimal "comisiones"
     t.decimal "comision_envio"

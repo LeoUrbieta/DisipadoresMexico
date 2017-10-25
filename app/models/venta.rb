@@ -35,7 +35,7 @@ class Venta < ApplicationRecord
     nombre_productos = ["longitud_75mm","precio_75mm", "longitud_87mm",
     "precio_87mm", "longitud_136mm", "precio_136mm","cantidad_peltier",
     "precio_peltier", "cantidad_pasta_termica" , "precio_pasta_termica", 
-    "total_productos","envio_explicito"]
+    "total_productos","envio_explicito", "envio_agregado_a_precio_productos"]
     
     nombre_productos.each do |suma_producto|
       suma_producto_actual = BigDecimal.new('0.0')
