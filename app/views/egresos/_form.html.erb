@@ -1,0 +1,43 @@
+<%= form_with model: @egreso, local: true do |form| %>
+
+  <% if @egreso.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@egreso.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @egreso.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :fecha %> <br>
+    <%= form.date_select(:fecha,
+                  start_year: Date.today.year - 2,
+                  end_year: Date.today.year + 20) %>
+  </p>
+  <p>
+    <%= form.label :descripcion, 'Descripción' %> <br>
+    <%= form.text_field :descripcion %>
+  </p>
+  <p>
+    <%= form.label :emisor, 'Emisor' %> <br>
+    <%= form.text_field :emisor %>
+  </p>
+  <p>
+    <%= form.label :cantidad, 'Cantidad' %> <br>
+    <%= form.text_field :cantidad %>
+  </p>
+  <p>
+    <%= form.label :notas_adicionales, 'Notas Adicionales' %> <br>
+    <%= form.text_area :notas_adicionales %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>

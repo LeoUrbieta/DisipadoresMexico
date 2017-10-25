@@ -5,7 +5,7 @@ class Venta < ApplicationRecord
             :longitud_136mm, :cantidad_peltier, :cantidad_pasta_termica,
             :precio_75mm, :precio_87mm, :precio_136mm, :precio_peltier,
             :precio_pasta_termica, :envio,
-            presence: true
+             presence: true
   
   def self.busca_productos(fecha_inicial, fecha_final, factura, envios)
     tipo_de_busqueda = "fecha >= :start_date AND fecha <= :end_date"

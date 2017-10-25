@@ -1,7 +1,7 @@
 class ClientesController < ApplicationController
   
   def index
-    @clientes = Cliente.all
+    @clientes = Cliente.all.order("id")
   end
   
   def new
