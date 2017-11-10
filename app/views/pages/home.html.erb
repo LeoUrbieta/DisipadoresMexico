@@ -79,7 +79,7 @@
     <table>
     <% @suma.each do |nombre,suma| %>
       <tr>
-        <td> <%="#{nombre}"%> </td>
+        <td> <%="#{nombre.titleize}"%> </td>
         <td> <%="#{suma}"%> </td>
       </tr>
     <% end %>
