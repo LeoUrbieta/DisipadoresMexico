@@ -1,12 +1,10 @@
 <h1>Lista de Clientes</h1>
 
-<%= link_to 'Ir a Ventas', ventas_path %>
+<%= link_to 'Ir a Ventas', ventas_path, class: 'btn btn-info' %>
+<hr />
+<%= link_to 'Crear nuevo cliente', new_cliente_path, class: 'btn btn-primary' %>
 <br>
-<%= link_to 'Ver Productos', productos_path %>
 <br>
-<%= link_to 'Crear nuevo cliente', new_cliente_path %>
-<br>
-
  <table>
     <tr>
       <th>Numero de Cliente</th>
