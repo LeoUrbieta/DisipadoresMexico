@@ -34,7 +34,7 @@
 
 <p>
   <h3>Ventas</h3>
-  <table>
+  <table class="table-striped table-hover table-condensed table-bordered">
   <% if @ventas.blank? %>
     <tr>
       <td>No hay ventas en este rango o con esas características</td>
@@ -62,7 +62,7 @@
 <p>
   <% if @claveSAT != nil %>
     <h3>Claves del SAT</h3>
-    <table>
+    <table class="table-striped table-hover table-condensed table-bordered">
     <% @claveSAT.each do |clave| %>
       <tr>
         <td><%= clave.nombre_producto %></td>
@@ -76,7 +76,7 @@
 <p>
   <% if @suma != nil %>
     <h3>Suma por producto (precio con IVA)</h3>
-    <table>
+    <table class="table-striped table-hover table-condensed table-bordered">
     <% @suma.each do |nombre,suma| %>
       <tr>
         <td> <%="#{nombre.titleize}"%> </td>

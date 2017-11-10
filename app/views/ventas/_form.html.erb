@@ -1,33 +1,32 @@
-<%= form_with model: @venta, local: true do |form| %>
-
-  <table>
+<table class="table-striped table-hover table-condensed table-bordered">
+  <tr>
+    <th>Numero de Cliente</th>
+    <th>Cliente</th>
+  </tr>
+  
+  <% @clientes.each do |cliente| %>
     <tr>
-      <th>Numero de Cliente</th>
-      <th>Cliente</th>
+      <td><%= cliente.id %></td>
+      <td><%= cliente.nombre %></td>
     </tr>
-    
-    <% @clientes.each do |cliente| %>
-      <tr>
-        <td><%= cliente.id %></td>
-        <td><%= cliente.nombre %></td>
-      </tr>
-    <% end %>
-    
-  </table>
-
-  <% if @venta.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@venta.errors.count, "error") %> prohibited
-        this article from being saved:
-      </h2>
-      <ul>
-        <% @venta.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
   <% end %>
+</table>
+
+<% if @venta.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@venta.errors.count, "error") %> prohibited
+      this article from being saved:
+    </h2>
+    <ul>
+      <% @venta.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @venta, local: true do |form| %>
 
   <p>
     <%= form.label :cliente_id, 'Número de cliente' %> <br>
@@ -159,7 +158,7 @@
     <%= form.label :notas_adicionales %> <br>
     <%= form.text_area :notas_adicionales %>
   </p>
-  <p>
+  <p >
     <%= form.submit %>
   </p>
 
