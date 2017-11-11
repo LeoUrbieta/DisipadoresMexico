@@ -1,7 +1,13 @@
 <h1>Estadísticas de Disipadores de Calor de Aluminio a Tu Medida</h1>
 
 <%= link_to 'Ir a Ventas', ventas_path, class: 'btn btn-info' %>
+<br>
+<br>
+<%= column_chart Venta.group_by_month(:fecha, format: "%b").sum(:longitud_87mm), xtitle: 'Disipador 87mm', ytitle: 'Longitud (cm)' %>
+<br>
+<%= column_chart Venta.group_by_month(:fecha, format: "%b").sum(:longitud_75mm), xtitle: 'Disipador 75mm', ytitle: 'Longitud (cm)' %>
+<br>
+<%= column_chart Venta.group_by_month(:fecha, format: "%b").sum(:longitud_136mm), xtitle: 'Disipador 136mm', ytitle: 'Longitud (cm)' %>
 
-<%= pie_chart({"Football" => 10, "Basketball" => 5}) %>
 
 
