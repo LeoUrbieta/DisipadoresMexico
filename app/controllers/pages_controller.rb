@@ -19,7 +19,7 @@ class PagesController < ApplicationController
   end
   
   def estadisticas
-    
+    @ventas = Venta.all
   end
   
   
