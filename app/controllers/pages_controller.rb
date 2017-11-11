@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   
-  def home
+  def ingresos
     @ventas = Venta.all.order("fecha")
     
   end
@@ -14,7 +14,13 @@ class PagesController < ApplicationController
     @ventas = Venta.busca_productos(fecha_inicio,fecha_final,params[:facturado]).order("fecha")
     @suma = Venta.suma_productos(@ventas)
     
-    render 'home'
+    render 'ingresos'
     
   end
+  
+  def estadisticas
+    
+  end
+  
+  
 end

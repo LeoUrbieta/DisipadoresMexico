@@ -18,5 +18,6 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   
   inflect.irregular 'venta', 'ventas'
+  inflect.irregular 'estadistica', 'estadisticas'
   
 end
