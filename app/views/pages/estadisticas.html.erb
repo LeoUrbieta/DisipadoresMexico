@@ -4,9 +4,19 @@
 <br>
 <br>
 <%= column_chart [
+{name: "87mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_87mm)},
+{name: "75mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_75mm)},
+{name: "136mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_136mm)},
+{name: "Peltier", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_peltier)},
+{name: "Pasta Térmica", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_pasta_termica)},
+], title: "Ingreso por Artículo" %>
+<br>
+<%= column_chart [
 {name: "87mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_87mm)},
 {name: "75mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_75mm)},
-{name: "136mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_136mm)}] %>
+{name: "136mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_136mm)}],
+title: "Longitud vendida"%>
+<h1>Longitud Restante</h1>
 <br>
 <%= column_chart [ 
 {name: "Total Pagado Por Cliente", data: Venta.group_by_month(:fecha, format: "%b").sum(:total_pagado_por_cliente)},
@@ -15,7 +25,7 @@
 {name: "Total-post-comisiones", data: Venta.group_by_month(:fecha, format: "%b").sum(:total_post_comisiones)},
 {name: "Gastos", data: Egreso.group_by_month(:fecha, format: "%b").sum(:cantidad)},
 {name: "Total disponible", data: @total_disponible}
-] %>
+], title: "Ingresos - Gastos" %>
 
 
 
