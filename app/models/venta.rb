@@ -47,4 +47,13 @@ class Venta < ApplicationRecord
     return suma_productos
   end
   
+  def self.total_disponible(ventas,egresos)
+    
+    hash_total_post_comisiones_por_mes = ventas.group_by_month(:fecha, format: "%b").sum("total_post_comisiones")
+    hash_egresos_por_mes = egresos.group_by_month(:fecha, format: "%b").sum("cantidad")
+    
+    return hash_total_post_comisiones_por_mes.merge!(hash_egresos_por_mes) { |k, o, n| o - n }
+    
+  end
+  
 end
