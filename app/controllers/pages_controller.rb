@@ -20,6 +20,7 @@ class PagesController < ApplicationController
   
   def estadisticas
     @dinero_disponible = Venta.total_disponible(Venta.all,Egreso.all)
+    @cantidad_restante = Producto.cantidad_restante()
   end
   
   

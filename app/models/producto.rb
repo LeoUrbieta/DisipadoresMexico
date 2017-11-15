@@ -12,5 +12,22 @@ class Producto < ApplicationRecord
                                       
   end
   
+  def self.cantidad_restante()
+    
+    cantidad_restante = Hash.new
+    Producto.all.each do |producto|
+      
+      nombre_columna = producto.columna_relacionada_en_ventas
+      
+      if(nombre_columna != "") 
+        cantidad_restante[nombre_columna] = producto.cantidad_comprada - Venta.all.sum(nombre_columna)
+      end
+      
+    end
+    
+    return cantidad_restante
+    
+  end
+  
   
 end

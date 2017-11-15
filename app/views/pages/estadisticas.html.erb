@@ -14,9 +14,29 @@
 <%= column_chart [
 {name: "87mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_87mm)},
 {name: "75mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_75mm)},
-{name: "136mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_136mm)}],
-title: "Longitud vendida"%>
-<h1>Longitud Restante</h1>
+{name: "136mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_136mm)},
+{name: "Peltier", data: Venta.group_by_month(:fecha, format: "%b").sum(:cantidad_peltier)},
+{name: "Pasta térmica", data: Venta.group_by_month(:fecha, format: "%b").sum(:cantidad_pasta_termica)},
+],
+title: "Cantidad vendida"%>
+<br>
+
+
+<h4 class="centered">Cantidad Restante: </h4>
+<br>
+<table class="table table-striped table-hover table-condensed table-bordered">
+  <tr>
+    <th>Producto</th>
+    <th>Cantidad</th>
+  </tr>
+  <% @cantidad_restante.each do |nombre,cantidad| %>
+  <tr>
+    <td><%= "#{nombre.titleize}" %></td>
+    <td><%= "#{cantidad}"%></td>
+  </tr>
+  <% end %>
+</table>
+  
 <br>
 <%= column_chart [ 
 {name: "Total Pagado Por Cliente", data: Venta.group_by_month(:fecha, format: "%b").sum(:total_pagado_por_cliente)},
