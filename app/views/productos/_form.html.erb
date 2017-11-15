@@ -26,7 +26,7 @@
   </p>
   <p>
     <%= form.label :columna_relacionada_en_ventas %> <br>
-    <%= form.select :columna_relacionada_en_ventas, @indices %>
+    <%= form.select :columna_relacionada_en_ventas, @indices, include_blank: true%>
   </p>
   <p>
     <%= form.label :cantidad_comprada, 'Cantidad comprada' %> <br>
