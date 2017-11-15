@@ -25,6 +25,10 @@
     <%= form.text_field :nombre_producto %>
   </p>
   <p>
+    <%= form.label :columna_relacionada_en_ventas %> <br>
+    <%= form.select :columna_relacionada_en_ventas, @indices %>
+  </p>
+  <p>
     <%= form.label :cantidad_comprada, 'Cantidad comprada' %> <br>
     <%= form.text_field :cantidad_comprada %>
   </p>

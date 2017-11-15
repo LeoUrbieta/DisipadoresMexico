@@ -6,10 +6,12 @@ class ProductosController < ApplicationController
   
   def new
     @producto = Producto.new
+    @indices = Producto.buscar_indices(Venta.column_names)
   end
   
   def edit
     @producto = Producto.find(params[:id])
+    @indices = Producto.buscar_indices(Venta.column_names)
   end
   
   def create
@@ -47,7 +49,7 @@ class ProductosController < ApplicationController
   def producto_params
     params.require(:producto).permit(:nombre_producto, :clave_sat, :precio_unitario_mercado_libre, 
                                      :precio_unitario_shopify, :perdidas, :cantidad_comprada, :precio,
-                                     :fecha_de_compra, :notas_adicionales)
+                                     :fecha_de_compra, :notas_adicionales, :columna_relacionada_en_ventas)
   end
   
 end
