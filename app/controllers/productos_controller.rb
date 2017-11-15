@@ -45,7 +45,9 @@ class ProductosController < ApplicationController
   private
   
   def producto_params
-    params.require(:producto).permit(:nombre_producto, :clave_sat, :precio_unitario_mercado_libre, :precio_unitario_shopify)
+    params.require(:producto).permit(:nombre_producto, :clave_sat, :precio_unitario_mercado_libre, 
+                                     :precio_unitario_shopify, :perdidas, :cantidad_comprada, :precio,
+                                     :fecha_de_compra, :notas_adicionales)
   end
   
 end

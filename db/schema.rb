@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025231959) do
+ActiveRecord::Schema.define(version: 20171115011521) do
 
   create_table "clientes", force: :cascade do |t|
     t.string "nombre"
@@ -48,6 +48,11 @@ ActiveRecord::Schema.define(version: 20171025231959) do
     t.string "precio_unitario_shopify"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "fecha_de_compra"
+    t.integer "cantidad_comprada"
+    t.decimal "precio"
+    t.text "notas_adicionales"
+    t.integer "perdidas"
   end
 
   create_table "ventas", force: :cascade do |t|

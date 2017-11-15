@@ -15,8 +15,23 @@
   <% end %>
 
   <p>
+    <%= form.label(:fecha_de_compra, "Fecha de compra:") %>
+    <%= form.date_select(:fecha_de_compra,
+                    selected: Date.today,
+                    start_year: Date.today.year - 2,
+                    end_year: Date.today.year + 20) %>
+  </p>
+  <p>
     <%= form.label :nombre_producto, 'Nombre del producto' %> <br>
     <%= form.text_field :nombre_producto %>
+  </p>
+  <p>
+    <%= form.label :cantidad_comprada, 'Cantidad comprada' %> <br>
+    <%= form.text_field :cantidad_comprada %>
+  </p>
+  <p>
+    <%= form.label :precio, 'Precio' %> <br>
+    <%= form.text_field :precio %>
   </p>
    <p>
     <%= form.label :clave_sat, 'Clave SAT' %> <br>
@@ -26,9 +41,17 @@
     <%= form.label :precio_unitario_mercado_libre %> <br>
     <%= form.text_field :precio_unitario_mercado_libre %>
   </p>
-   <p>
+  <p>
     <%= form.label :precio_unitario_shopify %> <br>
     <%= form.text_field :precio_unitario_shopify %>
+  </p>
+  <p>
+    <%= form.label :notas_adicionales %> <br>
+    <%= form.text_area :notas_adicionales %>
+  </p>
+  <p>
+    <%= form.label :perdidas %> <br>
+    <%= form.text_field :perdidas %>
   </p>
   <p>
     <%= form.submit %>
