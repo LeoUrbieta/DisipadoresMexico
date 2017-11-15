@@ -19,7 +19,7 @@ class PagesController < ApplicationController
   end
   
   def estadisticas
-    @total_disponible = Venta.total_disponible(Venta.all,Egreso.all)
+    @dinero_disponible = Venta.total_disponible(Venta.all,Egreso.all)
   end
   
   

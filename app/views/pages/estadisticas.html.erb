@@ -24,7 +24,7 @@ title: "Longitud vendida"%>
 {name: "Comisiones Envio", data: Venta.group_by_month(:fecha, format: "%b").sum(:comision_envio)},
 {name: "Total-post-comisiones", data: Venta.group_by_month(:fecha, format: "%b").sum(:total_post_comisiones)},
 {name: "Gastos", data: Egreso.group_by_month(:fecha, format: "%b").sum(:cantidad)},
-{name: "Total disponible", data: @total_disponible}
+{name: "Dinero disponible", data: @dinero_disponible}
 ], title: "Ingresos - Gastos" %>
 
 
