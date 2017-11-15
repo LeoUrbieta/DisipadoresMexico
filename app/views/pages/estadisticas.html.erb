@@ -15,6 +15,10 @@
 {name: "87mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_87mm)},
 {name: "75mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_75mm)},
 {name: "136mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_136mm)},
+],
+title: "Longitud vendida"%>
+<br>
+<%= column_chart [
 {name: "Peltier", data: Venta.group_by_month(:fecha, format: "%b").sum(:cantidad_peltier)},
 {name: "Pasta térmica", data: Venta.group_by_month(:fecha, format: "%b").sum(:cantidad_pasta_termica)},
 ],
