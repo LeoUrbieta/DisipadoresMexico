@@ -4,25 +4,28 @@
 <br>
 <br>
 <%= column_chart [
-{name: "87mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_87mm)},
-{name: "75mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_75mm)},
-{name: "136mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_136mm)},
-{name: "Peltier", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_peltier)},
-{name: "Pasta Térmica", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_pasta_termica)},
-], title: "Ingreso por Artículo" %>
+  {name: "87mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_87mm)},
+  {name: "75mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_75mm)},
+  {name: "136mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_136mm)},
+  {name: "Peltier", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_peltier)},
+  {name: "Pasta Térmica", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_pasta_termica)},
+  ], title: "Ingreso por Artículo" 
+%>
 <br>
 <%= column_chart [
-{name: "87mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_87mm)},
-{name: "75mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_75mm)},
-{name: "136mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_136mm)},
-],
-title: "Longitud vendida"%>
+  {name: "87mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_87mm)},
+  {name: "75mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_75mm)},
+  {name: "136mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_136mm)},
+  ],
+  title: "Longitud vendida"
+%>
 <br>
 <%= column_chart [
-{name: "Peltier", data: Venta.group_by_month(:fecha, format: "%b").sum(:cantidad_peltier)},
-{name: "Pasta térmica", data: Venta.group_by_month(:fecha, format: "%b").sum(:cantidad_pasta_termica)},
-],
-title: "Cantidad vendida"%>
+  {name: "Peltier", data: Venta.group_by_month(:fecha, format: "%b").sum(:cantidad_peltier)},
+  {name: "Pasta térmica", data: Venta.group_by_month(:fecha, format: "%b").sum(:cantidad_pasta_termica)},
+  ],
+  title: "Cantidad vendida"
+%>
 <br>
 
 
@@ -31,7 +34,7 @@ title: "Cantidad vendida"%>
 <table class="table table-striped table-hover table-condensed table-bordered">
   <tr>
     <th>Producto</th>
-    <th>Cantidad</th>
+    <th>Restante teórico</th>
   </tr>
   <% @cantidad_restante.each do |nombre,cantidad| %>
   <tr>
@@ -43,13 +46,14 @@ title: "Cantidad vendida"%>
   
 <br>
 <%= column_chart [ 
-{name: "Total Pagado Por Cliente", data: Venta.group_by_month(:fecha, format: "%b").sum(:total_pagado_por_cliente)},
-{name: "Comisiones Transaccion", data: Venta.group_by_month(:fecha, format: "%b").sum(:comisiones)},
-{name: "Comisiones Envio", data: Venta.group_by_month(:fecha, format: "%b").sum(:comision_envio)},
-{name: "Total-post-comisiones", data: Venta.group_by_month(:fecha, format: "%b").sum(:total_post_comisiones)},
-{name: "Gastos", data: Egreso.group_by_month(:fecha, format: "%b").sum(:cantidad)},
-{name: "Dinero disponible", data: @dinero_disponible}
-], title: "Ingresos - Gastos" %>
+  {name: "Total Pagado Por Cliente", data: Venta.group_by_month(:fecha, format: "%b").sum(:total_pagado_por_cliente)},
+  {name: "Comisiones Transaccion", data: Venta.group_by_month(:fecha, format: "%b").sum(:comisiones)},
+  {name: "Comisiones Envio", data: Venta.group_by_month(:fecha, format: "%b").sum(:comision_envio)},
+  {name: "Total-post-comisiones", data: Venta.group_by_month(:fecha, format: "%b").sum(:total_post_comisiones)},
+  {name: "Gastos", data: Egreso.group_by_month(:fecha, format: "%b").sum(:cantidad)},
+  {name: "Dinero disponible", data: @dinero_disponible}
+  ], title: "Ingresos - Gastos" %>
+
 
 
 
