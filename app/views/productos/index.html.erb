@@ -24,11 +24,11 @@
         <td><%= producto.fecha_de_compra%></td>
         <td><%= producto.nombre_producto %></td>
         <td><%= producto.cantidad_comprada%></td>
-        <td><%= producto.precio%></td>
+        <td><%= number_to_currency(producto.precio)%></td>
         <td><%= producto.columna_relacionada_en_ventas %></td>
         <td><%= producto.clave_sat %></td>
-        <td><%= producto.precio_unitario_mercado_libre %></td>
-        <td><%= producto.precio_unitario_shopify %></td>
+        <td><%= number_to_currency(producto.precio_unitario_mercado_libre) %></td>
+        <td><%= number_to_currency(producto.precio_unitario_shopify) %></td>
         <td><%= producto.notas_adicionales%></td>
         <td><%= producto.perdidas%></td>
         <td><%= link_to 'Ver mas detalle', producto_path(producto) %></td>

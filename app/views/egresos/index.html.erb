@@ -19,7 +19,7 @@
       <td><%= egreso.fecha %></td>
       <td><%= egreso.descripcion %></td>
       <td><%= egreso.emisor %></td>
-      <td><%= egreso.cantidad %></td>
+      <td><%= number_to_currency(egreso.cantidad) %></td>
       <td><%= egreso.notas_adicionales %></td>
       <td><%= link_to 'Ver mas detalle', egreso_path(egreso) %></td>
       <td><%= link_to 'Editar egreso', edit_egreso_path(egreso) %></td>
