@@ -47,9 +47,11 @@ class ProductosController < ApplicationController
   private
   
   def producto_params
+    params[:producto][:nombre_producto] = params[:producto][:nombre_producto].upcase
     params.require(:producto).permit(:nombre_producto, :clave_sat, :precio_unitario_mercado_libre, 
                                      :precio_unitario_shopify, :perdidas, :cantidad_comprada, :precio,
                                      :fecha_de_compra, :notas_adicionales, :columna_relacionada_en_ventas)
+    
   end
   
 end
