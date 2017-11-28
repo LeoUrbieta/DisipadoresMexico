@@ -16,7 +16,7 @@ class ClientesController < ApplicationController
     @cliente = Cliente.new(cliente_params)
     
     if @cliente.save
-      redirect_to clientes_path
+      redirect_to new_venta_path
     else
       render 'new'
     end
