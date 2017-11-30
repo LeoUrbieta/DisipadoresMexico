@@ -9,14 +9,14 @@
   <%= form_with url: pages_ingresos_path, local: true do |form| %>
   
     <p>
-      <%= form.label(:fecha_inicio, "Fecha de inicio:") %>
+      <%= form.label(:fecha_inicio, "Fecha inicial:") %>
       <%= form.date_select(:fecha_inicio,
                       selected: Date.today,
                       start_year: Date.today.year - 2,
                       end_year: Date.today.year + 20) %>
     </p>
     <p>
-      <%= form.label(:fecha_final, "Fecha de inicio:") %>
+      <%= form.label(:fecha_final, "Fecha final:") %>
       <%= form.date_select(:fecha_final,
                       selected: Date.today,
                       start_year: Date.today.year - 2,
