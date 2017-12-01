@@ -2,25 +2,17 @@
 
 <%= link_to 'Ir a Ventas', ventas_path, class: "btn btn-info" %>
 
-
-<h2>Ingresos en intervalo de Fecha</h2>
-
+<h3>Ingresos en intervalo de Fecha</h3>
 <p>
   <%= form_with url: pages_ingresos_path, local: true do |form| %>
   
     <p>
-      <%= form.label(:fecha_inicio, "Fecha inicial:") %>
-      <%= form.date_select(:fecha_inicio,
-                      selected: Date.today,
-                      start_year: Date.today.year - 2,
-                      end_year: Date.today.year + 20) %>
+      <%= form.label(:fecha_inicial, "Fecha inicial: ") %> <br>
+      <%= form.text_field :fecha_inicial, data:{ provide:'datepicker' }, :class => 'datepicker' %>
     </p>
     <p>
-      <%= form.label(:fecha_final, "Fecha final:") %>
-      <%= form.date_select(:fecha_final,
-                      selected: Date.today,
-                      start_year: Date.today.year - 2,
-                      end_year: Date.today.year + 20) %>
+      <%= form.label(:fecha_inicial, "Fecha final: ") %> <br>
+      <%= form.text_field :fecha_final, data:{ provide:'datepicker' }, :class => 'datepicker' %>
     </p>
     <p>
       <%= form.label(:facturado, "¿Facturado?") %>
@@ -87,6 +79,15 @@
   <% end %>
 </p>
 
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+      format: 'dd/mm/yyyy',
+      autoclose: true
+    });
+  });
+</script>
 
 
 
