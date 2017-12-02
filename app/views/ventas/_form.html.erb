@@ -148,7 +148,7 @@
   </p>
    <p>
     <%= form.label :facturado, '¿Facturado?' %> <br>
-    <%= form.text_field :facturado %>
+    <%= form.select :facturado, [['False','false'],['True','true']] %>
   </p>
    <p>
     <%= form.label :folio_factura %> <br>
