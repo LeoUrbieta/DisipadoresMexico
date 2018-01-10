@@ -3,4 +3,6 @@ class Cliente < ApplicationRecord
   
   validates :nombre, presence: true
   
+  default_scope -> { order(id: :desc)}
+  
 end
