@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   
   def ingresos
-    @ventas = Venta.all.order("fecha")
+    
   end
 
   def buscar
