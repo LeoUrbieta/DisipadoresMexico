@@ -7,8 +7,6 @@ class Venta < ApplicationRecord
             :precio_pasta_termica, :envio_explicito,:envio_agregado_a_precio_productos, 
             :devolucion,
              presence: true
-             
-  default_scope -> { order(fecha: :desc)}
   
   def self.busca_productos(fecha_inicial, fecha_final, factura)
     tipo_de_busqueda = "fecha >= :start_date AND fecha <= :end_date"
