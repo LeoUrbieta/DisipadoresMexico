@@ -8,7 +8,7 @@ class Venta < ApplicationRecord
             :devolucion,
              presence: true
              
-  default_scope -> { order(id: :desc)}
+  default_scope -> { order(fecha: :desc)}
   
   def self.busca_productos(fecha_inicial, fecha_final, factura)
     tipo_de_busqueda = "fecha >= :start_date AND fecha <= :end_date"
