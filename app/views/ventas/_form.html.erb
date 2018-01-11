@@ -1,3 +1,7 @@
+<div>
+  <%= will_paginate @clientes %>
+</div>
+
 <table class="table-striped table-hover table-condensed table-bordered">
   <tr>
     <th>Numero de Cliente</th>
@@ -11,6 +15,10 @@
     </tr>
   <% end %>
 </table>
+
+<div>
+  <%= will_paginate @clientes %>
+</div>
 
 <% if @venta.errors.any? %>
   <div id="error_explanation">

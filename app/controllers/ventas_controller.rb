@@ -7,17 +7,17 @@ class VentasController < ApplicationController
   end
   
   def new
-    @clientes = Cliente.all
+    @clientes = Cliente.paginate(page: params[:page], per_page: 5)
     @venta = Venta.new
   end
   
   def edit
-    @clientes = Cliente.all
+    @clientes = Cliente.paginate(page: params[:page], per_page: 5)
     @venta = Venta.find(params[:id])
   end
   
   def create
-    @clientes = Cliente.all
+    @clientes = Cliente.paginate(page: params[:page], per_page: 5)
     @venta = Venta.new(venta_params)
     
     if @venta.save
@@ -28,7 +28,7 @@ class VentasController < ApplicationController
   end
   
   def update
-    @clientes = Cliente.all
+    @clientes = Cliente.paginate(page: params[:page], per_page: 5)
     @venta = Venta.find(params[:id])
     
     if @venta.update(venta_params)
