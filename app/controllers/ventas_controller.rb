@@ -3,21 +3,21 @@ class VentasController < ApplicationController
   http_basic_authenticate_with name: "leo", password: "secreto", except: [:index, :show]
   
   def index
-    @ventas = Venta.all.order("fecha")
+    @ventas = Venta.paginate(page: params[:page], per_page: 20)
   end
   
   def new
-    @clientes = Cliente.paginate(page: params[:page], per_page: 5)
+    @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.new
   end
   
   def edit
-    @clientes = Cliente.paginate(page: params[:page], per_page: 5)
+    @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.find(params[:id])
   end
   
   def create
-    @clientes = Cliente.paginate(page: params[:page], per_page: 5)
+    @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.new(venta_params)
     
     if @venta.save
@@ -28,7 +28,7 @@ class VentasController < ApplicationController
   end
   
   def update
-    @clientes = Cliente.paginate(page: params[:page], per_page: 5)
+    @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.find(params[:id])
     
     if @venta.update(venta_params)

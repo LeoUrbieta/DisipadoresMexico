@@ -15,7 +15,9 @@
 <%= link_to 'Nueva Venta', new_venta_path, class: 'btn btn-primary' %>
 
 <br>
-
+<div align="center">
+  <%= will_paginate @ventas %>
+</div>
 <br>
 <table class="table table-striped table-hover table-condensed table-bordered">
   <tr>
@@ -90,3 +92,7 @@
   <% end %>
   
 </table>
+
+<div align="center">
+  <%= will_paginate @ventas %>
+</div>
