@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   
   def ingresos
-    @ventas = Venta.paginate(page: params[:page], per_page: 20)
+    @ventas = Venta.all.order("fecha")
   end
 
   def buscar
