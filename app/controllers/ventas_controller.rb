@@ -3,7 +3,7 @@ class VentasController < ApplicationController
   http_basic_authenticate_with name: "leo", password: "secreto", except: [:index, :show]
   
   def index
-    @ventas = Venta.paginate(page: params[:page], per_page: 20)
+    @ventas = Venta.all.order("fecha")
   end
   
   def new
