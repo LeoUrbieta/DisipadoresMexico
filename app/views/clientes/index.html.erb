@@ -42,9 +42,9 @@
         <td><%= cliente.telefono %></td>
         <td><%= cliente.email %></td>
         <td><%= cliente.persona_contacto %></td>
-        <td><%= link_to 'Ver mas detalle', cliente_path(cliente) %></td>
-        <td><%= link_to 'Editar cliente', edit_cliente_path(cliente) %></td>
-        <td><%= link_to 'Eliminar cliente' , cliente_path(cliente), method: :delete, data: { confirm: 'Are you sure?'}%></td>
+        <td><%= link_to 'Ver mas detalle', cliente_path(cliente), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Editar cliente', edit_cliente_path(cliente), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Eliminar cliente' , cliente_path(cliente), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}%></td>
       </tr>
     <% end %>
     

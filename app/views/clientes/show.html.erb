@@ -1,3 +1,24 @@
-<h1>Aquí es donde iría una descripción mas detallada del cliente</h1>
+<h1>Compras del Cliente: <%= @cliente.nombre %>, ID_Cliente: <%= @cliente.id%></h1>
+
+
+<br>
+<br>
+
+<table class="table table-striped table-hover table-condensed table-bordered">
+  <tr>
+    <th>Id Venta</th>
+    <th>Fecha</th>
+    <th>Total Pagado</th>
+  </tr>
+  
+  <% @cliente.ventas.each do |venta| %>
+    <tr>
+      <td><%= venta.id %></td>
+      <td><%= venta.fecha %></td>
+      <td><%= venta.total_pagado_por_cliente %></td>
+    </tr>
+  <% end %>
+  
+</table>
 
 <%= link_to 'Regresar a lista de clientes', clientes_path %>
