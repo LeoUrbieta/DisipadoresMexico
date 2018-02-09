@@ -25,5 +25,5 @@ class PagesController < ApplicationController
     @cantidad_restante = Producto.cantidad_restante()
   end
   
-  
 end
+
