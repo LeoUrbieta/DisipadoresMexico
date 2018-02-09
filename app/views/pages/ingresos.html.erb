@@ -4,7 +4,7 @@
 
 <h3>Ingresos en intervalo de Fecha</h3>
 <p>
-  <%= form_with url: pages_ingresos_path do |form| %>
+  <%= form_with url: pages_ingresos_path, local: true do |form| %>
   
     <p>
       <%= form.label(:fecha_inicial, "Fecha inicial: ") %> <br>
