@@ -31,7 +31,7 @@
         <td><%= number_to_currency(producto.precio_unitario_shopify) %></td>
         <td><%= producto.notas_adicionales%></td>
         <td><%= producto.perdidas%></td>
-        <td><%= link_to 'Ver mas detalle', producto_path(producto), class: 'btn btn-info' %></td>
+        <!--<td><%= link_to 'Ver mas detalle', producto_path(producto), class: 'btn btn-info' %></td>-->
         <td><%= link_to 'Editar producto', edit_producto_path(producto), class: 'btn btn-warning' %></td>
         <td><%= link_to 'Eliminar producto' , producto_path(producto), method: :delete, class: 'btn btn-danger' , data: { confirm: '¿Estás seguro?'}%></td>
       </tr>
