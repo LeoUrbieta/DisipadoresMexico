@@ -36,6 +36,7 @@
     <tr>
       <th>Fecha</th>
       <th>Nombre de Cliente</th>
+      <th>Monto de la Venta</th>
       <th>¿Facturado?</th>
     </tr>
   
@@ -43,6 +44,7 @@
       <tr>
           <td><%= venta.fecha %></td>
           <td><%= venta.cliente.nombre %></td> 
+          <td><%= venta.total_pagado_por_cliente%></td>
           <td><%= venta.facturado %></td>
         <% end %>
       </tr>
