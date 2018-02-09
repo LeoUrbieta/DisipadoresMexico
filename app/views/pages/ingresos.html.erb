@@ -8,11 +8,11 @@
   
     <p>
       <%= form.label(:fecha_inicial, "Fecha inicial: ") %> <br>
-      <%= form.text_field :fecha_inicial, data:{ provide:'datepicker' }, :class => 'datepicker' %>
+      <%= form.text_field :fecha_inicial, data:{ provide:'datepicker' }, :class => 'datepicker', :id => 'inicio_datepicker', :readonly => 'readonly' %>
     </p>
-    <p>
+    <p class='campos_fecha_final'>
       <%= form.label(:fecha_inicial, "Fecha final: ") %> <br>
-      <%= form.text_field :fecha_final, data:{ provide:'datepicker' }, :class => 'datepicker' %>
+      <%= form.text_field :fecha_final, data:{ provide:'datepicker' }, :class => 'datepicker', :id => 'final_datepicker', :readonly => 'readonly'  %>
     </p>
     <p>
       <%= form.label(:facturado, "¿Facturado?") %>
@@ -26,13 +26,11 @@
 
 
 <p>
-  <h3>Ventas</h3>
-  <table class="table-striped table-hover table-condensed table-bordered">
   <% if @ventas.blank? %>
-    <tr>
-      <td>Sin ventas por mostrar</td>
-    </tr>
+    <h3>Sin ventas por mostrar<h3>
   <% else %>
+  <h3>Ventas de <%= @fecha_inicio.strftime("%d %b %Y") %> a <%= @fecha_final.strftime("%d %b %Y") %></h3>
+  <table class="table-striped table-hover table-condensed table-bordered">
     <tr>
       <th>Fecha</th>
       <th>Nombre de Cliente</th>
