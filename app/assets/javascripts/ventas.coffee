@@ -6,20 +6,27 @@ $(document).on 'turbolinks:load', ->
 
   sumaTodosCampos()
   llenarCerosEnCampos()
+  revisaSiFacturaYMuestra()
   
   $('.subtotal,.envios,.comisiones').change ->
     sumaTodosCampos()
 
+  $('select[name="venta[facturado]"]').change ->
+    $('.folio').css('display','none')
+    revisaSiFacturaYMuestra()
+      
     
 #Funciones    
 
+revisaSiFacturaYMuestra = ->
+  if( $('select[name="venta[facturado]"]').val() == 'true')
+      $('.folio').css('display','block')
+
 llenarCerosEnCampos = ->
-  $(':input').each ->
-    if ( $(@).attr('name') == 'venta[cliente_id]' && $(@).val() == '' )
-      $(@).val('')
-    else if ($(@).attr('name') == 'venta[folio_factura]')
+  $('.zero_init').each ->
+    if ($(@).attr('name') == 'venta[folio_factura]' && $(@).val() == '')
       $(@).val('S/F')
-    else if ($(@).attr('name') == 'venta[notas_adicionales]')
+    else if ($(@).attr('name') == 'venta[notas_adicionales]' && $(@).val() == '')
       $(@).val('S/N')
     else if( $(@).val() == '')
       $(@).val('0')

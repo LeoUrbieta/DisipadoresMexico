@@ -50,73 +50,73 @@
   
   <p>
     <%= form.label :longitud_75mm, 'Longitud 7.5 (cm)' %> <br>
-    <%= form.text_field :longitud_75mm%>
+    <%= form.text_field :longitud_75mm, :class => 'zero_init'%>
   </p>
   
   <p>
     <%= form.label :longitud_87mm, 'Longitud 8.7 (cm)' %> <br>
-    <%= form.text_field :longitud_87mm %>
+    <%= form.text_field :longitud_87mm, :class => 'zero_init' %>
   </p>
   
   <p>
     <%= form.label :longitud_136mm, 'Longitud 13.6 (cm)' %> <br>
-    <%= form.text_field :longitud_136mm %>
+    <%= form.text_field :longitud_136mm, :class => 'zero_init' %>
   </p>
   
   <p>
     <%= form.label :cantidad_peltier %> <br>
-    <%= form.text_field :cantidad_peltier %>
+    <%= form.text_field :cantidad_peltier, :class => 'zero_init' %>
   </p>
   
   <p>
     <%= form.label :cantidad_pasta_termica %> <br>
-    <%= form.text_field :cantidad_pasta_termica %>
+    <%= form.text_field :cantidad_pasta_termica, :class => 'zero_init' %>
   </p>
   <p>
     <%= form.label :precio_75mm, 'Precio 7.5' %> <br>
-    <%= form.text_field :precio_75mm, :class => 'subtotal' %>
+    <%= form.text_field :precio_75mm, :class => 'subtotal zero_init' %>
   </p>
   
   <p>
     <%= form.label :precio_87mm, 'Precio 8.7' %> <br>
-    <%= form.text_field :precio_87mm, :class => 'subtotal' %>
+    <%= form.text_field :precio_87mm, :class => 'subtotal zero_init' %>
   </p>
   
   <p>
     <%= form.label :precio_136mm, 'Precio 13.6' %> <br>
-    <%= form.text_field :precio_136mm, :class => 'subtotal' %>
+    <%= form.text_field :precio_136mm, :class => 'subtotal zero_init' %>
   </p>
   <p>
     <%= form.label :precio_peltier %> <br>
-    <%= form.text_field :precio_peltier, :class => 'subtotal' %>
+    <%= form.text_field :precio_peltier, :class => 'subtotal zero_init' %>
   </p>
   <p>
     <%= form.label :precio_pasta_termica %> <br>
-    <%= form.text_field :precio_pasta_termica, :class => 'subtotal' %>
+    <%= form.text_field :precio_pasta_termica, :class => 'subtotal zero_init' %>
   </p>
   <p>
     <%= form.label :subtotal, 'Sub-total (Pre-Descuentos)' %> <br>
     <%= form.text_field :subtotal, :id => 'subtotal', :readonly => 'readonly' %>
   </p>
-  <p>
+  <p style = "display:none">
     <%= form.label :descuento_75mm, 'Descuento 7.5'  %> <br>
-    <%= form.text_field :descuento_75mm %>
+    <%= form.text_field :descuento_75mm, :class => 'zero_init' %>
   </p>
-  <p>
+  <p style = "display:none">
     <%= form.label :descuento_87mm, 'Descuento 8.7' %> <br>
-    <%= form.text_field :descuento_87mm %>
+    <%= form.text_field :descuento_87mm, :class => 'zero_init' %>
   </p>
-  <p>
+  <p style = "display:none">
     <%= form.label :descuento_136mm, 'Descuento 13.6' %> <br>
-    <%= form.text_field :descuento_136mm %>
+    <%= form.text_field :descuento_136mm, :class => 'zero_init' %>
   </p>
-  <p>
+  <p style = "display:none">
     <%= form.label :descuento_peltier %> <br>
-    <%= form.text_field :descuento_peltier %>
+    <%= form.text_field :descuento_peltier, :class => 'zero_init' %>
   </p>
-  <p>
+  <p style = "display:none">
     <%= form.label :descuento_pasta_termica %> <br>
-    <%= form.text_field :descuento_pasta_termica %>
+    <%= form.text_field :descuento_pasta_termica, :class => 'zero_init' %>
   </p>
   <p>
     <%= form.label :total_productos %> <br>
@@ -124,11 +124,11 @@
   </p>
   <p>
     <%= form.label :envio_explicito, 'Envío explícito (pagado por el cliente)'  %> <br>
-    <%= form.text_field :envio_explicito, :class => 'envios' %>
+    <%= form.text_field :envio_explicito, :class => 'envios zero_init' %>
   </p>
   <p>
     <%= form.label :envio_agregado_a_precio_productos, 'Envio agregado al precio de los productos (pagado por el cliente)' %> <br>
-    <%= form.text_field :envio_agregado_a_precio_productos, :class => 'envios' %>
+    <%= form.text_field :envio_agregado_a_precio_productos, :class => 'envios zero_init' %>
   </p>
   <p>
     <%= form.label :total_pagado_por_cliente, 'Total pagado por el cliente' %> <br>
@@ -136,35 +136,35 @@
   </p>
   <p>
     <%= form.label :comisiones %> <br>
-    <%= form.text_field :comisiones, :class => 'comisiones' %>
+    <%= form.text_field :comisiones, :class => 'comisiones zero_init' %>
   </p>
   <p>
     <%= form.label :comision_envio  %> <br>
-    <%= form.text_field :comision_envio, :class => 'comisiones' %>
+    <%= form.text_field :comision_envio, :class => 'comisiones zero_init' %>
   </p>
   <p>
     <%= form.label :devolucion  %> <br>
-    <%= form.text_field :devolucion, :class => 'comisiones' %>
+    <%= form.text_field :devolucion, :class => 'comisiones zero_init' %>
   </p>
   <p>
     <%= form.label :total_post_comisiones %> <br>
     <%= form.text_field :total_post_comisiones, :id => 'total_post_comisiones', :readonly => 'readonly' %>
   </p>
-   <p>
+  <p>
     <%= form.label :medio_de_venta %> <br>
     <%= form.select :medio_de_venta, [['MercadoLibre','Mercadolibre'],['Shopify','Shopify'],['Amazon','Amazon'],['Entrega Personal', 'Entrega personal']] %>
   </p>
-   <p>
+  <p>
     <%= form.label :facturado, '¿Facturado?' %> <br>
-    <%= form.select :facturado, [['False','false'],['True','true']] %>
+    <%= form.select :facturado, [['False','false'],['True','true']], :id => "boolean_factura" %>
   </p>
-   <p>
+  <p class = "folio">
     <%= form.label :folio_factura %> <br>
-    <%= form.text_field :folio_factura %>
+    <%= form.text_field :folio_factura, :class => 'zero_init' %>
   </p>
    <p>
     <%= form.label :notas_adicionales %> <br>
-    <%= form.text_area :notas_adicionales %>
+    <%= form.text_area :notas_adicionales, :class => 'zero_init' %>
   </p>
   <p >
     <%= form.submit %>
