@@ -14,30 +14,44 @@
     </div>
   <% end %>
 
-  <p>
-    <%= form.label :fecha %> <br>
-    <%= form.date_select(:fecha,
-                  start_year: Date.today.year - 2,
-                  end_year: Date.today.year + 20) %>
-  </p>
-  <p>
-    <%= form.label :descripcion, 'Descripción' %> <br>
-    <%= form.text_field :descripcion %>
-  </p>
-  <p>
-    <%= form.label :emisor, 'Emisor' %> <br>
-    <%= form.text_field :emisor %>
-  </p>
-  <p>
-    <%= form.label :cantidad, 'Cantidad' %> <br>
-    <%= form.text_field :cantidad %>
-  </p>
-  <p>
-    <%= form.label :notas_adicionales, 'Notas Adicionales' %> <br>
-    <%= form.text_area :notas_adicionales %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-
+  <div class="row">
+    <div class="form-group col-sm-3">
+      <%= form.label :fecha %> <br>
+      <%= form.date_select(:fecha,
+                    start_year: Date.today.year - 2,
+                    end_year: Date.today.year + 20,
+                    order: [:day, :month, :year],
+                    :class => 'form-control') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :descripcion, 'Descripción' %> <br>
+      <%= form.text_field :descripcion, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :emisor, 'Emisor' %> <br>
+      <%= form.text_field :emisor, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :cantidad, 'Cantidad' %> <br>
+      <%= form.text_field :cantidad, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :notas_adicionales, 'Notas Adicionales' %> <br>
+      <%= form.text_area :notas_adicionales, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.submit 'Crear Egreso', :class => 'btn btn-primary' %>
+    </div>
+  </div>
+  
 <% end %>

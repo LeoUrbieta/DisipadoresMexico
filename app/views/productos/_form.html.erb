@@ -14,50 +14,75 @@
     </div>
   <% end %>
 
-  <p>
-    <%= form.label(:fecha_de_compra, "Fecha de compra:") %>
-    <%= form.date_select(:fecha_de_compra,
+
+  <div class="row">
+    <div class="form-group col-sm-3">
+      <%= form.label(:fecha_de_compra, "Fecha de compra:") %> <br>
+      <%= form.date_select(:fecha_de_compra,
                     start_year: Date.today.year - 2,
-                    end_year: Date.today.year + 20) %>
-  </p>
-  <p>
-    <%= form.label :nombre_producto, 'Nombre del producto' %> <br>
-    <%= form.text_field :nombre_producto %>
-  </p>
-  <p>
-    <%= form.label :columna_relacionada_en_ventas %> <br>
-    <%= form.select :columna_relacionada_en_ventas, @indices, include_blank: true%>
-  </p>
-  <p>
-    <%= form.label :cantidad_comprada, 'Cantidad comprada' %> <br>
-    <%= form.text_field :cantidad_comprada %>
-  </p>
-  <p>
-    <%= form.label :precio, 'Precio' %> <br>
-    <%= form.text_field :precio %>
-  </p>
-   <p>
-    <%= form.label :clave_sat, 'Clave SAT' %> <br>
-    <%= form.text_field :clave_sat %>
-  </p>
-   <p>
-    <%= form.label :precio_unitario_mercado_libre %> <br>
-    <%= form.text_field :precio_unitario_mercado_libre %>
-  </p>
-  <p>
-    <%= form.label :precio_unitario_shopify %> <br>
-    <%= form.text_field :precio_unitario_shopify %>
-  </p>
-  <p>
-    <%= form.label :notas_adicionales %> <br>
-    <%= form.text_area :notas_adicionales %>
-  </p>
-  <p>
-    <%= form.label :perdidas %> <br>
-    <%= form.text_field :perdidas %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+                    end_year: Date.today.year + 20,
+                    order: [:day, :month, :year],
+                    :class => 'form-control') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :nombre_producto, 'Nombre del producto' %> 
+      <%= form.text_field :nombre_producto, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :columna_relacionada_en_ventas %>
+      <%= form.select :columna_relacionada_en_ventas, @indices, include_blank: true, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :cantidad_comprada, 'Cantidad comprada' %>
+      <%= form.text_field :cantidad_comprada, :class => 'form-control'  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :precio, 'Precio' %>
+      <%= form.text_field :precio, :class => 'form-control'  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :clave_sat, 'Clave SAT' %>
+      <%= form.text_field :clave_sat, :class => 'form-control'  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :precio_unitario_mercado_libre %>
+      <%= form.text_field :precio_unitario_mercado_libre, :class => 'form-control'  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :precio_unitario_shopify %>
+      <%= form.text_field :precio_unitario_shopify, :class => 'form-control'  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :notas_adicionales %>
+      <%= form.text_area :notas_adicionales, :class => 'form-control'  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :perdidas %>
+      <%= form.text_field :perdidas, :class => 'form-control'  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.submit 'Crear producto', :class => 'btn btn-primary' %>
+    </div>
+  </div>
 
 <% end %>

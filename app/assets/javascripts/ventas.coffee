@@ -16,7 +16,8 @@ $(document).on 'turbolinks:load', ->
     revisaSiFacturaYMuestra()
       
     
-#Funciones    
+#Funciones
+  
 
 revisaSiFacturaYMuestra = ->
   if( $('select[name="venta[facturado]"]').val() == 'true')

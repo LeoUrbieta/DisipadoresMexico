@@ -56,4 +56,5 @@ class Venta < ApplicationRecord
     
   end
   
+  
 end

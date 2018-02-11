@@ -1,6 +1,4 @@
-<%= form_with model: @cliente, local: true do |form| %>
-
-  <% if @cliente.errors.any? %>
+ <% if @cliente.errors.any? %>
     <div id="error_explanation">
       <h2>
         <%= pluralize(@cliente.errors.count, "error") %> prohibited
@@ -14,60 +12,72 @@
     </div>
   <% end %>
 
-  <p>
-    <%= form.label :nombre, 'Nombre de cliente' %> <br>
-    <%= form.text_field :nombre %>
-  </p>
+<%= form_with model: @cliente, local: true do |form| %>
+
+  <div class="row">
+    <div class="form-group col-md-3">
+      <%= form.label :nombre, 'Nombre de cliente' %> 
+      <%= form.text_field :nombre, :class => 'form-control' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :rfc, 'RFC' %> 
+      <%= form.text_field :rfc, :class => 'form-control' %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="form-group col-md-3">
+      <%= form.label :calle %> 
+      <%= form.text_field :calle, :class => 'form-control' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :numero_exterior %> 
+      <%= form.text_field :numero_exterior, :class => 'form-control' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :numero_interior %> 
+      <%= form.text_field :numero_interior, :class => 'form-control' %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="form-group col-md-2">
+      <%= form.label :colonia %> 
+      <%= form.text_field :colonia, :class => 'form-control' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :municipio_delegacion, 'Municipio o delegación' %> 
+      <%= form.text_field :municipio_delegacion, :class => 'form-control' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :ciudad %> 
+      <%= form.text_field :ciudad, :class => 'form-control' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :estado %> 
+      <%= form.text_field :estado, :class => 'form-control' %>  
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :codigo_postal %> <br>
+      <%= form.text_field :codigo_postal, :class => 'form-control' %>  
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-2">
+      <%= form.label :telefono %> <br>
+      <%= form.text_field :telefono, :class => 'form-control' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :email%> <br>
+      <%= form.text_field :email, :class => 'form-control' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :persona_contacto, 'Persona para contacto' %> <br>
+      <%= form.text_field :persona_contacto, :class => 'form-control' %>
+    </div>
+  </div>
    <p>
-    <%= form.label :rfc, 'RFC' %> <br>
-    <%= form.text_field :rfc %>
-  </p>
-   <p>
-    <%= form.label :calle %> <br>
-    <%= form.text_field :calle %>
-  </p>
-   <p>
-    <%= form.label :numero_exterior %> <br>
-    <%= form.text_field :numero_exterior %>
-  </p>
-   <p>
-    <%= form.label :numero_interior %> <br>
-    <%= form.text_field :numero_interior %>
-  </p>
-   <p>
-    <%= form.label :colonia %> <br>
-    <%= form.text_field :colonia %>
-  </p>
-   <p>
-    <%= form.label :municipio_delegacion, 'Municipio o delegación' %> <br>
-    <%= form.text_field :municipio_delegacion %>
-  </p>
-   <p>
-    <%= form.label :ciudad %> <br>
-    <%= form.text_field :ciudad %>
-  </p>
-  <p>
-    <%= form.label :estado %> <br>
-    <%= form.text_field :estado %>
-  </p>
-  <p>
-    <%= form.label :codigo_postal %> <br>
-    <%= form.text_field :codigo_postal %>
-  </p>
-  <p>
-    <%= form.label :telefono %> <br>
-    <%= form.text_field :telefono %>
-  </p>
-  <p>
-    <%= form.label :email%> <br>
-    <%= form.text_field :email %>
-  </p>
-  <p>
-    <%= form.label :persona_contacto, 'Persona para contacto' %> <br>
-    <%= form.text_field :persona_contacto %>
-  </p>
-   <p>
-    <%= form.submit %>
+    <%= form.submit 'Crear cliente', :class => 'btn btn-primary' %>
   </p>
 
 <% end %>
