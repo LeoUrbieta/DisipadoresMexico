@@ -55,100 +55,117 @@
   
   <div class="row">
     <div class="form-group col-md-2">
+        <%= form.label :medio_de_venta %> <br>
+        <%= form.select :medio_de_venta, [['MercadoLibre','MercadoLibre'],['Shopify','Shopify'],['Amazon','Amazon'],['Entrega Personal', 'Entrega Personal']], :class => 'form-control' %>
+    </div>
+  </div>
+  <hr />
+  <div style="display: none" class="row">
+    <% @precios.each do |nombre,precio| %>
+      <div class="form-group col-md-1">
+        <div><%="#{nombre.titleize}"%></div>
+        <div id=<%="#{nombre}"+'_precio_unitario_ML'%> ><%="#{precio[0]}"%></div> 
+        <div id=<%="#{nombre}"+'_precio_unitario'%>><%="#{precio[1]}"%></div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="row">
+    <div class="form-group col-md-2">
       <%= form.label :longitud_75mm, 'Longitud 7.5 (cm)' %> 
-      <%= form.text_field :longitud_75mm, :class => 'zero_init form-control'%>
+      <%= form.text_field :longitud_75mm, :class => 'zero_init form-control cantidad'%>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_75mm, 'Precio 7.5' %> 
-      <%= form.text_field :precio_75mm, :class => 'subtotal zero_init form-control' %>
+      <%= form.text_field :precio_75mm, :class => 'subtotal zero_init form-control', :readonly => 'readonly'%>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :descuento_75mm, 'Descuento 7.5'  %>
+      <%= form.text_field :descuento_75mm, :class => 'zero_init form-control descuento'  %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-md-2">
       <%= form.label :longitud_87mm, 'Longitud 8.7 (cm)' %> 
-      <%= form.text_field :longitud_87mm, :class => 'zero_init form-control' %>
+      <%= form.text_field :longitud_87mm, :class => 'zero_init form-control cantidad'%>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_87mm, 'Precio 8.7' %> 
-      <%= form.text_field :precio_87mm, :class => 'subtotal zero_init form-control' %>
+      <%= form.text_field :precio_87mm, :class => 'subtotal zero_init form-control', :readonly => 'readonly' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :descuento_87mm, 'Descuento 8.7' %>
+      <%= form.text_field :descuento_87mm, :class => 'zero_init form-control descuento' %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-md-2">
       <%= form.label :longitud_136mm, 'Longitud 13.6 (cm)' %>
-      <%= form.text_field :longitud_136mm, :class => 'zero_init form-control'%>
+      <%= form.text_field :longitud_136mm, :class => 'zero_init form-control cantidad'%>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_136mm, 'Precio 13.6' %>
-      <%= form.text_field :precio_136mm, :class => 'subtotal zero_init form-control' %>
+      <%= form.text_field :precio_136mm, :class => 'subtotal zero_init form-control', :readonly => 'readonly' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :descuento_136mm, 'Descuento 13.6' %>
+      <%= form.text_field :descuento_136mm, :class => 'zero_init form-control descuento' %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-md-2">
       <%= form.label :cantidad_peltier %> 
-      <%= form.text_field :cantidad_peltier, :class => 'zero_init form-control' %>
+      <%= form.text_field :cantidad_peltier, :class => 'zero_init form-control cantidad' %>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_peltier %>
-      <%= form.text_field :precio_peltier, :class => 'subtotal zero_init form-control' %>
+      <%= form.text_field :precio_peltier, :class => 'subtotal zero_init form-control', :readonly => 'readonly' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :descuento_peltier %>
+      <%= form.text_field :descuento_peltier, :class => 'zero_init form-control descuento' %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-md-2">
       <%= form.label :cantidad_pasta_termica %> 
-      <%= form.text_field :cantidad_pasta_termica, :class => 'zero_init form-control' %>
+      <%= form.text_field :cantidad_pasta_termica, :class => 'zero_init form-control cantidad' %>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_pasta_termica %> 
-      <%= form.text_field :precio_pasta_termica, :class => 'subtotal zero_init form-control' %>
+      <%= form.text_field :precio_pasta_termica, :class => 'subtotal zero_init form-control', :readonly => 'readonly' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :descuento_pasta_termica %>
+      <%= form.text_field :descuento_pasta_termica, :class => 'zero_init form-control descuento' %>
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-2 col-md-offset-2">
       <%= form.label :subtotal, 'Sub-total (Pre-Descuentos)' %> 
       <%= form.text_field :subtotal, :id => 'subtotal', :readonly => 'readonly', :class => 'form-control' %>
     </div>
-    <p style = "display:none">
-      <%= form.label :descuento_75mm, 'Descuento 7.5'  %>
-      <%= form.text_field :descuento_75mm, :class => 'zero_init form-group'  %>
-    </p>
-    <p style = "display:none">
-      <%= form.label :descuento_87mm, 'Descuento 8.7' %>
-      <%= form.text_field :descuento_87mm, :class => 'zero_init form-group' %>
-    </p>
-    <p style = "display:none">
-      <%= form.label :descuento_136mm, 'Descuento 13.6' %>
-      <%= form.text_field :descuento_136mm, :class => 'zero_init form-group' %>
-    </p>
-    <p style = "display:none">
-      <%= form.label :descuento_peltier %>
-      <%= form.text_field :descuento_peltier, :class => 'zero_init form-group' %>
-    </p>
-    <p style = "display:none">
-      <%= form.label :descuento_pasta_termica %>
-      <%= form.text_field :descuento_pasta_termica, :class => 'zero_init form-group' %>
-    </p>
     <div class="form-group col-md-2">
       <%= form.label :total_productos %>
       <%= form.text_field :total_productos, :id => 'total_preenvio', :readonly => 'readonly', :class => "form-control" %>
     </div>
   </div>
+  <hr />
   <div class="row">
     <div class="form-group col-md-2">
       <%= form.label :envio_explicito, 'Envío explícito (pagado por el cliente)'  %> 
       <%= form.text_field :envio_explicito, :class => 'envios zero_init form-control' %>
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-2">
       <%= form.label :envio_agregado_a_precio_productos, 'Envio agregado al precio de los productos (pagado por el cliente)' %> 
       <%= form.text_field :envio_agregado_a_precio_productos, :class => 'envios zero_init form-control' %>
     </div>
-  </div>
-  <div class="row">
     <div class="form-group col-md-2">
       <%= form.label :total_pagado_por_cliente, 'Total pagado por el cliente' %> <br>
       <%= form.text_field :total_pagado_por_cliente, :id => 'total_pagado_por_cliente', :readonly => 'readonly', :class => 'form-control' %>
     </div>
   </div>
+  <hr />
   <div class="row">
     <div class="form-group col-md-2">
       <%= form.label :comisiones %> 
@@ -164,16 +181,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-2 col-md-offset-4">
       <%= form.label :total_post_comisiones %> 
       <%= form.text_field :total_post_comisiones, :id => 'total_post_comisiones', :readonly => 'readonly', :class => 'form-control' %>
     </div>
   </div>
-   <div class="row">
-    <div class="form-group col-md-2">
-      <%= form.label :medio_de_venta %> <br>
-      <%= form.select :medio_de_venta, [['MercadoLibre','MercadoLibre'],['Shopify','Shopify'],['Amazon','Amazon'],['Entrega Personal', 'Entrega Personal']], :class => 'form-control' %>
-    </div>
+  <hr />
+  <div class="row">
     <div class="form-group col-md-2">
       <%= form.label :facturado, '¿Facturado?' %> <br>
       <%= form.select :facturado, [['False','false'],['True','true']], :id => "boolean_factura", :class => 'form-control' %>

@@ -45,4 +45,19 @@ class Producto < ApplicationRecord
     
   end
   
+  def self.busca_precios()
+    
+    precios = Hash.new
+    
+    Producto.all.each do |producto|
+      
+      array_precios = Array.new
+      array_precios[0] = producto.precio_unitario_mercado_libre
+      array_precios[1] = producto.precio_unitario_shopify
+      precios[producto.columna_relacionada_en_ventas] = array_precios
+    end
+    
+    return precios
+  end
+  
 end

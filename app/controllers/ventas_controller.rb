@@ -9,11 +9,13 @@ class VentasController < ApplicationController
   def new
     @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.new
+    @precios = Producto.busca_precios()
   end
   
   def edit
     @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.find(params[:id])
+    @precios = Producto.busca_precios()
   end
   
   def create

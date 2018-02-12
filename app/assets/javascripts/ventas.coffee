@@ -8,16 +8,34 @@ $(document).on 'turbolinks:load', ->
   llenarCerosEnCampos()
   revisaSiFacturaYMuestra()
   
-  $('.subtotal,.envios,.comisiones').change ->
+  $('.cantidad').change ->
+    actualizaPrecio(@)
+  
+  $('.cantidad,.descuento,.envios,.comisiones').change ->
     sumaTodosCampos()
 
   $('select[name="venta[facturado]"]').change ->
     $('.folio').css('display','none')
     revisaSiFacturaYMuestra()
       
+  
     
 #Funciones
   
+actualizaPrecio = (campoCambiado) ->
+  cantidad_vendida = Number($(campoCambiado).val())
+  inicio_string = $(campoCambiado).attr('name').indexOf("[")
+  final_string = $(campoCambiado).attr('name').indexOf("]")
+  id_producto = $(campoCambiado).attr('name').slice(inicio_string + 1,final_string)
+  
+  if($('select[name="venta[medio_de_venta]"]').val() == 'MercadoLibre')
+    precio_total = Number($('#'+id_producto+'_precio_unitario_ML').text()) * cantidad_vendida
+  else
+    precio_total = Number($('#'+id_producto+'_precio_unitario').text()) * cantidad_vendida
+  
+  nombre_producto= id_producto.slice((id_producto.indexOf("_") + 1))
+  $('input[name="venta[precio_' + nombre_producto + ']"]').val(precio_total.toFixed(2))
+
 
 revisaSiFacturaYMuestra = ->
   if( $('select[name="venta[facturado]"]').val() == 'true')
@@ -34,7 +52,8 @@ llenarCerosEnCampos = ->
      
     
 sumaTodosCampos = ->
-  sumarCampos '.subtotal','#subtotal,#total_preenvio', null, null
+  sumarCampos '.subtotal','#subtotal', null, null
+  sumarCampos '.descuento','#total_preenvio', Number($('#subtotal').val()), 'restar'
   sumarCampos '.envios', '#total_pagado_por_cliente', Number($('#total_preenvio').val()), null
   sumarCampos '.comisiones', '#total_post_comisiones', Number($('#total_pagado_por_cliente').val()), 'restar'
   
