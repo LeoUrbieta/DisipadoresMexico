@@ -24,18 +24,21 @@ $(document).on 'turbolinks:load', ->
   
 actualizaPrecio = (campoCambiado) ->
   cantidad_vendida = Number($(campoCambiado).val())
-  inicio_string = $(campoCambiado).attr('name').indexOf("[")
-  final_string = $(campoCambiado).attr('name').indexOf("]")
-  id_producto = $(campoCambiado).attr('name').slice(inicio_string + 1,final_string)
+  id_producto = extraeIdProducto(campoCambiado)
   
   if($('select[name="venta[medio_de_venta]"]').val() == 'MercadoLibre')
     precio_total = Number($('#'+id_producto+'_precio_unitario_ML').text()) * cantidad_vendida
   else
     precio_total = Number($('#'+id_producto+'_precio_unitario').text()) * cantidad_vendida
   
-  nombre_producto= id_producto.slice((id_producto.indexOf("_") + 1))
+  nombre_producto = id_producto.slice((id_producto.indexOf("_") + 1))
   $('input[name="venta[precio_' + nombre_producto + ']"]').val(precio_total.toFixed(2))
 
+extraeIdProducto = (campo) ->
+  inicio_string = $(campo).attr('name').indexOf("[")
+  final_string = $(campo).attr('name').indexOf("]")
+  return $(campo).attr('name').slice(inicio_string + 1,final_string)
+  
 
 revisaSiFacturaYMuestra = ->
   if( $('select[name="venta[facturado]"]').val() == 'true')
