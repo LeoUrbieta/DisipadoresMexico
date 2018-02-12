@@ -11,7 +11,7 @@ $(document).on 'turbolinks:load', ->
   $('.cantidad').change ->
     actualizaPrecio(@)
   
-  $('.cantidad,.descuento,.envios,.comisiones').change ->
+  $('.cantidad,.descuento,.comisiones,.anadido').change ->
     sumaTodosCampos()
 
   $('select[name="venta[facturado]"]').change ->
@@ -57,7 +57,7 @@ llenarCerosEnCampos = ->
 sumaTodosCampos = ->
   sumarCampos '.subtotal','#subtotal', null, null
   sumarCampos '.descuento','#total_preenvio', Number($('#subtotal').val()), 'restar'
-  sumarCampos '.envios', '#total_pagado_por_cliente', Number($('#total_preenvio').val()), null
+  sumarCampos '.anadido', '#total_pagado_por_cliente', Number($('#total_preenvio').val()), null
   sumarCampos '.comisiones', '#total_post_comisiones', Number($('#total_pagado_por_cliente').val()), 'restar'
   
 sumarCampos = (campo_cambiado,campos_a_cambiar,otro_campo_a_sumar, operacion) ->

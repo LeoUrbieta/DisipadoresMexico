@@ -19,7 +19,6 @@ class VentasController < ApplicationController
   end
   
   def create
-    @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.new(venta_params)
     
     if @venta.save
@@ -30,7 +29,6 @@ class VentasController < ApplicationController
   end
   
   def update
-    @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.find(params[:id])
     
     if @venta.update(venta_params)
@@ -57,7 +55,7 @@ class VentasController < ApplicationController
                                   :precio_136mm, :precio_peltier, :precio_pasta_termica, :subtotal, :descuento_75mm, :descuento_87mm, :descuento_136mm,
                                   :descuento_peltier, :descuento_pasta_termica, :total_productos, :envio_explicito, :envio_agregado_a_precio_productos,
                                   :total_pagado_por_cliente, :comisiones, :comision_envio, :total_post_comisiones, :medio_de_venta, :facturado,
-                                  :folio_factura, :notas_adicionales, :devolucion ,:cliente_id)
+                                  :folio_factura, :notas_adicionales, :devolucion ,:cliente_id, :cortes_75mm, :cortes_87mm, :cortes_136mm, :dinero_anadido)
   end
   
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115155424) do
+ActiveRecord::Schema.define(version: 20180212222058) do
 
   create_table "clientes", force: :cascade do |t|
     t.string "nombre"
@@ -89,6 +89,10 @@ ActiveRecord::Schema.define(version: 20171115155424) do
     t.datetime "updated_at"
     t.integer "cliente_id"
     t.decimal "devolucion"
+    t.integer "cortes_75mm"
+    t.integer "cortes_87mm"
+    t.integer "cortes_136mm"
+    t.decimal "dinero_anadido"
   end
 
 end
