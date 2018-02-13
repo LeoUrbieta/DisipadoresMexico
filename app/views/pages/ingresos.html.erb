@@ -2,9 +2,9 @@
 
 <%= link_to 'Ir a Ventas', ventas_path, class: "btn btn-info" %>
 
-<h3>Ingresos en intervalo de Fecha</h3>
-<p>
-  <%= form_with url: pages_ingresos_path, local: true do |form| %>
+<h3 class="centered">Ingresos en intervalo de Fecha</h3>
+<div class="centered">
+  <%= form_with url: pages_ingresos_path, local: true, :html => {} do |form| %>
   
     <p>
       <%= form.label(:fecha_inicial, "Fecha inicial: ") %> <br>
@@ -22,62 +22,67 @@
       <%= form.submit("Buscar") %>
     </p>
   <% end %>
-</p>
+</div>
 
-
-<p>
-  <% if @ventas.blank? %>
-    <h3>Sin ventas por mostrar<h3>
-  <% else %>
-  <h3>Ventas de <%= @fecha_inicio.strftime("%d %b %Y") %> a <%= @fecha_final.strftime("%d %b %Y") %></h3>
-  <table class="table-striped table-hover table-condensed table-bordered">
-    <tr>
-      <th>Fecha</th>
-      <th>Nombre de Cliente</th>
-      <th>Monto de la Venta</th>
-      <th>¿Facturado?</th>
-    </tr>
+<div class="row">
+  <div class = "centered">
+    <% if @ventas.blank? %>
+      <h3>Sin ventas por mostrar<h3>
+    <% else %>
+  </div>
+  <div class="col-md-5">
+    <h3>Ventas de <%= @fecha_inicio.strftime("%d %b %Y") %> a <%= @fecha_final.strftime("%d %b %Y") %></h3>
+    <table class="table-striped table-hover table-condensed table-bordered">
+      <tr>
+        <th>Fecha</th>
+        <th>Nombre de Cliente</th>
+        <th>Monto de la Venta</th>
+        <th>¿Facturado?</th>
+      </tr>
+    
+      <% @ventas.each do |venta| %>
+        <tr>
+            <td><%= venta.fecha %></td>
+            <td><%= venta.cliente.nombre %></td> 
+            <td><%= venta.total_pagado_por_cliente%></td>
+            <td><%= venta.facturado %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
   
-    <% @ventas.each do |venta| %>
-      <tr>
-          <td><%= venta.fecha %></td>
-          <td><%= venta.cliente.nombre %></td> 
-          <td><%= venta.total_pagado_por_cliente%></td>
-          <td><%= venta.facturado %></td>
-        <% end %>
-      </tr>
+  
+  <div class="col-md-3">
+    <% if @claveSAT != nil %>
+      <h3>Claves del SAT</h3>
+      <table class="table-striped table-hover table-condensed table-bordered">
+      <% @claveSAT.each do |clave| %>
+        <tr>
+          <td><%= clave.nombre_producto %></td>
+          <td><%= clave.clave_sat %></td> 
+        </tr>
+      <% end %>
+      </table>
+    <% end %>  
+  </div>
+  
+  <div class="col-md-4">
+    <% if @suma != nil %>
+      <h3>Suma</h3>
+      <div class="row">
+        <table class="table-striped table-hover table-condensed table-bordered">
+          <% @suma.each do |nombre,suma| %>
+            <tr>
+              <td> <%="#{nombre.titleize}"%> </td>
+              <td> <%="#{suma}"%> </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
     <% end %>
-  </table>
-</p>
-
-
-<p>
-  <% if @claveSAT != nil %>
-    <h3>Claves del SAT</h3>
-    <table class="table-striped table-hover table-condensed table-bordered">
-    <% @claveSAT.each do |clave| %>
-      <tr>
-        <td><%= clave.nombre_producto %></td>
-        <td><%= clave.clave_sat %></td> 
-      </tr>
-    <% end %>
-    </table>
-  <% end %>  
-</p>
-
-<p>
-  <% if @suma != nil %>
-    <h3>Suma por producto (precio con IVA)</h3>
-    <table class="table-striped table-hover table-condensed table-bordered">
-    <% @suma.each do |nombre,suma| %>
-      <tr>
-        <td> <%="#{nombre.titleize}"%> </td>
-        <td> <%="#{suma}"%> </td>
-      </tr>
-    <% end %>
-    </table>
-  <% end %>
-</p>
+  </div>
+</div>
 
 
 
