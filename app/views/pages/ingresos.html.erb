@@ -31,7 +31,7 @@
     <% else %>
   </div>
   <div class="col-md-4">
-    <h3>Ventas de <%= @fecha_inicio.strftime("%d %b %Y") %> a <%= @fecha_final.strftime("%d %b %Y") %></h3>
+    <h3 class = "centered">Ventas de <%= @fecha_inicio.strftime("%d %b %Y") %> a <%= @fecha_final.strftime("%d %b %Y") %></h3>
     <table class="table-striped table-hover table-condensed table-bordered">
       <tr>
         <th>Fecha</th>
@@ -69,7 +69,7 @@
   
   <div class="col-md-4">
     <% if @suma != nil %>
-      <h3>Conceptos</h3>
+      <h3 class = "centered">Conceptos</h3>
       <div class="row">
         <table class="table-striped table-hover table-condensed table-bordered">
           <% @suma.each do |nombre,suma| %>
