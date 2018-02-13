@@ -57,11 +57,11 @@ class Venta < ApplicationRecord
     
     nombre_producto.each do |producto|
       if(suma["longitud_"<< producto] != nil && suma["longitud_"<< producto] != 0)
-       suma["precio_unitario_" << producto] = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["longitud_"<< producto])) / 1.16).round(2)
+       suma["precio_unitario_" << producto << "_sin_IVA"] = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["longitud_"<< producto])) / 1.16).round(2)
       elsif (suma["cantidad_"<< producto] != nil  && suma["cantidad_"<< producto] != 0)
-        suma["precio_unitario_" << producto] = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["cantidad_"<< producto])) / 1.16).round(2)
+        suma["precio_unitario_" << producto << "_sin_IVA"] = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["cantidad_"<< producto])) / 1.16).round(2)
       else
-        suma["precio_unitario_" << producto] = "No hubo ventas de este producto"
+        suma["precio_unitario_" << producto << "_sin_IVA"] = "No hubo ventas de este producto"
       end
       
     end
@@ -72,8 +72,8 @@ class Venta < ApplicationRecord
   
   def self.AnadirEnviosYDineroAnadidoUnitarios(suma_conceptos)
     
-    suma_conceptos["precio_unitario_envio_explicito"] = (suma_conceptos["envio_explicito"] / 1.16).round(2)
-    suma_conceptos["precio_unitario_servicios_extra"] = ((suma_conceptos["envio_agregado_a_precio_productos"] +
+    suma_conceptos["precio_unitario_envio_explicito_sin_IVA"] = (suma_conceptos["envio_explicito"] / 1.16).round(2)
+    suma_conceptos["precio_unitario_servicios_extra_sin_IVA"] = ((suma_conceptos["envio_agregado_a_precio_productos"] +
                                                           suma_conceptos["dinero_anadido"]) / 1.16).round(2)
     
   end
