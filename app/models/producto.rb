@@ -2,7 +2,7 @@ class Producto < ApplicationRecord
   
   validates :nombre_producto, :precio_unitario_mercado_libre,
             :precio_unitario_shopify, :cantidad_comprada,
-            :perdidas, :columna_relacionada_en_ventas,
+            :perdidas,
              presence: true
   
   def self.buscar_indices(nombre_columnas)
