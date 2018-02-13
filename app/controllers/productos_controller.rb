@@ -17,6 +17,7 @@ class ProductosController < ApplicationController
   end
   
   def create
+    @indices = Producto.buscar_indices(Venta.column_names)
     @producto = Producto.new(producto_params)
     
     if @producto.save
@@ -27,6 +28,7 @@ class ProductosController < ApplicationController
   end
   
   def update
+    @indices = Producto.buscar_indices(Venta.column_names)
     @producto = Producto.find(params[:id])
     
     if @producto.update(producto_params)

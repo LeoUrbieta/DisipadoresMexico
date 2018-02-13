@@ -1,5 +1,10 @@
 class Producto < ApplicationRecord
   
+  validates :nombre_producto, :precio_unitario_mercado_libre,
+            :precio_unitario_shopify, :cantidad_comprada,
+            :perdidas, :columna_relacionada_en_ventas,
+             presence: true
+  
   def self.buscar_indices(nombre_columnas)
     
     lista_nombres = Array.new
@@ -22,6 +27,7 @@ class Producto < ApplicationRecord
       nombre_columna = producto.columna_relacionada_en_ventas
       
       if(nombre_columna != "")
+        cantidad_restante[nombre_columna] = Array.new
         if(cantidad_comprada[nombre_columna] != nil)
           cantidad_comprada[nombre_columna] = cantidad_comprada[nombre_columna] + producto.cantidad_comprada 
         else
@@ -35,12 +41,36 @@ class Producto < ApplicationRecord
       nombre_columna = producto.columna_relacionada_en_ventas
       
       if(nombre_columna != "") 
-        if(cantidad_restante[nombre_columna] == nil)
-          cantidad_restante[nombre_columna] = cantidad_comprada[nombre_columna] - Venta.all.sum(nombre_columna)
+        if(cantidad_restante[nombre_columna] === [])
+          if(nombre_columna.include? "longitud")
+            nombre_cortes_producto = Producto.quitaLongitudYPonCortesEnString (nombre_columna)
+            longitudPerdidaPorCortes = (Venta.all.sum(nombre_cortes_producto) * 0.3 ).round
+            cantidad_restante[nombre_columna] = [cantidad_comprada[nombre_columna], 
+                                                Venta.all.sum(nombre_columna), 
+                                                longitudPerdidaPorCortes, 
+                                                producto.perdidas,
+                                                cantidad_comprada[nombre_columna] - 
+                                                Venta.all.sum(nombre_columna) - 
+                                                longitudPerdidaPorCortes - 
+                                                producto.perdidas]
+          else
+            cantidad_restante[nombre_columna] = [cantidad_comprada[nombre_columna], 
+                                                Venta.all.sum(nombre_columna), 
+                                                producto.perdidas,
+                                                cantidad_comprada[nombre_columna] - 
+                                                Venta.all.sum(nombre_columna) - 
+                                                producto.perdidas]
+          end
+        else
+          if(nombre_columna.include? "longitud")
+          cantidad_restante[nombre_columna] = cantidad_restante[nombre_columna].zip([0,0,0,producto.perdidas,-producto.perdidas]).map { |x,y| x + y }
+          else
+          cantidad_restante[nombre_columna] = cantidad_restante[nombre_columna].zip([0,0,producto.perdidas,-producto.perdidas]).map { |x,y| x + y }
+          end
         end
       end
     end
-  
+
     return cantidad_restante
     
   end
@@ -58,6 +88,14 @@ class Producto < ApplicationRecord
     end
     
     return precios
+  end
+  
+  private
+  
+  def self.quitaLongitudYPonCortesEnString (nombre)
+    articulo = nombre[8..-1]
+    return "cortes" << articulo
+    
   end
   
 end

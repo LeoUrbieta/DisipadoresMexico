@@ -33,12 +33,27 @@
 <table class="table table-striped table-hover table-condensed table-bordered">
   <tr>
     <th>Producto</th>
-    <th>Restante teórico</th>
+    <th>Cantidad comprada</th>
+    <th>Cantidad vendida</th>
+    <th>Longitud Perdida Por Cortes</th>
+    <th>Perdidas</th>
+    <th>Disponible</th>
   </tr>
   <% @cantidad_restante.each do |nombre,cantidad| %>
   <tr>
     <td><%= "#{nombre.titleize}" %></td>
-    <td><%= "#{cantidad}"%></td>
+    <td><%= "#{cantidad[0]}"%></td>
+    <td><%= "#{cantidad[1]}"%></td>
+    <% if(nombre.include? "longitud") %>
+      <td> <%="#{cantidad[2]}"%></td>
+      <td><%= "#{cantidad[3]}"%></td>
+      <td><%= "#{cantidad[4]}"%></td>
+    <% else %>
+      <td> 0 </td>
+      <td> <%="#{cantidad[2]}"%></td>
+      <td><%= "#{cantidad[3]}"%></td>
+    <% end %>
+    
   </tr>
   <% end %>
 </table>
