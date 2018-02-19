@@ -77,6 +77,10 @@
       <%= form.text_field :longitud_75mm, :class => 'zero_init form-control cantidad'%>
     </div>
     <div class="form-group col-md-2">
+      <%= form.label :cortes_75mm, 'Cortes 7.5'  %>
+      <%= form.text_field :cortes_75mm, :class => 'zero_init form-control'  %>
+    </div>
+    <div class="form-group col-md-2">
       <%= form.label :precio_75mm, 'Precio 7.5' %> 
       <%= form.text_field :precio_75mm, :class => 'subtotal zero_init form-control', :readonly => 'readonly'%>
     </div>
@@ -84,15 +88,15 @@
       <%= form.label :descuento_75mm, 'Descuento 7.5'  %>
       <%= form.text_field :descuento_75mm, :class => 'zero_init form-control descuento'  %>
     </div>
-    <div class="form-group col-md-2">
-      <%= form.label :cortes_75mm, 'Cortes 7.5'  %>
-      <%= form.text_field :cortes_75mm, :class => 'zero_init form-control'  %>
-    </div>
   </div>
   <div class="row">
     <div class="form-group col-md-2">
       <%= form.label :longitud_87mm, 'Longitud 8.7 (cm)' %> 
       <%= form.text_field :longitud_87mm, :class => 'zero_init form-control cantidad'%>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :cortes_87mm, 'Cortes 8.7'  %>
+      <%= form.text_field :cortes_87mm, :class => 'zero_init form-control'  %>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_87mm, 'Precio 8.7' %> 
@@ -102,15 +106,15 @@
       <%= form.label :descuento_87mm, 'Descuento 8.7' %>
       <%= form.text_field :descuento_87mm, :class => 'zero_init form-control descuento' %>
     </div>
-    <div class="form-group col-md-2">
-      <%= form.label :cortes_87mm, 'Cortes 8.7'  %>
-      <%= form.text_field :cortes_87mm, :class => 'zero_init form-control'  %>
-    </div>
   </div>
   <div class="row">
     <div class="form-group col-md-2">
       <%= form.label :longitud_136mm, 'Longitud 13.6 (cm)' %>
       <%= form.text_field :longitud_136mm, :class => 'zero_init form-control cantidad'%>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :cortes_136mm, 'Cortes 13.6'  %>
+      <%= form.text_field :cortes_136mm, :class => 'zero_init form-control'  %>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_136mm, 'Precio 13.6' %>
@@ -120,17 +124,13 @@
       <%= form.label :descuento_136mm, 'Descuento 13.6' %>
       <%= form.text_field :descuento_136mm, :class => 'zero_init form-control descuento' %>
     </div>
-    <div class="form-group col-md-2">
-      <%= form.label :cortes_136mm, 'Cortes 13.6'  %>
-      <%= form.text_field :cortes_136mm, :class => 'zero_init form-control'  %>
-    </div>
   </div>
   <div class="row">
     <div class="form-group col-md-2">
       <%= form.label :cantidad_peltier %> 
       <%= form.text_field :cantidad_peltier, :class => 'zero_init form-control cantidad' %>
     </div>
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-2 col-md-offset-2">
       <%= form.label :precio_peltier %>
       <%= form.text_field :precio_peltier, :class => 'subtotal zero_init form-control', :readonly => 'readonly' %>
     </div>
@@ -144,7 +144,7 @@
       <%= form.label :cantidad_pasta_termica %> 
       <%= form.text_field :cantidad_pasta_termica, :class => 'zero_init form-control cantidad' %>
     </div>
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-offset-2 col-md-2">
       <%= form.label :precio_pasta_termica %> 
       <%= form.text_field :precio_pasta_termica, :class => 'subtotal zero_init form-control', :readonly => 'readonly' %>
     </div>
@@ -154,7 +154,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-2 col-md-offset-2">
+    <div class="form-group col-md-2 col-md-offset-4">
       <%= form.label :subtotal, 'Sub-total (Pre-Descuentos)' %> 
       <%= form.text_field :subtotal, :id => 'subtotal', :readonly => 'readonly', :class => 'form-control' %>
     </div>

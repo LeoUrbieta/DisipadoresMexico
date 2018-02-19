@@ -19,7 +19,9 @@ class VentasController < ApplicationController
   end
   
   def create
+    @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.new(venta_params)
+    @precios = Producto.busca_precios()
     
     if @venta.save
       redirect_to ventas_path
@@ -29,7 +31,9 @@ class VentasController < ApplicationController
   end
   
   def update
+    @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.find(params[:id])
+    @precios = Producto.busca_precios()
     
     if @venta.update(venta_params)
       redirect_to ventas_path

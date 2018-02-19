@@ -4,9 +4,14 @@ class Venta < ApplicationRecord
   validates :cliente_id, :longitud_75mm, :longitud_87mm,
             :longitud_136mm, :cantidad_peltier, :cantidad_pasta_termica,
             :precio_75mm, :precio_87mm, :precio_136mm, :precio_peltier,
-            :precio_pasta_termica, :envio_explicito,:envio_agregado_a_precio_productos, 
-            :devolucion,
-             presence: true
+            :precio_pasta_termica, :descuento_75mm, :descuento_87mm, :descuento_136mm, 
+            :descuento_peltier, :descuento_pasta_termica, 
+            :envio_explicito,:envio_agregado_a_precio_productos, 
+            :devolucion, :dinero_anadido, :subtotal, :total_productos, :total_pagado_por_cliente,
+            :comisiones, :comision_envio, :total_post_comisiones,
+            :cortes_75mm, :cortes_87mm, :cortes_136mm,
+             presence: true, numericality: true
+             
   
   def self.busca_productos(fecha_inicial, fecha_final, factura)
     tipo_de_busqueda = "fecha >= :start_date AND fecha <= :end_date"

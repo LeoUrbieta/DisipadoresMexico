@@ -7,20 +7,29 @@ $(document).on 'turbolinks:load', ->
   sumaTodosCampos()
   llenarCerosEnCampos()
   revisaSiFacturaYMuestra()
-  
-  $('.cantidad').change ->
-    actualizaPrecio(@)
-  
-  $('.cantidad,.descuento,.comisiones,.anadido').change ->
-    sumaTodosCampos()
+ 
+  $('.cantidad,.descuento,.comisiones,.anadido').on "keypress", (e) ->
+    if (noEsNumero(e))
+      false
+    else
+      $(@).on "input", ->
+        if($(@).attr('class').indexOf("cantidad") != -1)
+          actualizaPrecio(@)
+        sumaTodosCampos()
 
   $('select[name="venta[facturado]"]').change ->
     $('.folio').css('display','none')
     revisaSiFacturaYMuestra()
       
-  
+  $('select[name="venta[medio_de_venta]"]').change ->
+    $('.cantidad').each ->
+      actualizaPrecio(@)
+    sumaTodosCampos()
     
 #Funciones
+
+noEsNumero = (e) ->
+  e.which != 8 && e.which != 0 && e.which != 46 && (e.which < 48 || e.which > 57)
   
 actualizaPrecio = (campoCambiado) ->
   cantidad_vendida = Number($(campoCambiado).val())
