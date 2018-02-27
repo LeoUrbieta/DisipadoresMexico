@@ -25,20 +25,29 @@
   <tr>
     <th>Fecha</th>
     <th>Cliente</th>
+    <th>28mm Longitud (cm)</th>
+    <th>50mm Longitud (cm)</th>
     <th>75mm Longitud (cm)</th>
     <th>87mm Longitud (cm)</th>
     <th>136mm Longitud (cm)</th>
+    <th>220mm Longitud (cm)</th>
     <th>Peltier Cantidad</th>
     <th>Pasta térmica Cantidad</th>
+    <th>Disipador 28mm Precio</th>
+    <th>Disipador 50mm Precio</th>
     <th>Disipador 75mm Precio</th>
     <th>Disipador 87mm Precio</th>
     <th>Disipador 136mm Precio</th>
+    <th>Disipador 220mm Precio</th>
     <th>Peltier Precio</th>
     <th>Pasta térmica Precio</th>
     <th>Sub-total</th>
+    <th>Descuento 28mm</th>
+    <th>Descuento 50mm</th>
     <th>Descuento 75mm</th>
     <th>Descuento 87mm</th>
     <th>Descuento 136mm</th>
+    <th>Descuento 220mm</th>
     <th>Descuento Peltier</th>
     <th>Descuento Pasta térmica</th>
     <th>Total de Productos</th>
@@ -60,20 +69,29 @@
     <tr>
       <td><%= venta.fecha %></td>
       <td><%= venta.cliente.nombre %></td>
+      <td><%= venta.longitud_28mm %></td>
+      <td><%= venta.longitud_50mm %></td>
       <td><%= venta.longitud_75mm %></td>
       <td><%= venta.longitud_87mm %></td>
       <td><%= venta.longitud_136mm %></td>
+      <td><%= venta.longitud_220mm %></td>
       <td><%= venta.cantidad_peltier %></td>
       <td><%= venta.cantidad_pasta_termica %></td>
+      <td><%= number_to_currency(venta.precio_28mm) %></td>
+      <td><%= number_to_currency(venta.precio_50mm) %></td>
       <td><%= number_to_currency(venta.precio_75mm) %></td>
       <td><%= number_to_currency(venta.precio_87mm) %></td>
       <td><%= number_to_currency(venta.precio_136mm) %></td>
+      <td><%= number_to_currency(venta.precio_220mm) %></td>
       <td><%= number_to_currency(venta.precio_peltier) %></td>
       <td><%= number_to_currency(venta.precio_pasta_termica) %></td>
       <td><%= number_to_currency(venta.subtotal) %></td>
+      <td><%= number_to_currency(venta.descuento_28mm) %></td>
+      <td><%= number_to_currency(venta.descuento_50mm) %></td>
       <td><%= number_to_currency(venta.descuento_75mm) %></td>
       <td><%= number_to_currency(venta.descuento_87mm) %></td>
       <td><%= number_to_currency(venta.descuento_136mm) %></td>
+      <td><%= number_to_currency(venta.descuento_220mm) %></td>
       <td><%= number_to_currency(venta.descuento_peltier) %></td>
       <td><%= number_to_currency(venta.descuento_pasta_termica) %></td>
       <td><%= number_to_currency(venta.total_productos) %></td>

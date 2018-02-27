@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212222058) do
+ActiveRecord::Schema.define(version: 20180227015255) do
 
   create_table "clientes", force: :cascade do |t|
     t.string "nombre"
@@ -93,6 +93,22 @@ ActiveRecord::Schema.define(version: 20180212222058) do
     t.integer "cortes_87mm"
     t.integer "cortes_136mm"
     t.decimal "dinero_anadido"
+    t.integer "longitud_28mm"
+    t.integer "longitud_50mm"
+    t.integer "longitud_100mm"
+    t.integer "longitud_220mm"
+    t.decimal "precio_28mm"
+    t.decimal "precio_50mm"
+    t.decimal "precio_100mm"
+    t.decimal "precio_220mm"
+    t.decimal "descuento_28mm"
+    t.decimal "descuento_50mm"
+    t.decimal "descuento_100mm"
+    t.decimal "descuento_220mm"
+    t.integer "cortes_28mm"
+    t.integer "cortes_50mm"
+    t.integer "cortes_100mm"
+    t.integer "cortes_220mm"
   end
 
 end
