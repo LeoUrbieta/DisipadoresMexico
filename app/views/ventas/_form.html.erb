@@ -60,18 +60,16 @@
     </div>
   </div>
   <hr />
-  
-  <div style="display: none" class="row">
-    <% @precios.each do |nombre,precio| %>
-      <div class="form-group col-md-1">
-        <div><%="#{nombre.titleize}"%></div>
-        <div id=<%="#{nombre}"+'_precio_unitario_ML'%> ><%="#{precio[0]}"%></div> 
-        <div id=<%="#{nombre}"+'_precio_unitario'%>><%="#{precio[1]}"%></div>
-      </div>
-    <% end %>
-  </div>
-  
+
   <div class="row">
+    <div class="form-group col-md-2">
+      <%= label :precio, :longitud_28mm, 'Precio de Venta' %><br>
+      <%= select(:precio, :longitud_28mm, nil,{},{:class => 'precio_venta'}) do %>
+        <% @precios["longitud_28mm"].each do |c| %>
+          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="form-group col-md-2">
       <%= form.label :longitud_28mm, 'Longitud 2.8 (cm)' %> 
       <%= form.text_field :longitud_28mm, :class => 'zero_init form-control cantidad'%>
@@ -91,6 +89,14 @@
   </div>
   <div class="row">
     <div class="form-group col-md-2">
+      <%= label :precio, :longitud_50mm, 'Precio de Venta' %><br>
+      <%= select(:precio, :longitud_50mm, nil,{},{:class => 'precio_venta'}) do %>
+        <% @precios["longitud_50mm"].each do |c| %>
+          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="form-group col-md-2">
       <%= form.label :longitud_50mm, 'Longitud 5.0 (cm)' %> 
       <%= form.text_field :longitud_50mm, :class => 'zero_init form-control cantidad'%>
     </div>
@@ -108,6 +114,14 @@
     </div>
   </div>
   <div class="row">
+    <div class="form-group col-md-2">
+      <%= label :precio, :longitud_75mm, 'Precio de Venta' %><br>
+      <%= select(:precio, :longitud_75mm, nil,{},{:class => 'precio_venta'}) do %>
+        <% @precios["longitud_75mm"].each do |c| %>
+          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="form-group col-md-2">
       <%= form.label :longitud_75mm, 'Longitud 7.5 (cm)' %> 
       <%= form.text_field :longitud_75mm, :class => 'zero_init form-control cantidad'%>
@@ -127,6 +141,14 @@
   </div>
   <div class="row">
     <div class="form-group col-md-2">
+      <%= label :precio, :longitud_87mm, 'Precio de Venta' %><br>
+      <%= select(:precio, :longitud_87mm, nil,{},{:class => 'precio_venta'}) do %>
+        <% @precios["longitud_87mm"].each do |c| %>
+          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="form-group col-md-2">
       <%= form.label :longitud_87mm, 'Longitud 8.7 (cm)' %> 
       <%= form.text_field :longitud_87mm, :class => 'zero_init form-control cantidad'%>
     </div>
@@ -144,6 +166,14 @@
     </div>
   </div>
   <div class="row">
+    <div class="form-group col-md-2">
+      <%= label :precio, :longitud_100mm, 'Precio de Venta' %><br>
+      <%= select(:precio, :longitud_100mm, nil,{},{:class => 'precio_venta'}) do %>
+        <% @precios["longitud_100mm"].each do |c| %>
+          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="form-group col-md-2">
       <%= form.label :longitud_100mm, 'Longitud 10.0 (cm)' %> 
       <%= form.text_field :longitud_100mm, :class => 'zero_init form-control cantidad'%>
@@ -163,6 +193,14 @@
   </div>
   <div class="row">
     <div class="form-group col-md-2">
+      <%= label :precio, :longitud_136mm, 'Precio de Venta' %><br>
+      <%= select(:precio, :longitud_136mm, nil,{},{:class => 'precio_venta'}) do %>
+        <% @precios["longitud_136mm"].each do |c| %>
+          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="form-group col-md-2">
       <%= form.label :longitud_136mm, 'Longitud 13.6 (cm)' %>
       <%= form.text_field :longitud_136mm, :class => 'zero_init form-control cantidad'%>
     </div>
@@ -180,6 +218,14 @@
     </div>
   </div>
   <div class="row">
+    <div class="form-group col-md-2">
+      <%= label :precio, :longitud_220mm, 'Precio de Venta' %><br>
+      <%= select(:precio, :longitud_220mm, nil,{},{:class => 'precio_venta'}) do %>
+        <% @precios["longitud_220mm"].each do |c| %>
+          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="form-group col-md-2">
       <%= form.label :longitud_220mm, 'Longitud 22.0 (cm)' %> 
       <%= form.text_field :longitud_220mm, :class => 'zero_init form-control cantidad'%>

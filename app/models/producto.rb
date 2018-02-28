@@ -1,8 +1,8 @@
 class Producto < ApplicationRecord
   
-  validates :nombre_producto, :precio_unitario_mercado_libre,
-            :precio_unitario_shopify, :cantidad_comprada,
-            :perdidas,
+  validates :nombre_producto, :precio_1, :precio_2, :precio_3,
+            :precio_4, :precio_5, :precio_6, :precio_7, :precio_8,
+            :cantidad_comprada, :perdidas,
              presence: true
   
   def self.buscar_indices(nombre_columnas)
@@ -82,8 +82,14 @@ class Producto < ApplicationRecord
     Producto.all.each do |producto|
       
       array_precios = Array.new
-      array_precios[0] = producto.precio_unitario_mercado_libre
-      array_precios[1] = producto.precio_unitario_shopify
+      array_precios[0] = producto.precio_1
+      array_precios[1] = producto.precio_2
+      array_precios[2] = producto.precio_3
+      array_precios[3] = producto.precio_4
+      array_precios[4] = producto.precio_5
+      array_precios[5] = producto.precio_6
+      array_precios[6] = producto.precio_7
+      array_precios[7] = producto.precio_8
       precios[producto.columna_relacionada_en_ventas] = array_precios
     end
     

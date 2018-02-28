@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227015255) do
+ActiveRecord::Schema.define(version: 20180227233520) do
 
   create_table "clientes", force: :cascade do |t|
     t.string "nombre"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20180227015255) do
   create_table "productos", force: :cascade do |t|
     t.string "nombre_producto"
     t.string "clave_sat"
-    t.string "precio_unitario_mercado_libre"
-    t.string "precio_unitario_shopify"
+    t.string "precio_1"
+    t.string "precio_2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "fecha_de_compra"
@@ -54,6 +54,12 @@ ActiveRecord::Schema.define(version: 20180227015255) do
     t.text "notas_adicionales"
     t.integer "perdidas"
     t.string "columna_relacionada_en_ventas"
+    t.string "precio_3"
+    t.string "precio_4"
+    t.string "precio_5"
+    t.string "precio_6"
+    t.string "precio_7"
+    t.string "precio_8"
   end
 
   create_table "ventas", force: :cascade do |t|

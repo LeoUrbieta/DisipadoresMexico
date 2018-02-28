@@ -13,8 +13,14 @@
       <th>Precio Pagado</th>
       <th>Columna Relacionada en Ventas</th>
       <th>Clave SAT</th>
-      <th>Precio Unitario MercadoLibre</th>
-      <th>Precio Unitario Shopify</th>
+      <th>Precio de Venta 1</th>
+      <th>Precio de Venta 2</th>
+      <th>Precio de Venta 3</th>
+      <th>Precio de Venta 4</th>
+      <th>Precio de Venta 5</th>
+      <th>Precio de Venta 6</th>
+      <th>Precio de Venta 7</th>
+      <th>Precio de Venta 8</th>
       <th>Notas Adicionales</th>
       <th>Perdidas</th>
     </tr>
@@ -27,8 +33,14 @@
         <td><%= number_to_currency(producto.precio)%></td>
         <td><%= producto.columna_relacionada_en_ventas %></td>
         <td><%= producto.clave_sat %></td>
-        <td><%= number_to_currency(producto.precio_unitario_mercado_libre) %></td>
-        <td><%= number_to_currency(producto.precio_unitario_shopify) %></td>
+        <td><%= number_to_currency(producto.precio_1) %></td>
+        <td><%= number_to_currency(producto.precio_2) %></td>
+        <td><%= number_to_currency(producto.precio_3) %></td>
+        <td><%= number_to_currency(producto.precio_4) %></td>
+        <td><%= number_to_currency(producto.precio_5) %></td>
+        <td><%= number_to_currency(producto.precio_6) %></td>
+        <td><%= number_to_currency(producto.precio_7) %></td>
+        <td><%= number_to_currency(producto.precio_8) %></td>
         <td><%= producto.notas_adicionales%></td>
         <td><%= producto.perdidas%></td>
         <!--<td><%= link_to 'Ver mas detalle', producto_path(producto), class: 'btn btn-info' %></td>-->

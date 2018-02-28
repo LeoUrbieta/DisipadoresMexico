@@ -12,9 +12,12 @@ $(document).on 'turbolinks:load', ->
     if (noEsNumero(e))
       false
     else
-      $(@).on "input", ->
+      $(@).off().on "input", ->
         if($(@).attr('class').indexOf("cantidad") != -1)
-          actualizaPrecio(@)
+          nombre_producto = extraeNombreProductoDeSelect(@)
+          console.log(nombre_producto)
+          precioPorActualizar = Number($('select[name="precio[' + nombre_producto + ']"]').val())
+          actualizaPrecio(@,precioPorActualizar)
         sumaTodosCampos()
 
   $('select[name="venta[facturado]"]').change ->
@@ -26,19 +29,27 @@ $(document).on 'turbolinks:load', ->
       actualizaPrecio(@)
     sumaTodosCampos()
     
+  $('.precio_venta').change ->
+    precioDeCampoSelect = Number($(@).val())
+    nombre_producto = extraeNombreProductoDeSelect(@) 
+    actualizaPrecio($('input[name="venta[' + nombre_producto + ']"]'), precioDeCampoSelect)
+    
+    
 #Funciones
+
+extraeNombreProductoDeSelect = (campo_select) ->
+  inicio_string = $(campo_select).attr('name').indexOf("longitud")
+  final_string = $(campo_select).attr('name').indexOf("]")
+  return $(campo_select).attr('name').slice(inicio_string,final_string)
 
 noEsNumero = (e) ->
   e.which != 8 && e.which != 0 && e.which != 46 && (e.which < 48 || e.which > 57)
   
-actualizaPrecio = (campoCambiado) ->
+actualizaPrecio = (campoCambiado, precio) ->
   cantidad_vendida = Number($(campoCambiado).val())
   id_producto = extraeIdProducto(campoCambiado)
   
-  if($('select[name="venta[medio_de_venta]"]').val() == 'MercadoLibre')
-    precio_total = Number($('#'+id_producto+'_precio_unitario_ML').text()) * cantidad_vendida
-  else
-    precio_total = Number($('#'+id_producto+'_precio_unitario').text()) * cantidad_vendida
+  precio_total = precio * cantidad_vendida
   
   nombre_producto = id_producto.slice((id_producto.indexOf("_") + 1))
   $('input[name="venta[precio_' + nombre_producto + ']"]').val(precio_total.toFixed(2))
