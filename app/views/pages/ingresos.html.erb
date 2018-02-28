@@ -1,87 +1,86 @@
-<div id="contenedor_ingresos">
-  <h1>Bienvenido al software de Disipadores de Calor de Aluminio a Tu Medida</h1>
+
+<h1>Bienvenido al software de Disipadores de Calor de Aluminio a Tu Medida</h1>
+
+<%= link_to 'Ir a Ventas', ventas_path, class: "btn btn-info" %>
+
+<h3 class="centered">Ingresos en intervalo de Fecha</h3>
+<div class="centered">
+  <%= form_with url: pages_ingresos_path, local: true, :html => {} do |form| %>
   
-  <%= link_to 'Ir a Ventas', ventas_path, class: "btn btn-info" %>
-  
-  <h3 class="centered">Ingresos en intervalo de Fecha</h3>
-  <div class="centered">
-    <%= form_with url: pages_ingresos_path, local: true, :html => {} do |form| %>
+    <p>
+      <%= form.label(:fecha_inicial, "Fecha inicial: ") %> <br>
+      <%= form.text_field :fecha_inicial, data:{ provide:'datepicker' }, :class => 'datepicker', :id => 'inicio_datepicker', :readonly => 'readonly' %>
+    </p>
+    <p class='campos_fecha_final'>
+      <%= form.label(:fecha_inicial, "Fecha final: ") %> <br>
+      <%= form.text_field :fecha_final, data:{ provide:'datepicker' }, :class => 'datepicker', :id => 'final_datepicker', :readonly => 'readonly'  %>
+    </p>
+    <p>
+      <%= form.label(:facturado, "¿Facturado?") %>
+      <%= form.select(:facturado, [[],['Si','true'],['No','false']]) %>
+    </p>
+    <p>
+      <%= form.submit("Buscar") %>
+    </p>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class = "centered">
+    <% if @ventas.blank? %>
+      <h3>Sin ventas por mostrar<h3>
+    <% else %>
+  </div>
+  <div class="col-md-4">
+    <h3 class = "centered">Ventas de <%= @fecha_inicio.strftime("%d %b %Y") %> a <%= @fecha_final.strftime("%d %b %Y") %></h3>
+    <table class="table-striped table-hover table-condensed table-bordered">
+      <tr>
+        <th>Fecha</th>
+        <th>Nombre de Cliente</th>
+        <th>Monto de la Venta</th>
+        <th>¿Facturado?</th>
+      </tr>
     
-      <p>
-        <%= form.label(:fecha_inicial, "Fecha inicial: ") %> <br>
-        <%= form.text_field :fecha_inicial, data:{ provide:'datepicker' }, :class => 'datepicker', :id => 'inicio_datepicker', :readonly => 'readonly' %>
-      </p>
-      <p class='campos_fecha_final'>
-        <%= form.label(:fecha_inicial, "Fecha final: ") %> <br>
-        <%= form.text_field :fecha_final, data:{ provide:'datepicker' }, :class => 'datepicker', :id => 'final_datepicker', :readonly => 'readonly'  %>
-      </p>
-      <p>
-        <%= form.label(:facturado, "¿Facturado?") %>
-        <%= form.select(:facturado, [[],['Si','true'],['No','false']]) %>
-      </p>
-      <p>
-        <%= form.submit("Buscar") %>
-      </p>
-    <% end %>
+      <% @ventas.each do |venta| %>
+        <tr>
+            <td><%= venta.fecha %></td>
+            <td><%= venta.cliente.nombre %></td> 
+            <td><%= venta.total_pagado_por_cliente%></td>
+            <td><%= venta.facturado %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
   </div>
   
-  <div class="row">
-    <div class = "centered">
-      <% if @ventas.blank? %>
-        <h3>Sin ventas por mostrar<h3>
-      <% else %>
-    </div>
-    <div class="col-md-4">
-      <h3 class = "centered">Ventas de <%= @fecha_inicio.strftime("%d %b %Y") %> a <%= @fecha_final.strftime("%d %b %Y") %></h3>
-      <table class="table-striped table-hover table-condensed table-bordered">
+  
+  <div class="col-md-4">
+    <% if @claveSAT != nil %>
+      <h3 class="centered">Claves del SAT</h3>
+      <table class="table-striped table-hover table-condensed table-bordered table-centered">
+      <% @claveSAT.each do |clave| %>
         <tr>
-          <th>Fecha</th>
-          <th>Nombre de Cliente</th>
-          <th>Monto de la Venta</th>
-          <th>¿Facturado?</th>
+          <td><%= clave.nombre_producto %></td>
+          <td><%= clave.clave_sat %></td> 
         </tr>
-      
-        <% @ventas.each do |venta| %>
-          <tr>
-              <td><%= venta.fecha %></td>
-              <td><%= venta.cliente.nombre %></td> 
-              <td><%= venta.total_pagado_por_cliente%></td>
-              <td><%= venta.facturado %></td>
-            <% end %>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-    
-    
-    <div class="col-md-4">
-      <% if @claveSAT != nil %>
-        <h3 class="centered">Claves del SAT</h3>
-        <table class="table-striped table-hover table-condensed table-bordered table-centered">
-        <% @claveSAT.each do |clave| %>
-          <tr>
-            <td><%= clave.nombre_producto %></td>
-            <td><%= clave.clave_sat %></td> 
-          </tr>
-        <% end %>
-        </table>
-      <% end %>  
-    </div>
-    
-    <div class="col-md-4">
-      <% if @suma != nil %>
-        <h3 class = "centered">Conceptos</h3>
-        <div class="row">
-          <table class="table-striped table-hover table-condensed table-bordered">
-            <% @suma.each do |nombre,suma| %>
-              <tr>
-                <td> <%="#{nombre.titleize}"%> </td>
-                <td> <%="#{suma}"%> </td>
-              </tr>
-            <% end %>
-          </table>
-        </div>
       <% end %>
-    </div>
+      </table>
+    <% end %>  
+  </div>
+  
+  <div class="col-md-4">
+    <% if @suma != nil %>
+      <h3 class = "centered">Conceptos</h3>
+      <div class="row">
+        <table class="table-striped table-hover table-condensed table-bordered">
+          <% @suma.each do |nombre,suma| %>
+            <tr>
+              <td> <%="#{nombre.titleize}"%> </td>
+              <td> <%="#{suma}"%> </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    <% end %>
   </div>
 </div>
