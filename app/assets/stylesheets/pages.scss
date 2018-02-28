@@ -3,3 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#contenedor_ingresos {
+   position: relative;
+}
+
+#contenedor_ingresos:after {
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: asset-url('heatsink_general.png'); 
+    width: 100%;
+    height: 100%;
+    opacity : 0.8;
+    z-index: -1;
+}
+
+
+
