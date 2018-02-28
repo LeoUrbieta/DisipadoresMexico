@@ -23,11 +23,6 @@ $(document).on 'turbolinks:load', ->
   $('select[name="venta[facturado]"]').change ->
     $('.folio').css('display','none')
     revisaSiFacturaYMuestra()
-      
-  $('select[name="venta[medio_de_venta]"]').change ->
-    $('.cantidad').each ->
-      actualizaPrecio(@)
-    sumaTodosCampos()
     
   $('.precio_venta').change ->
     precioDeCampoSelect = Number($(@).val())

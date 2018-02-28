@@ -52,21 +52,16 @@
                   :class => "form-control") %>
     </div>
   </div>
+  <hr />
   
   <div class="row">
-    <div class="form-group col-md-2">
-        <%= form.label :medio_de_venta %> <br>
-        <%= form.select :medio_de_venta, [['MercadoLibre','MercadoLibre'],['Shopify','Shopify'],['Amazon','Amazon'],['Entrega Personal', 'Entrega Personal']], :class => 'form-control' %>
-    </div>
-  </div>
-  <hr />
-
-  <div class="row">
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-2 " >
       <%= label :precio, :longitud_28mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_28mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% @precios["longitud_28mm"].each do |c| %>
-          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% if @precios != nil %>
+          <% @precios["longitud_28mm"].each do |c| %>
+            <%= content_tag(:option,number_to_currency(c),value: c) %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -91,8 +86,10 @@
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_50mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_50mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% @precios["longitud_50mm"].each do |c| %>
-          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% if @precios != nil %>
+          <% @precios["longitud_50mm"].each do |c| %>
+            <%= content_tag(:option,number_to_currency(c),value: c) %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -114,11 +111,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-2 ">
       <%= label :precio, :longitud_75mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_75mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% @precios["longitud_75mm"].each do |c| %>
-          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% if @precios != nil %>
+          <% @precios["longitud_75mm"].each do |c| %>
+            <%= content_tag(:option,number_to_currency(c),value: c) %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -140,11 +139,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-2 ">
       <%= label :precio, :longitud_87mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_87mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% @precios["longitud_87mm"].each do |c| %>
-          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% if @precios != nil %>
+          <% @precios["longitud_87mm"].each do |c| %>
+            <%= content_tag(:option,number_to_currency(c),value: c) %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -169,8 +170,10 @@
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_100mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_100mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% @precios["longitud_100mm"].each do |c| %>
-          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% if @precios != nil %>
+          <% @precios["longitud_100mm"].each do |c| %>
+            <%= content_tag(:option,number_to_currency(c),value: c) %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -195,8 +198,10 @@
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_136mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_136mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% @precios["longitud_136mm"].each do |c| %>
-          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% if @precios != nil %>
+          <% @precios["longitud_136mm"].each do |c| %>
+            <%= content_tag(:option,number_to_currency(c),value: c) %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -221,8 +226,10 @@
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_220mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_220mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% @precios["longitud_220mm"].each do |c| %>
-          <%= content_tag(:option,number_to_currency(c),value: c) %>
+        <% if @precios != nil %>
+          <% @precios["longitud_220mm"].each do |c| %>
+            <%= content_tag(:option,number_to_currency(c),value: c) %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -244,11 +251,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-2 col-md-offset-2">
       <%= form.label :cantidad_peltier %> 
       <%= form.text_field :cantidad_peltier, :class => 'zero_init form-control cantidad' %>
     </div>
-    <div class="form-group col-md-2 col-md-offset-2">
+    <div class="form-group col-md-2 ">
       <%= form.label :precio_peltier %>
       <%= form.text_field :precio_peltier, :class => 'subtotal zero_init form-control', :readonly => 'readonly' %>
     </div>
@@ -258,11 +265,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-2 col-md-offset-2">
       <%= form.label :cantidad_pasta_termica %> 
       <%= form.text_field :cantidad_pasta_termica, :class => 'zero_init form-control cantidad' %>
     </div>
-    <div class="form-group col-md-offset-2 col-md-2">
+    <div class="form-group col-md-2">
       <%= form.label :precio_pasta_termica %> 
       <%= form.text_field :precio_pasta_termica, :class => 'subtotal zero_init form-control', :readonly => 'readonly' %>
     </div>
@@ -322,6 +329,13 @@
     
   
   <hr />
+   
+  <div class="row">
+    <div class="form-group col-md-2">
+        <%= form.label :medio_de_venta %> <br>
+        <%= form.select :medio_de_venta, [['MercadoLibre','MercadoLibre'],['Shopify','Shopify'],['Amazon','Amazon'],['Entrega Personal', 'Entrega Personal']], :class => 'form-control' %>
+    </div>
+  </div>
   <div class="row">
     <div class="form-group col-md-2">
       <%= form.label :facturado, '¿Facturado?' %> <br>
