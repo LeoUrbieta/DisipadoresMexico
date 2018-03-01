@@ -4,6 +4,8 @@ class Producto < ApplicationRecord
             :precio_4, :precio_5, :precio_6, :precio_7, :precio_8,
             :cantidad_comprada, :perdidas,
              presence: true
+             
+  default_scope -> { order(fecha_de_compra: :asc)}
   
   def self.buscar_indices(nombre_columnas)
     

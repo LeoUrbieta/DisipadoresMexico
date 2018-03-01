@@ -58,7 +58,7 @@
     <div class="form-group col-md-2 " >
       <%= label :precio, :longitud_28mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_28mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% if @precios != nil %>
+        <% if @precios["longitud_28mm"] != nil %>
           <% @precios["longitud_28mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
           <% end %>
@@ -86,7 +86,7 @@
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_50mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_50mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% if @precios != nil %>
+        <% if @precios["longitud_50mm"] != nil %>
           <% @precios["longitud_50mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
           <% end %>
@@ -114,7 +114,7 @@
     <div class="form-group col-md-2 ">
       <%= label :precio, :longitud_75mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_75mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% if @precios != nil %>
+        <% if @precios["longitud_75mm"] != nil %>
           <% @precios["longitud_75mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
           <% end %>
@@ -142,7 +142,7 @@
     <div class="form-group col-md-2 ">
       <%= label :precio, :longitud_87mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_87mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% if @precios != nil %>
+        <% if @precios["longitud_87mm"] != nil %>
           <% @precios["longitud_87mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
           <% end %>
@@ -170,7 +170,7 @@
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_100mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_100mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% if @precios != nil %>
+        <% if @precios["longitud_100mm"] != nil %>
           <% @precios["longitud_100mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
           <% end %>
@@ -198,7 +198,7 @@
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_136mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_136mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% if @precios != nil %>
+        <% if @precios["longitud_136mm"] != nil %>
           <% @precios["longitud_136mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
           <% end %>
@@ -226,7 +226,7 @@
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_220mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_220mm, nil,{},{:class => 'precio_venta'}) do %>
-        <% if @precios != nil %>
+        <% if @precios["longitud_220mm"] != nil %>
           <% @precios["longitud_220mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
           <% end %>
