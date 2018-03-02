@@ -56,8 +56,13 @@ class Venta < ApplicationRecord
     nombre_productos.each do |suma_producto|
       suma_producto_actual = BigDecimal.new('0.0')
       ventas.each do |venta|
-          suma_producto_actual = venta.attributes[suma_producto] + suma_producto_actual
+        suma_producto_actual = venta.attributes[suma_producto] + suma_producto_actual
       end
+      
+      if suma_producto.include? "longitud"
+        suma_producto_actual = suma_producto_actual/ 100.0
+      end
+        
       suma_productos[suma_producto] = suma_producto_actual
     end
     

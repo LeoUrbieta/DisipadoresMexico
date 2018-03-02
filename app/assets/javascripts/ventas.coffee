@@ -15,7 +15,6 @@ $(document).on 'turbolinks:load', ->
       $(@).off().on "input", ->
         if($(@).attr('class').indexOf("cantidad") != -1)
           nombre_producto = extraeNombreProductoDeSelect(@)
-          console.log(nombre_producto)
           precioPorActualizar = Number($('select[name="precio[' + nombre_producto + ']"]').val())
           actualizaPrecio(@,precioPorActualizar)
         sumaTodosCampos()
@@ -28,12 +27,15 @@ $(document).on 'turbolinks:load', ->
     precioDeCampoSelect = Number($(@).val())
     nombre_producto = extraeNombreProductoDeSelect(@) 
     actualizaPrecio($('input[name="venta[' + nombre_producto + ']"]'), precioDeCampoSelect)
+    sumaTodosCampos()
     
     
 #Funciones
 
 extraeNombreProductoDeSelect = (campo_select) ->
   inicio_string = $(campo_select).attr('name').indexOf("longitud")
+  if(inicio_string == -1)
+    inicio_string = $(campo_select).attr('name').indexOf("cantidad")
   final_string = $(campo_select).attr('name').indexOf("]")
   return $(campo_select).attr('name').slice(inicio_string,final_string)
 
