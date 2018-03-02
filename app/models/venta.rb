@@ -51,7 +51,7 @@ class Venta < ApplicationRecord
                         "cantidad_peltier","precio_peltier","descuento_peltier", 
                         "cantidad_pasta_termica","precio_pasta_termica","descuento_pasta_termica",
                         "total_productos","envio_explicito", "envio_agregado_a_precio_productos",
-                        "dinero_anadido","total_pagado_por_cliente","devolucion"]
+                        "dinero_anadido","total_pagado_por_cliente"]
     
     nombre_productos.each do |suma_producto|
       suma_producto_actual = BigDecimal.new('0.0')
