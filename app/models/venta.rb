@@ -41,17 +41,20 @@ class Venta < ApplicationRecord
   
   def self.suma_productos(ventas)
     suma_productos = Hash.new
-    nombre_productos = ["longitud_75mm","precio_75mm", "descuento_75mm",    
-                        "longitud_87mm", "precio_87mm","descuento_87mm", 
-                        "longitud_136mm", "precio_136mm","descuento_136mm",
-                        "longitud_28mm", "precio_28mm", "descuento_28mm",
-                        "longitud_50mm", "precio_50mm", "descuento_50mm",
-                        "longitud_100mm", "precio_100mm", "descuento_100mm",
-                        "longitud_220mm", "precio_220mm", "descuento_220mm",
-                        "cantidad_peltier","precio_peltier","descuento_peltier", 
-                        "cantidad_pasta_termica","precio_pasta_termica","descuento_pasta_termica",
+    nombre_productos = ["precio_75mm", "descuento_75mm",    
+                        "precio_87mm","descuento_87mm", 
+                        "precio_136mm","descuento_136mm",
+                        "precio_28mm", "descuento_28mm",
+                        "precio_50mm", "descuento_50mm",
+                        "precio_100mm", "descuento_100mm",
+                        "precio_220mm", "descuento_220mm",
+                        "precio_peltier","descuento_peltier", 
+                        "precio_pasta_termica","descuento_pasta_termica",
                         "total_productos","envio_explicito", "envio_agregado_a_precio_productos",
-                        "dinero_anadido","total_pagado_por_cliente"]
+                        "dinero_anadido","total_pagado_por_cliente",
+                        "longitud_28mm","longitud_50mm", "longitud_75mm",  
+                        "longitud_87mm", "longitud_100mm", "longitud_136mm",
+                        "longitud_220mm", "cantidad_peltier", "cantidad_pasta_termica"]
     
     nombre_productos.each do |suma_producto|
       suma_producto_actual = BigDecimal.new('0.0')
@@ -71,7 +74,7 @@ class Venta < ApplicationRecord
   end
   
   def self.IncluyePrecioUnitario(suma)
-    nombre_producto = ["75mm","87mm","136mm","28mm","50mm","100mm","220mm","peltier","pasta_termica"]
+    nombre_producto = ["28mm","50mm","75mm","87mm","100mm","136mm","220mm","peltier","pasta_termica"]
     
     nombre_producto.each do |producto|
       if(suma["longitud_"<< producto] != nil && suma["longitud_"<< producto] != 0)
