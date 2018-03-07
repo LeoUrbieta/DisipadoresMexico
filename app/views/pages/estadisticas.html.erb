@@ -17,13 +17,13 @@
 %>
 <br>
 <%= column_chart [
-  {name: "28mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_28mm)},
-  {name: "50mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_50mm)},
-  {name: "75mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_75mm)},
-  {name: "87mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_87mm)},
-  {name: "100mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_100mm)},
-  {name: "136mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_136mm)},
-  {name: "220mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_220mm)},
+  {name: "28mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_28mm)},
+  {name: "50mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_50mm)},
+  {name: "75mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_75mm)},
+  {name: "87mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_87mm)},
+  {name: "100mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_100mm)},
+  {name: "136mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_136mm)},
+  {name: "220mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:longitud_220mm)},
   ],
   title: "Longitud vendida"
 %>
