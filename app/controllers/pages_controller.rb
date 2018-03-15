@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   
   def ingresos
-    
+    @claveSAT = Producto.select("nombre_producto, clave_sat")
   end
 
   def buscar

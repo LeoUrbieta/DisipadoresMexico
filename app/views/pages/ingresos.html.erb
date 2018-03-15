@@ -54,7 +54,7 @@
   </div>
   
   
-  <div class="col-md-4">
+  <div class="col-md-4 <% if @ventas.blank? %> col-md-offset-4 <%end%>">
     <% if @claveSAT != nil %>
       <h3 class="centered">Claves del SAT</h3>
       <table class="table-striped table-hover table-condensed table-bordered table-centered">
