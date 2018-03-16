@@ -44,10 +44,18 @@ class ClientesController < ApplicationController
     redirect_to clientes_path
   end
   
+  def buscar_clientes
+    @clientes = Cliente.paginate(page: params[:page], per_page: 20)
+    if params[:nombre] != nil #para evitar que el request GET cause un error
+      @clientes_encontrados = Cliente.busca_cliente(params[:nombre].mb_chars.upcase.to_s)
+    end
+    render 'index'
+  end
+  
   private
   
   def cliente_params
-    params[:cliente][:nombre] = params[:cliente][:nombre].upcase
+    params[:cliente][:nombre] = params[:cliente][:nombre].mb_chars.upcase.to_s
     params.require(:cliente).permit(:nombre, :rfc, :calle, :numero_exterior, :numero_interior, :colonia, :municipio_delegacion,
     :ciudad, :estado ,:codigo_postal, :telefono, :email, :persona_contacto)
   end
