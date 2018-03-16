@@ -24,6 +24,7 @@
 <table class="table table-striped table-hover table-condensed table-bordered">
   <tr>
     <th>Fecha</th>
+    <th>ID Cliente</th>
     <th>Cliente</th>
     <th>28mm Longitud (cm)</th>
     <th>50mm Longitud (cm)</th>
@@ -71,6 +72,7 @@
   <% @ventas.each do |venta| %>
     <tr>
       <td><%= venta.fecha %></td>
+      <td><%= venta.cliente.id%></td>
       <td><%= venta.cliente.nombre %></td>
       <td><%= venta.longitud_28mm %></td>
       <td><%= venta.longitud_50mm %></td>

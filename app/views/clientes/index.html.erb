@@ -6,14 +6,19 @@
 <br>
 <hr/>
 
-<div class="form-group">
-  <%= form_with url: clientes_busqueda_path, local: true, :html => {} do |form| %>
-    <p>
-      <%= form.text_field :nombre,  :class => 'form_control' %>
-      <%= form.submit("Buscar cliente") %>
-    </p>
-  <% end %>
+
+<%= form_with url: clientes_busqueda_path, local: true, :html => {} do |form| %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <h4>Búsqueda de cliente por nombre</h4>
+      <p><%= form.text_field :nombre, :class => 'form-control' %></p>
+      <p><%= form.submit("Buscar cliente", :class => 'btn btn-success') %></p>
+    </div>
+  </div>
 </div>
+<% end %>
+
 
 <% if @clientes_encontrados != nil %>
     
