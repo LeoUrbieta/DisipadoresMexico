@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root 'pages#ingresos'
+  root 'ventas#index'
   get 'pages/ingresos', to:'pages#ingresos'
   get 'pages/estadisticas', to: 'pages#estadisticas'
   post 'pages/ingresos', to:'pages#buscar'
