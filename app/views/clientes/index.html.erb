@@ -4,10 +4,9 @@
 
 
 <%= form_with url: clientes_busqueda_path, local: true, :html => {class: "form-inline"} do |form| %>
-
-      <label>Búsqueda de cliente por nombre:</label>
-      <%= form.text_field :nombre, :class => 'form-control' %>
-      <%= form.submit("Buscar cliente", :class => 'btn btn-success') %>
+  <%= form.label :nombre, 'Busqueda de Clientes: ', :class => 'sr-only' %>
+  <%= form.text_field :nombre, :class => 'form-control', :placeholder => 'Búsqueda por nombre' %>
+  <%= form.submit("Buscar cliente", :class => 'btn btn-success') %>
 <% end %>
 
 <% if @clientes_encontrados != nil %>
