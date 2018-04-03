@@ -1,26 +1,18 @@
-<h1>Lista de Clientes</h1>
-
-<%= link_to 'Ir a Ventas', ventas_path, class: 'btn btn-info' %>
-<hr />
 <%= link_to 'Crear nuevo cliente', new_cliente_path, class: 'btn btn-primary' %>
 <br>
 <hr/>
 
 
-<%= form_with url: clientes_busqueda_path, local: true, :html => {} do |form| %>
-<div class="row">
-  <div class="col-md-4">
-    <div class="form-group">
-      <h4>Búsqueda de cliente por nombre</h4>
-      <p><%= form.text_field :nombre, :class => 'form-control' %></p>
-      <p><%= form.submit("Buscar cliente", :class => 'btn btn-success') %></p>
-    </div>
-  </div>
-</div>
+<%= form_with url: clientes_busqueda_path, local: true, :html => {class: "form-inline"} do |form| %>
+
+      <label>Búsqueda de cliente por nombre:</label>
+      <%= form.text_field :nombre, :class => 'form-control' %>
+      <%= form.submit("Buscar cliente", :class => 'btn btn-success') %>
 <% end %>
 
-
 <% if @clientes_encontrados != nil %>
+
+<br />
     
   <%= render 'cliente_info', obj: @clientes_encontrados %>
   

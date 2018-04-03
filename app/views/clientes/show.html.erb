@@ -13,12 +13,15 @@
   
   <% @cliente.ventas.each do |venta| %>
     <tr>
-      <td><%= venta.id %></td>
+      <td><%= venta.id%></td>
       <td><%= venta.fecha %></td>
       <td><%= venta.total_pagado_por_cliente %></td>
+      <td><%= link_to 'Ver esta venta', edit_venta_path(venta), class: 'btn btn-info' %></td>
     </tr>
   <% end %>
   
 </table>
 
-<%= link_to 'Regresar a lista de clientes', clientes_path %>
+<p><%= link_to 'Ir a Lista de Clientes', clientes_path, class: 'btn btn-info' %></p>
+<p><%= link_to 'Ir a Todas las Ventas', ventas_path, class: 'btn btn-warning' %></p>
+<p><%= link_to "Regresar a Página Anterior", url_for(:back), class:'btn btn-success' %></p>

@@ -1,8 +1,3 @@
-<h1>Estadísticas de Disipadores de Calor de Aluminio a Tu Medida</h1>
-
-<%= link_to 'Ir a Ventas', ventas_path, class: 'btn btn-info' %>
-<br>
-<br>
 <%= column_chart [
   {name: "28mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_28mm)},
   {name: "50mm", data: Venta.group_by_month(:fecha, format: "%b").sum(:precio_50mm)},

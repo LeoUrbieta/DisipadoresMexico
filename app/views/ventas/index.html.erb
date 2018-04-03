@@ -1,20 +1,8 @@
-<h1>Ventas de Disipadores de Calor Mexico</h1>
-
-
-
-<%= link_to 'Ir a Ingresos', pages_ingresos_path, class: 'btn btn-info' %>
-
-<%= link_to 'Ir a Egresos', egresos_path, class: 'btn btn-info' %>
-
-<%= link_to 'Ir a Clientes', clientes_path, class: 'btn btn-info' %>
-
-<%= link_to 'Ir a Productos', productos_path, class: 'btn btn-info' %>
-
-<%= link_to 'Ir a Estadísticas', pages_estadisticas_path, class: 'btn btn-info' %>
-<hr />
 <%= link_to 'Nueva Venta', new_venta_path, class: 'btn btn-primary' %>
 
 <%= link_to 'Crear nuevo cliente', new_cliente_path, class: 'btn btn-primary' %>
+
+
 
 <br>
 <div align="center">
@@ -73,7 +61,7 @@
     <tr>
       <td><%= venta.fecha %></td>
       <td><%= venta.cliente.id%></td>
-      <td><%= venta.cliente.nombre %></td>
+      <td><%= link_to venta.cliente.nombre, cliente_path(venta.cliente)%></td>
       <td><%= venta.longitud_28mm %></td>
       <td><%= venta.longitud_50mm %></td>
       <td><%= venta.longitud_75mm %></td>
