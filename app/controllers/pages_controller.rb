@@ -21,6 +21,7 @@ class PagesController < ApplicationController
       @claveSAT = Producto.select("nombre_producto, clave_sat")
       @ventas = Venta.busca_productos(@fecha_inicio,@fecha_final,params[:facturado]).order("fecha")
       @suma = Venta.suma_productos(@ventas)
+      @precios_unitarios = Venta.incluye_precio_unitario(@suma)
  
       render 'ingresos'
     

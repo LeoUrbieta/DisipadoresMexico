@@ -28,7 +28,7 @@
   </div>
   <div class="col-md-4">
     <h3 class = "centered">Ventas de <%= @fecha_inicio.strftime("%d %b %Y") %> a <%= @fecha_final.strftime("%d %b %Y") %></h3>
-    <table class="table-striped table-hover table-condensed table-bordered">
+    <table class="table-striped table-hover table-condensed table-bordered table-centered">
       <tr>
         <th>Fecha</th>
         <th>Nombre de Cliente</th>
@@ -67,11 +67,31 @@
     <% if @suma != nil %>
       <h3 class = "centered">Conceptos</h3>
       <div class="row">
-        <table class="table-striped table-hover table-condensed table-bordered">
+        <table class="table-striped table-hover table-condensed table-bordered table-centered">
           <% @suma.each do |nombre,suma| %>
             <tr>
               <td> <%="#{nombre.titleize}"%> </td>
               <td> <%="#{suma}"%> </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <table class="table-striped table-hover table-condensed table-bordered table-centered">
+          <tr>
+            <th>CLAVE SAT</th>
+            <th>DESCRIPCION</th>
+            <th>CANTIDAD</th>
+            <th>PRECIO UNITARIO (SIN IVA)</th>
+          </tr>
+          <% @precios_unitarios.each do |nombre,concepto| %>
+            <tr>
+              <% concepto.each do |concept| %>
+                <td> <%= concept %> </td>
+              <% end %>
             </tr>
           <% end %>
         </table>

@@ -41,21 +41,18 @@ class Venta < ApplicationRecord
   
   def self.suma_productos(ventas)
     suma_productos = Hash.new
-    nombre_productos = ["precio_75mm", "descuento_75mm",    
-                        "precio_87mm","descuento_87mm", 
-                        "precio_136mm","descuento_136mm",
-                        "precio_28mm", "descuento_28mm",
-                        "precio_50mm", "descuento_50mm",
-                        "precio_100mm", "descuento_100mm",
-                        "precio_220mm", "descuento_220mm",
-                        "precio_peltier","descuento_peltier", 
-                        "precio_pasta_termica","descuento_pasta_termica",
+    nombre_productos = ["longitud_75mm","precio_75mm", "descuento_75mm",    
+                        "longitud_87mm","precio_87mm","descuento_87mm", 
+                        "longitud_136mm","precio_136mm","descuento_136mm",
+                        "longitud_28mm","precio_28mm", "descuento_28mm",
+                        "longitud_50mm","precio_50mm", "descuento_50mm",
+                        "longitud_100mm","precio_100mm", "descuento_100mm",
+                        "longitud_220mm","precio_220mm", "descuento_220mm",
+                        "cantidad_peltier","precio_peltier","descuento_peltier", 
+                        "cantidad_pasta_termica","precio_pasta_termica","descuento_pasta_termica",
                         "total_productos","envio_explicito", "envio_agregado_a_precio_productos",
-                        "dinero_anadido","total_pagado_por_cliente",
-                        "longitud_28mm","longitud_50mm", "longitud_75mm",  
-                        "longitud_87mm", "longitud_100mm", "longitud_136mm",
-                        "longitud_220mm", "cantidad_peltier", "cantidad_pasta_termica"]
-    
+                        "dinero_anadido","total_pagado_por_cliente"]
+                           
     nombre_productos.each do |suma_producto|
       suma_producto_actual = BigDecimal.new('0.0')
       ventas.each do |venta|
@@ -69,33 +66,46 @@ class Venta < ApplicationRecord
       suma_productos[suma_producto] = suma_producto_actual
     end
     
-    IncluyePrecioUnitario(suma_productos)
     return suma_productos
   end
   
-  def self.IncluyePrecioUnitario(suma)
+  def self.incluye_precio_unitario(suma)
+    
+    precio_unitario = Hash.new
     nombre_producto = ["28mm","50mm","75mm","87mm","100mm","136mm","220mm","peltier","pasta_termica"]
     
     nombre_producto.each do |producto|
       if(suma["longitud_"<< producto] != nil && suma["longitud_"<< producto] != 0)
-       suma["precio_unitario_" << producto << "_sin_IVA"] = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["longitud_"<< producto])) / 1.16).round(2)
+       precio_unitario_producto = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["longitud_"<< producto])) / 1.16).round(2)
+       precio_unitario["precio_unitario_" << producto << "_sin_IVA"] = ["30102306","Disipador de Calor de Alumino de " + producto + " de ancho",suma["longitud_"<< producto],precio_unitario_producto]
+       
       elsif (suma["cantidad_"<< producto] != nil  && suma["cantidad_"<< producto] != 0)
-        suma["precio_unitario_" << producto << "_sin_IVA"] = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["cantidad_"<< producto])) / 1.16).round(2)
+        precio_unitario_producto = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["cantidad_"<< producto])) / 1.16).round(2)
+        if producto == "peltier"
+          precio_unitario["precio_unitario_" << producto << "_sin_IVA"] = ["60104916",producto.titleize,suma["cantidad_"<< producto],precio_unitario_producto]
+        elsif producto == "pasta_termica"
+          precio_unitario["precio_unitario_" << producto << "_sin_IVA"] = ["32131008",producto.titleize,suma["cantidad_"<< producto],precio_unitario_producto]
+        end
+        
       else
-        suma["precio_unitario_" << producto << "_sin_IVA"] = "No hubo ventas de este producto"
+        precio_unitario["precio_unitario_" << producto << "_sin_IVA"] = ["S/N",producto.titleize,"0","0"]
       end
       
     end
     
-    AnadirEnviosYDineroAnadidoUnitarios(suma)
+    anadir_envios_y_dinero_anadido_unitarios(suma, precio_unitario)
+    return precio_unitario
     
   end
   
-  def self.AnadirEnviosYDineroAnadidoUnitarios(suma_conceptos)
+  def self.anadir_envios_y_dinero_anadido_unitarios(suma_conceptos, unitario)
     
-    suma_conceptos["precio_unitario_envio_explicito_sin_IVA"] = (suma_conceptos["envio_explicito"] / 1.16).round(2)
-    suma_conceptos["precio_unitario_servicios_extra_sin_IVA"] = ((suma_conceptos["envio_agregado_a_precio_productos"] +
-                                                          suma_conceptos["dinero_anadido"]) / 1.16).round(2)
+    precio_unitario_envio_explicito = (suma_conceptos["envio_explicito"] / 1.16).round(2)
+    unitario["precio_unitario_envio_explicito_sin_IVA"] = ["78102203","Envio explicito","1",precio_unitario_envio_explicito]
+    
+    precio_unitario_servicios_extra = ((suma_conceptos["envio_agregado_a_precio_productos"] + suma_conceptos["dinero_anadido"]) / 1.16).round(2)
+    unitario["precio_unitario_servicios_extra_sin_IVA"] = ["73121601","Servicios extra","1",precio_unitario_servicios_extra]
+                                                      
     
   end
   
