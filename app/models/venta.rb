@@ -111,10 +111,18 @@ class Venta < ApplicationRecord
   
   def self.total_disponible(ventas,egresos)
     
+    
     hash_total_post_comisiones_por_mes = ventas.group_by_month(:fecha, format: "%b").sum("total_post_comisiones")
     hash_egresos_por_mes = egresos.group_by_month(:fecha, format: "%b").sum("cantidad")
     
     return hash_total_post_comisiones_por_mes.merge!(hash_egresos_por_mes) { |k, o, n| o - n }
+    
+  end
+  
+  def self.dinero_disponible_mercado_libre(ventas)
+    
+    ventas_mercado_libre = ventas.where("medio_de_venta == :medio_venta",{medio_venta: "MercadoLibre"})
+    return ventas_mercado_libre.sum("total_pagado_por_cliente - comisiones - comision_envio")
     
   end
   

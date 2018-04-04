@@ -96,6 +96,21 @@
           <% end %>
         </table>
       </div>
+      
+      </br>
+      
+      <div>
+        <table class="table-striped table-hover table-condensed table-bordered table-centered">
+          <tr>
+            <th>Dinero disponible para retirar en ML</th>
+          </tr>
+          <tr>
+            <td><%= number_to_currency(@dinero_mercado_libre) %></td>
+          </tr>
+        </table>
+      </div>
+      
     <% end %>
+    
   </div>
 </div>
