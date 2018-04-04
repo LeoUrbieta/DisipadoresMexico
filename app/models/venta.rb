@@ -121,7 +121,7 @@ class Venta < ApplicationRecord
   
   def self.dinero_disponible_mercado_libre(ventas)
     
-    ventas_mercado_libre = ventas.where("medio_de_venta == :medio_venta",{medio_venta: "MercadoLibre"})
+    ventas_mercado_libre = ventas.where("medio_de_venta = :medio_venta",{medio_venta: "MercadoLibre"})
     return ventas_mercado_libre.sum("total_pagado_por_cliente - comisiones - comision_envio")
     
   end
