@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227233520) do
+ActiveRecord::Schema.define(version: 20180406164351) do
 
   create_table "clientes", force: :cascade do |t|
     t.string "nombre"
@@ -115,6 +115,11 @@ ActiveRecord::Schema.define(version: 20180227233520) do
     t.integer "cortes_50mm"
     t.integer "cortes_100mm"
     t.integer "cortes_220mm"
+    t.decimal "iva_prod"
+    t.decimal "iva_envios"
+    t.decimal "iva_anadido"
+    t.boolean "iva_comision_bool"
+    t.boolean "iva_envio_bool"
   end
 
 end

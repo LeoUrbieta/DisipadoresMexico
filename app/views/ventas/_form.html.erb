@@ -43,13 +43,13 @@
       <%= form.label :cliente_id, 'Número de cliente'%>
       <%= form.text_field :cliente_id, :class => "form-control" %>
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-2">
       <%= form.label :fecha%> <br>
       <%= form.date_select(:fecha,
-                  start_year: Date.today.year - 2,
+                  {start_year: Date.today.year - 2,
                   end_year: Date.today.year + 20,
-                  order: [:day, :month, :year],
-                  :class => "form-control") %>
+                  order: [:day, :month, :year]},
+                  {:class => "form-control"}) %>
     </div>
   </div>
   <hr />
@@ -57,7 +57,7 @@
   <div class="row">
     <div class="form-group col-md-2 " >
       <%= label :precio, :longitud_28mm, 'Precio de Venta' %><br>
-      <%= select(:precio, :longitud_28mm, nil,{},{:class => 'precio_venta'}) do %>
+      <%= select(:precio, :longitud_28mm, nil,{},{:class => 'precio_venta form-control'}) do %>
         <% if @precios["longitud_28mm"] != nil %>
           <% @precios["longitud_28mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
@@ -75,7 +75,7 @@
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_28mm, 'Precio 2.8' %> 
-      <%= form.text_field :precio_28mm, :class => 'subtotal zero_init form-control', :readonly => 'readonly'%>
+      <%= form.text_field :precio_28mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :descuento_28mm, 'Descuento 2.8'  %>
@@ -85,7 +85,7 @@
   <div class="row">
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_50mm, 'Precio de Venta' %><br>
-      <%= select(:precio, :longitud_50mm, nil,{},{:class => 'precio_venta'}) do %>
+      <%= select(:precio, :longitud_50mm, nil,{},{:class => 'precio_venta form-control'}) do %>
         <% if @precios["longitud_50mm"] != nil %>
           <% @precios["longitud_50mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
@@ -103,7 +103,7 @@
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_50mm, 'Precio 5.0' %> 
-      <%= form.text_field :precio_50mm, :class => 'subtotal zero_init form-control', :readonly => 'readonly'%>
+      <%= form.text_field :precio_50mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :descuento_50mm, 'Descuento 5.0'  %>
@@ -113,7 +113,7 @@
   <div class="row">
     <div class="form-group col-md-2 ">
       <%= label :precio, :longitud_75mm, 'Precio de Venta' %><br>
-      <%= select(:precio, :longitud_75mm, nil,{},{:class => 'precio_venta'}) do %>
+      <%= select(:precio, :longitud_75mm, nil,{},{:class => 'precio_venta form-control'}) do %>
         <% if @precios["longitud_75mm"] != nil %>
           <% @precios["longitud_75mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
@@ -131,7 +131,7 @@
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_75mm, 'Precio 7.5' %> 
-      <%= form.text_field :precio_75mm, :class => 'subtotal zero_init form-control', :readonly => 'readonly'%>
+      <%= form.text_field :precio_75mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :descuento_75mm, 'Descuento 7.5'  %>
@@ -141,7 +141,7 @@
   <div class="row">
     <div class="form-group col-md-2 ">
       <%= label :precio, :longitud_87mm, 'Precio de Venta' %><br>
-      <%= select(:precio, :longitud_87mm, nil,{},{:class => 'precio_venta'}) do %>
+      <%= select(:precio, :longitud_87mm, nil,{},{:class => 'precio_venta form-control'}) do %>
         <% if @precios["longitud_87mm"] != nil %>
           <% @precios["longitud_87mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
@@ -159,7 +159,7 @@
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_87mm, 'Precio 8.7' %> 
-      <%= form.text_field :precio_87mm, :class => 'subtotal zero_init form-control', :readonly => 'readonly' %>
+      <%= form.text_field :precio_87mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly' %>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :descuento_87mm, 'Descuento 8.7' %>
@@ -169,7 +169,7 @@
   <div class="row">
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_100mm, 'Precio de Venta' %><br>
-      <%= select(:precio, :longitud_100mm, nil,{},{:class => 'precio_venta'}) do %>
+      <%= select(:precio, :longitud_100mm, nil,{},{:class => 'precio_venta form-control'}) do %>
         <% if @precios["longitud_100mm"] != nil %>
           <% @precios["longitud_100mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
@@ -187,7 +187,7 @@
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_100mm, 'Precio 10.0' %> 
-      <%= form.text_field :precio_100mm, :class => 'subtotal zero_init form-control', :readonly => 'readonly'%>
+      <%= form.text_field :precio_100mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :descuento_100mm, 'Descuento 10.0'  %>
@@ -197,7 +197,7 @@
   <div class="row">
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_136mm, 'Precio de Venta' %><br>
-      <%= select(:precio, :longitud_136mm, nil,{},{:class => 'precio_venta'}) do %>
+      <%= select(:precio, :longitud_136mm, nil,{},{:class => 'precio_venta form-control'}) do %>
         <% if @precios["longitud_136mm"] != nil %>
           <% @precios["longitud_136mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
@@ -215,7 +215,7 @@
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_136mm, 'Precio 13.6' %>
-      <%= form.text_field :precio_136mm, :class => 'subtotal zero_init form-control', :readonly => 'readonly' %>
+      <%= form.text_field :precio_136mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly' %>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :descuento_136mm, 'Descuento 13.6' %>
@@ -225,7 +225,7 @@
   <div class="row">
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_220mm, 'Precio de Venta' %><br>
-      <%= select(:precio, :longitud_220mm, nil,{},{:class => 'precio_venta'}) do %>
+      <%= select(:precio, :longitud_220mm, nil,{},{:class => 'precio_venta form-control'}) do %>
         <% if @precios["longitud_220mm"] != nil %>
           <% @precios["longitud_220mm"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
@@ -243,7 +243,7 @@
     </div>
     <div class="form-group col-md-2">
       <%= form.label :precio_220mm, 'Precio 22.0' %> 
-      <%= form.text_field :precio_220mm, :class => 'subtotal zero_init form-control', :readonly => 'readonly'%>
+      <%= form.text_field :precio_220mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :descuento_220mm, 'Descuento 22.0'  %>
@@ -253,7 +253,7 @@
   <div class="row">
     <div class="form-group col-md-2" >
       <%= label :precio, :cantidad_peltier, 'Precio de Venta' %><br>
-      <%= select(:precio, :cantidad_peltier, nil,{},{:class => 'precio_venta'}) do %>
+      <%= select(:precio, :cantidad_peltier, nil,{},{:class => 'precio_venta form-control'}) do %>
         <% if @precios["cantidad_peltier"] != nil %>
           <% @precios["cantidad_peltier"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
@@ -277,7 +277,7 @@
   <div class="row">
     <div class="form-group col-md-2">
       <%= label :precio, :cantidad_pasta_termica, 'Precio de Venta' %><br>
-      <%= select(:precio, :cantidad_pasta_termica, nil,{},{:class => 'precio_venta'}) do %>
+      <%= select(:precio, :cantidad_pasta_termica, nil,{},{:class => 'precio_venta form-control'}) do %>
         <% if @precios["cantidad_pasta_termica"] != nil %>
           <% @precios["cantidad_pasta_termica"].each do |c| %>
             <%= content_tag(:option,number_to_currency(c),value: c) %>
@@ -299,32 +299,78 @@
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-2 col-md-offset-6">
+    <div class="form-group col-md-2 col-md-offset-8">
       <%= form.label :subtotal, 'Sub-total (Pre-Descuentos)' %> 
-      <%= form.text_field :subtotal, :id => 'subtotal', :readonly => 'readonly', :class => 'form-control' %>
+      <%= form.text_field :subtotal, :id => 'subtotal', :readonly => 'readonly', :class => 'form-control zero_init' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-2 col-md-offset-6">
+      <%= form.label :iva_prod, 'Porcentaje de IVA' %> <br>
+      <%= form.select :iva_prod, [['16%',0.16],['Exento',0.0]], {} ,{:class => 'form-control iva_select'} %>
     </div>
     <div class="form-group col-md-2">
+      <%= label :iva, :productos, 'IVA productos'  %><br>
+      <%= text_field :iva, :productos, {class: "form-control zero_init", readonly: 'readonly'} %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-2 col-md-offset-8">
       <%= form.label :total_productos %>
-      <%= form.text_field :total_productos, :id => 'total_preenvio', :readonly => 'readonly', :class => "form-control" %>
+      <%= form.text_field :total_productos, :id => 'total_preenvio', :readonly => 'readonly', :class => "form-control totales zero_init" %>
     </div>
   </div>
   <hr />
   <div class="row">
-    <div class="form-group col-md-2">
-      <%= form.label :envio_explicito, 'Envío explícito'  %> 
-      <%= form.text_field :envio_explicito, :class => 'anadido zero_init form-control' %>
+    <div class="form-group col-md-2 col-md-offset-4 campo_pre_iva">
+      <%= label :envio, :antes_de_iva, 'Envio antes de IVA'  %><br>
+      <%= text_field :envio, :antes_de_iva, {class: "form-control zero_init", readonly: 'readonly'} %>
     </div>
-    <div class="form-group col-md-2">
-      <%= form.label :envio_agregado_a_precio_productos, 'Envio agregado al precio' %> 
-      <%= form.text_field :envio_agregado_a_precio_productos, :class => 'anadido zero_init form-control' %>
+    <div class="form-group col-md-2 ">
+      <%= form.label :iva_envios, 'Porcentaje de IVA' %> <br>
+      <%= form.select :iva_envios, [['16%',0.16],['Exento',0.0]], {} ,{:class => 'form-control iva_select'} %>
     </div>
-     <div class="form-group col-md-2">
-      <%= form.label :dinero_anadido, 'Dinero añadido'  %>
-      <%= form.text_field :dinero_anadido, :class => 'zero_init form-control anadido'  %>
+    <div class="form-group col-md-2 campo_iva">
+      <%= label :iva, :envio, 'IVA Envios'  %><br>
+      <%= text_field :iva, :envio, {class: "form-control zero_init iva_otros", readonly: 'readonly'} %>
     </div>
-    <div class="form-group col-md-2">
+  </div>
+  <div class="row">
+    <div class="form-group col-md-2 col-md-offset-8">
+      <%= form.label :envio_explicito, 'Total Envío explícito'  %> 
+      <%= form.text_field :envio_explicito, :class => 'zero_init form-control totales iva' %>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div style="display: none"class="form-group col-md-2">
+      <%= form.label :envio_agregado_a_precio_productos, 'Envio agregado'  %> 
+      <%= form.text_field :envio_agregado_a_precio_productos, :class => 'zero_init form-control' %>
+    </div>
+    <div class="form-group col-md-2 col-md-offset-4 campo_pre_iva">
+      <%= label :dinero_adicional, :antes_de_iva, 'Dinero Adicional antes de IVA (cortes o envio agregado)'  %><br>
+      <%= text_field :dinero_adicional, :antes_de_iva, {class: "form-control zero_init", readonly: 'readonly'} %>
+    </div>
+    <div class="form-group col-md-2 ">
+      <%= form.label :iva_anadido, 'Porcentaje de IVA' %> <br>
+      <%= form.select :iva_anadido, [['16%',0.16],['Exento',0.0]], {} ,{:class => 'form-control iva_select'} %>
+    </div>
+    <div class="form-group col-md-2 campo_iva">
+      <%= label :iva, :anadido, 'IVA Dinero Añadido'  %><br>
+      <%= text_field :iva, :anadido, {class: "form-control zero_init  iva_otros", readonly: 'readonly'} %>
+    </div>
+  </div>
+  <div class="row">
+     <div class="form-group col-md-2 col-md-offset-8">
+      <%= form.label :dinero_anadido, 'Total Dinero añadido'  %>
+      <%= form.text_field :dinero_anadido, :class => 'zero_init form-control totales iva' %>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="form-group col-md-2 col-md-offset-8">
       <%= form.label :total_pagado_por_cliente, 'Total pagado por el cliente' %> <br>
-      <%= form.text_field :total_pagado_por_cliente, :id => 'total_pagado_por_cliente', :readonly => 'readonly', :class => 'form-control' %>
+      <%= form.text_field :total_pagado_por_cliente, :id => 'total_pagado_por_cliente', :readonly => 'readonly', :class => 'form-control zero_init' %>
     </div>
   </div>
   <hr />
@@ -334,10 +380,18 @@
       <%= form.text_field :comisiones, :class => 'comisiones zero_init form-control' %>
     </div>
     <div class="form-group col-md-2">
+      <%= form.label :iva_comision_bool, '¿IVA acreditable?' %> <br>
+      <%= form.select :iva_comision_bool, [['Si','true'],['No','false']], :class => 'form-control ' %>
+    </div>
+    <div class="form-group col-md-2">
       <%= form.label :comision_envio  %>
       <%= form.text_field :comision_envio, :class => 'comisiones zero_init form-control' %>
     </div>
     <div class="form-group col-md-2">
+      <%= form.label :iva_envio_bool, '¿IVA acreditable?' %> <br>
+      <%= form.select :iva_envio_bool, [['Si','true'],['No','false']], :class => 'form-control ' %>
+    </div>
+    <div style="display: none"class="form-group col-md-2">
       <%= form.label :devolucion  %> 
       <%= form.text_field :devolucion, :class => 'zero_init form-control comisiones' %>
     </div>
