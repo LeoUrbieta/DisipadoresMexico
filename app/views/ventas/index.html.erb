@@ -44,12 +44,10 @@
     <th>Descuento Pasta térmica</th>
     <th>Total de Productos</th>
     <th>Envío Explícito (pagado por el cliente)</th>
-    <th>Envío agregado al precio de productos (pagado por el cliente)</th>
     <th>Dinero Añadido</th>
     <th>Total pagado por el Cliente</th>
     <th>Comisiones</th>
     <th>Comisiones envío</th>
-    <th>Devolucion</th>
     <th>Total post-comisiones</th>
     <th>Medio de Ventas</th>
     <th>¿Facturado?</th>
@@ -92,12 +90,10 @@
       <td><%= number_to_currency(venta.descuento_pasta_termica) %></td>
       <td><%= number_to_currency(venta.total_productos) %></td>
       <td><%= number_to_currency(venta.envio_explicito) %></td>
-      <td><%= number_to_currency(venta.envio_agregado_a_precio_productos) %></td>
       <td><%= number_to_currency(venta.dinero_anadido)%></td>
       <td><%= number_to_currency(venta.total_pagado_por_cliente) %></td>
       <td><%= number_to_currency(venta.comisiones) %></td>
       <td><%= number_to_currency(venta.comision_envio) %></td>
-      <td><%= number_to_currency(venta.devolucion) %></td>
       <td><%= number_to_currency(venta.total_post_comisiones) %></td>
       <td><%= venta.medio_de_venta %></td>
       <td><%= venta.facturado %></td>

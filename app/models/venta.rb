@@ -9,8 +9,8 @@ class Venta < ApplicationRecord
             :precio_pasta_termica, :descuento_75mm, :descuento_87mm, :descuento_136mm,
             :descuento_28mm, :descuento_50mm, :descuento_100mm, :descuento_220mm,
             :descuento_peltier, :descuento_pasta_termica, 
-            :envio_explicito,:envio_agregado_a_precio_productos, 
-            :devolucion, :dinero_anadido, :subtotal, :total_productos, :total_pagado_por_cliente,
+            :envio_explicito, 
+            :dinero_anadido, :subtotal, :total_productos, :total_pagado_por_cliente,
             :comisiones, :comision_envio, :total_post_comisiones,
             :cortes_75mm, :cortes_87mm, :cortes_136mm, :cortes_28mm, :cortes_50mm,
             :cortes_100mm, :cortes_220mm,
@@ -50,7 +50,7 @@ class Venta < ApplicationRecord
                         "longitud_220mm","precio_220mm", "descuento_220mm",
                         "cantidad_peltier","precio_peltier","descuento_peltier", 
                         "cantidad_pasta_termica","precio_pasta_termica","descuento_pasta_termica",
-                        "total_productos","envio_explicito", "envio_agregado_a_precio_productos",
+                        "total_productos","envio_explicito",
                         "dinero_anadido","total_pagado_por_cliente"]
                            
     nombre_productos.each do |suma_producto|
@@ -103,7 +103,7 @@ class Venta < ApplicationRecord
     precio_unitario_envio_explicito = (suma_conceptos["envio_explicito"] / 1.16).round(2)
     unitario["precio_unitario_envio_explicito_sin_IVA"] = ["78102203","Envio explicito","1",precio_unitario_envio_explicito]
     
-    precio_unitario_servicios_extra = ((suma_conceptos["envio_agregado_a_precio_productos"] + suma_conceptos["dinero_anadido"]) / 1.16).round(2)
+    precio_unitario_servicios_extra = ( suma_conceptos["dinero_anadido"] / 1.16).round(2)
     unitario["precio_unitario_servicios_extra_sin_IVA"] = ["73121601","Servicios extra","1",precio_unitario_servicios_extra]
                                                       
     

@@ -57,9 +57,9 @@ class VentasController < ApplicationController
   def venta_params
     params.require(:venta).permit(:fecha, :longitud_75mm, :longitud_87mm, :longitud_136mm, :cantidad_peltier, :cantidad_pasta_termica, :precio_75mm, :precio_87mm,
                                   :precio_136mm, :precio_peltier, :precio_pasta_termica, :subtotal, :descuento_75mm, :descuento_87mm, :descuento_136mm,
-                                  :descuento_peltier, :descuento_pasta_termica, :total_productos, :envio_explicito, :envio_agregado_a_precio_productos,
+                                  :descuento_peltier, :descuento_pasta_termica, :total_productos, :envio_explicito,
                                   :total_pagado_por_cliente, :comisiones, :comision_envio, :total_post_comisiones, :medio_de_venta, :facturado,
-                                  :folio_factura, :notas_adicionales, :devolucion ,:cliente_id, :cortes_75mm, :cortes_87mm, :cortes_136mm, :dinero_anadido,
+                                  :folio_factura, :notas_adicionales,:cliente_id, :cortes_75mm, :cortes_87mm, :cortes_136mm, :dinero_anadido,
                                   :longitud_28mm, :precio_28mm, :descuento_28mm, :cortes_28mm,
                                   :longitud_50mm, :precio_50mm, :descuento_50mm, :cortes_50mm,
                                   :longitud_100mm, :precio_100mm, :descuento_100mm, :cortes_100mm,

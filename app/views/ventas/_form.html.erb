@@ -343,10 +343,6 @@
   </div>
   <hr />
   <div class="row">
-    <div style="display: none"class="form-group col-md-2">
-      <%= form.label :envio_agregado_a_precio_productos, 'Envio agregado'  %> 
-      <%= form.text_field :envio_agregado_a_precio_productos, :class => 'zero_init form-control' %>
-    </div>
     <div class="form-group col-md-2 col-md-offset-4 campo_pre_iva">
       <%= label :dinero_adicional, :antes_de_iva, 'Dinero Adicional antes de IVA (cortes o envio agregado)'  %><br>
       <%= text_field :dinero_adicional, :antes_de_iva, {class: "form-control zero_init", readonly: 'readonly'} %>
@@ -390,10 +386,6 @@
     <div class="form-group col-md-2">
       <%= form.label :iva_envio_bool, '¿IVA acreditable?' %> <br>
       <%= form.select :iva_envio_bool, [['Si','true'],['No','false']], :class => 'form-control ' %>
-    </div>
-    <div style="display: none"class="form-group col-md-2">
-      <%= form.label :devolucion  %> 
-      <%= form.text_field :devolucion, :class => 'zero_init form-control comisiones' %>
     </div>
     <div class="form-group col-md-2">
       <%= form.label :total_post_comisiones %> 
