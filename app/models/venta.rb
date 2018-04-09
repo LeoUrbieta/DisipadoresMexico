@@ -56,11 +56,11 @@ class Venta < ApplicationRecord
     nombre_productos.each do |suma_producto|
       suma_producto_actual = BigDecimal.new('0.0')
       ventas.each do |venta|
-        suma_producto_actual = venta.attributes[suma_producto] + suma_producto_actual
+        suma_producto_actual = (venta.attributes[suma_producto] + suma_producto_actual).round(2)
       end
       
       if suma_producto.include? "longitud"
-        suma_producto_actual = suma_producto_actual/ 100.0
+        suma_producto_actual = (suma_producto_actual/ 100.0).round(2)
       end
         
       suma_productos[suma_producto] = suma_producto_actual
@@ -112,8 +112,8 @@ class Venta < ApplicationRecord
   def self.total_disponible(ventas,egresos)
     
     
-    hash_total_post_comisiones_por_mes = ventas.group_by_month(:fecha, format: "%b").sum("total_post_comisiones")
-    hash_egresos_por_mes = egresos.group_by_month(:fecha, format: "%b").sum("cantidad")
+    hash_total_post_comisiones_por_mes = ventas.group_by_month(:fecha, format: "%b %Y").sum("total_post_comisiones")
+    hash_egresos_por_mes = egresos.group_by_month(:fecha, format: "%b %Y").sum("cantidad")
     
     return hash_total_post_comisiones_por_mes.merge!(hash_egresos_por_mes) { |k, o, n| o - n }
     
@@ -129,7 +129,7 @@ class Venta < ApplicationRecord
   def self.utilidad
     
     nombre_productos = ["longitud_28mm","longitud_50mm","longitud_75mm","longitud_87mm","longitud_100mm","longitud_136mm","longitud_220mm","cantidad_peltier","cantidad_pasta_termica"]
-    precio_productos,descuento_productos, utilidad_producto_pre_comision, comisiones = Array.new(4) { [] }
+    precio_productos,descuento_productos, utilidad_producto_pre_comision = Array.new(3) { [] }
     comisiones_totales = Hash.new(0)
     utilidad_por_mes_todos_los_productos = Hash.new(0)
     
@@ -142,18 +142,26 @@ class Venta < ApplicationRecord
     costo_por_cm = ["0.73","2.03","1.66","2.65","3.11","6.94","7.17","39.59","40.0"]
     
     nombre_productos.each_with_index do |producto,index|
-      utilidad_producto_pre_comision << Venta.group_by_month(:fecha, format: "%b").sum("(h01 - h02)-( h03 * h04)".sub("h01",precio_productos[index]).sub("h02",descuento_productos[index]).sub("h03",producto).sub("h04",costo_por_cm[index]))
+      utilidad_producto_pre_comision << Venta.group_by_month(:fecha, format: "%b %Y").sum("(h01 - h02)-( h03 * h04)".sub("h01",precio_productos[index]).sub("h02",descuento_productos[index]).sub("h03",producto).sub("h04",costo_por_cm[index]))
     end
     
-    comisiones << Venta.where(iva_comision_bool: true).group_by_month(:fecha, format: "%b").sum("comisiones - comisiones * 0.16")
-    comisiones << Venta.where(iva_envio_bool: true).group_by_month(:fecha, format: "%b").sum("comision_envio - comision_envio * 0.16")
-    comisiones << Venta.where(iva_comision_bool: false).group_by_month(:fecha, format: "%b").sum("comisiones")
-    comisiones << Venta.where(iva_envio_bool: false).group_by_month(:fecha, format: "%b").sum("comision_envio")
-    
+    comisiones = Venta.obtenComisionesDeduciblesYNoDeducibles
+  
     comisiones.each { |subhash| subhash.each {|prod, value| comisiones_totales[prod] += value}}
     utilidad_producto_pre_comision.each {|subhash| subhash.each{|key, value| utilidad_por_mes_todos_los_productos[key] += value}}
     
-    return utilidad_producto_pre_comision, utilidad_por_mes_todos_los_productos.merge!(comisiones_totales) { |k, o, n| o - n }
+    return utilidad_producto_pre_comision, utilidad_por_mes_todos_los_productos.merge!(comisiones_totales) { |k, o, n| (o - n).round(2) }
+  end
+  
+  def self.obtenComisionesDeduciblesYNoDeducibles
+    comisiones = Array.new
+    
+    comisiones << Venta.where(iva_comision_bool: true).group_by_month(:fecha, format: "%b %Y").sum("comisiones - comisiones * 0.16")
+    comisiones << Venta.where(iva_envio_bool: true).group_by_month(:fecha, format: "%b %Y").sum("comision_envio - comision_envio * 0.16")
+    comisiones << Venta.where(iva_comision_bool: false).group_by_month(:fecha, format: "%b %Y").sum("comisiones")
+    comisiones << Venta.where(iva_envio_bool: false).group_by_month(:fecha, format: "%b %Y").sum("comision_envio")
+    
+    return comisiones
   end
   
 end
