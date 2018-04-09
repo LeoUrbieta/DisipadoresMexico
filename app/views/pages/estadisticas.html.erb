@@ -67,8 +67,23 @@
   {name: "Comisiones Envio", data: Venta.group_by_month(:fecha, format: "%b").sum(:comision_envio)},
   {name: "Total-post-comisiones", data: Venta.group_by_month(:fecha, format: "%b").sum(:total_post_comisiones)},
   {name: "Gastos", data: Egreso.group_by_month(:fecha, format: "%b").sum(:cantidad)},
-  {name: "Dinero disponible", data: @dinero_disponible}
+  {name: "Dinero disponible", data: @dinero_disponible},
+  {name: "Utilidad", data: @utilidad_total_por_mes},
   ], title: "Ingresos - Gastos" %>
+<br>
+<%= column_chart [ 
+  {name: "28mm", data: @utilidad_por_producto_por_mes[0]},
+  {name: "50mm", data: @utilidad_por_producto_por_mes[1]},
+  {name: "75mm", data: @utilidad_por_producto_por_mes[2]},
+  {name: "87mm", data: @utilidad_por_producto_por_mes[3]},
+  {name: "100mm", data: @utilidad_por_producto_por_mes[4]},
+  {name: "136mm", data: @utilidad_por_producto_por_mes[5]},
+  {name: "220mm", data: @utilidad_por_producto_por_mes[6]},
+  {name: "Peltier", data: @utilidad_por_producto_por_mes[7]},
+  {name: "Pasta térmica", data: @utilidad_por_producto_por_mes[8]},
+  ], title: "Utilidad por producto" %>
+
+
 
 
 

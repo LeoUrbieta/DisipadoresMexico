@@ -76,11 +76,11 @@ class Venta < ApplicationRecord
     
     nombre_producto.each do |producto|
       if(suma["longitud_"<< producto] != nil && suma["longitud_"<< producto] != 0)
-       precio_unitario_producto = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["longitud_"<< producto])) / 1.16).round(2)
+       precio_unitario_producto = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["longitud_"<< producto]))).round(2)
        precio_unitario["precio_unitario_" << producto << "_sin_IVA"] = ["30102306","Disipador de Calor de Alumino de " + producto + " de ancho",suma["longitud_"<< producto],precio_unitario_producto]
        
       elsif (suma["cantidad_"<< producto] != nil  && suma["cantidad_"<< producto] != 0)
-        precio_unitario_producto = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["cantidad_"<< producto])) / 1.16).round(2)
+        precio_unitario_producto = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["cantidad_"<< producto]))).round(2)
         if producto == "peltier"
           precio_unitario["precio_unitario_" << producto << "_sin_IVA"] = ["60104916",producto.titleize,suma["cantidad_"<< producto],precio_unitario_producto]
         elsif producto == "pasta_termica"
@@ -126,5 +126,34 @@ class Venta < ApplicationRecord
     
   end
   
+  def self.utilidad
+    
+    nombre_productos = ["longitud_28mm","longitud_50mm","longitud_75mm","longitud_87mm","longitud_100mm","longitud_136mm","longitud_220mm","cantidad_peltier","cantidad_pasta_termica"]
+    precio_productos,descuento_productos, utilidad_producto_pre_comision, comisiones = Array.new(4) { [] }
+    comisiones_totales = Hash.new(0)
+    utilidad_por_mes_todos_los_productos = Hash.new(0)
+    
+    
+    nombre_productos.each do |producto|
+      precio_productos << producto.sub("longitud","precio").sub("cantidad","precio")
+      descuento_productos << producto.sub("longitud","descuento").sub("cantidad","descuento")
+    end
+    
+    costo_por_cm = ["0.73","2.03","1.66","2.65","3.11","6.94","7.17","39.59","40.0"]
+    
+    nombre_productos.each_with_index do |producto,index|
+      utilidad_producto_pre_comision << Venta.group_by_month(:fecha, format: "%b").sum("(h01 - h02)-( h03 * h04)".sub("h01",precio_productos[index]).sub("h02",descuento_productos[index]).sub("h03",producto).sub("h04",costo_por_cm[index]))
+    end
+    
+    comisiones << Venta.where(iva_comision_bool: true).group_by_month(:fecha, format: "%b").sum("comisiones - comisiones * 0.16")
+    comisiones << Venta.where(iva_envio_bool: true).group_by_month(:fecha, format: "%b").sum("comision_envio - comision_envio * 0.16")
+    comisiones << Venta.where(iva_comision_bool: false).group_by_month(:fecha, format: "%b").sum("comisiones")
+    comisiones << Venta.where(iva_envio_bool: false).group_by_month(:fecha, format: "%b").sum("comision_envio")
+    
+    comisiones.each { |subhash| subhash.each {|prod, value| comisiones_totales[prod] += value}}
+    utilidad_producto_pre_comision.each {|subhash| subhash.each{|key, value| utilidad_por_mes_todos_los_productos[key] += value}}
+    
+    return utilidad_producto_pre_comision, utilidad_por_mes_todos_los_productos.merge!(comisiones_totales) { |k, o, n| o - n }
+  end
   
 end
