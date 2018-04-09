@@ -134,15 +134,13 @@ class Venta < ApplicationRecord
       utilidad_producto_pre_comision << Venta.group_by_month(:fecha, format: "%b %Y").sum("(h01 - h02)-( h03 * h04)".sub("h01",precio_productos[index]).sub("h02",descuento_productos[index]).sub("h03",producto).sub("h04",costo_por_cm[index]))
     end
     
+    utilidad_producto_pre_comision.each {|subhash| subhash.each{|key, value| utilidad_por_mes_todos_los_productos[key] += value}}
+    
     dinero_anadido = Venta.group_by_month(:fecha, format: "%b %Y").sum("dinero_anadido / 1.16")
     comisiones_totales = Venta.obtenComisionesDeduciblesYNoDeducibles
     gastos_totales = Venta.obtenGastosTotales
     
-    utilidad_producto_pre_comision.each {|subhash| subhash.each{|key, value| utilidad_por_mes_todos_los_productos[key] += value}}
-    
-    utilidad_por_mes_todos_los_productos.merge!(dinero_anadido) { |k, o ,n| (o + n) }
-    utilidad_por_mes_todos_los_productos.merge!(gastos_totales) { |k, o ,n| (o - n) }
-    utilidad_por_mes_todos_los_productos.merge!(comisiones_totales) { |k, o, n| (o - n) }
+    utilidad_por_mes_todos_los_productos.merge!(dinero_anadido) { |k, o ,n| (o + n) }.merge!(gastos_totales){ |k, o ,n| (o - n) }.merge!(comisiones_totales) { |k, o, n| (o - n) }
     
     return utilidad_producto_pre_comision, utilidad_por_mes_todos_los_productos
   end
