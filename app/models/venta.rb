@@ -94,6 +94,7 @@ class Venta < ApplicationRecord
     end
     
     anadir_envios_y_dinero_anadido_unitarios(suma, precio_unitario)
+    precio_unitario["total_pagado_por_cliente"] = ["S/N","Total pagado por el cliente"," - ",suma["total_pagado_por_cliente"]]
     return precio_unitario
     
   end

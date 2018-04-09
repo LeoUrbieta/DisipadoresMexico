@@ -64,21 +64,8 @@
   </div>
   
   <div class="col-md-4">
-    <% if @suma != nil %>
-      <h3 class = "centered">Conceptos</h3>
-      <div class="row">
-        <table class="table-striped table-hover table-condensed table-bordered table-centered">
-          <% @suma.each do |nombre,suma| %>
-            <tr>
-              <td> <%="#{nombre.titleize}"%> </td>
-              <td> <%="#{suma}"%> </td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-
-      <br />
-
+    <% if @precios_unitarios!= nil %>
+      <h3 class="centered">Precios Unitarios</h3>
       <div class="row">
         <table class="table-striped table-hover table-condensed table-bordered table-centered">
           <tr>
