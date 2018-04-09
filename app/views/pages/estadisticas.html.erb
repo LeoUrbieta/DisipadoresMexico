@@ -65,7 +65,7 @@
   {name: "Total Pagado Por Cliente", data: Venta.group_by_month(:fecha, format: "%b %Y").sum("total_pagado_por_cliente")},
   {name: "Subtotal", data: Venta.group_by_month(:fecha, format: "%b %Y").sum("subtotal + dinero_anadido / 1.16")},
   {name: "Comisiones", data: Venta.group_by_month(:fecha, format: "%b %Y").sum("comisiones + comision_envio")},
-  {name: "Total-post-comisiones", data: Venta.group_by_month(:fecha, format: "%b %Y").sum("total_post_comisiones / 1.16")},
+  {name: "Total-post-comisiones", data: Venta.group_by_month(:fecha, format: "%b %Y").sum("total_post_comisiones")},
   {name: "Gastos", data: Egreso.group_by_month(:fecha, format: "%b %Y").sum(:cantidad)},
   {name: "Utilidad", data: @utilidad_total_por_mes},
   ], title: "Ingresos - Gastos" %>
