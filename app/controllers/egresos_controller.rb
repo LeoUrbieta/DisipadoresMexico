@@ -47,7 +47,7 @@ class EgresosController < ApplicationController
   private
   
   def egreso_params
-    params.require(:egreso).permit(:fecha, :descripcion, :emisor, :cantidad, :notas_adicionales)
+    params.require(:egreso).permit(:fecha, :descripcion, :emisor, :cantidad, :iva_acreditable_bool, :notas_adicionales)
   end
 
 end

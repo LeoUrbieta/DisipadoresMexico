@@ -44,6 +44,12 @@
   </div>
   <div class="row">
     <div class="form-group col-sm-2">
+      <%= form.label :iva_acreditable_bool, '¿IVA acreditable?' %> <br>
+      <%= form.select :iva_acreditable_bool, [['Si',"true"],['No','false']], {} ,{:class => 'form-control'} %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
       <%= form.label :notas_adicionales, 'Notas Adicionales' %> <br>
       <%= form.text_area :notas_adicionales, :class => 'form-control' %>
     </div>
@@ -55,3 +61,5 @@
   </div>
   
 <% end %>
+
+<hr />

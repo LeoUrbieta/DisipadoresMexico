@@ -7,6 +7,7 @@
     <th>Descripcion</th>
     <th>Emisor</th>
     <th>Cantidad</th>
+    <th>¿IVA acreditable?</th>
     <th>Notas adicionales</th>
   </tr>
   
@@ -16,6 +17,7 @@
       <td><%= egreso.descripcion %></td>
       <td><%= egreso.emisor %></td>
       <td><%= number_to_currency(egreso.cantidad) %></td>
+      <td><%= egreso.iva_acreditable_bool %></td>
       <td><%= egreso.notas_adicionales %></td>
       <!--<td><%= link_to 'Ver mas detalle', egreso_path(egreso), class: 'btn btn-info' %></td> -->
       <td><%= link_to 'Editar egreso', edit_egreso_path(egreso), class: 'btn btn-warning' %></td>

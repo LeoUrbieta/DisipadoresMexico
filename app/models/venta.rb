@@ -130,9 +130,7 @@ class Venta < ApplicationRecord
     
     nombre_productos = ["longitud_28mm","longitud_50mm","longitud_75mm","longitud_87mm","longitud_100mm","longitud_136mm","longitud_220mm","cantidad_peltier","cantidad_pasta_termica"]
     precio_productos,descuento_productos, utilidad_producto_pre_comision = Array.new(3) { [] }
-    comisiones_totales = Hash.new(0)
     utilidad_por_mes_todos_los_productos = Hash.new(0)
-    dinero_anadido = Hash.new(0)
     
     
     nombre_productos.each do |producto|
@@ -147,25 +145,39 @@ class Venta < ApplicationRecord
     end
     
     dinero_anadido = Venta.group_by_month(:fecha, format: "%b %Y").sum("dinero_anadido - dinero_anadido * 0.16")
-    comisiones = Venta.obtenComisionesDeduciblesYNoDeducibles
-  
-    comisiones.each { |subhash| subhash.each {|prod, value| comisiones_totales[prod] += value}}
+    comisiones_totales = Venta.obtenComisionesDeduciblesYNoDeducibles
+    gastos_totales = Venta.obtenGastosTotales
+    
     utilidad_producto_pre_comision.each {|subhash| subhash.each{|key, value| utilidad_por_mes_todos_los_productos[key] += value}}
 
     utilidad_por_mes_todos_los_productos.merge!(dinero_anadido) { |k, o ,n| (o + n) }
+    utilidad_por_mes_todos_los_productos.merge!(gastos_totales) { |k, o ,n| (o - n) }
     
     return utilidad_producto_pre_comision, utilidad_por_mes_todos_los_productos.merge!(comisiones_totales) { |k, o, n| (o - n).round(2) }
   end
   
   def self.obtenComisionesDeduciblesYNoDeducibles
     comisiones = Array.new
+    comisiones_totales = Hash.new(0)
     
-    comisiones << Venta.where(iva_comision_bool: true).group_by_month(:fecha, format: "%b %Y").sum("comisiones - comisiones * 0.16")
-    comisiones << Venta.where(iva_envio_bool: true).group_by_month(:fecha, format: "%b %Y").sum("comision_envio - comision_envio * 0.16")
+    comisiones << Venta.where(iva_comision_bool: true).group_by_month(:fecha, format: "%b %Y").sum("comisiones / 1.16")
+    comisiones << Venta.where(iva_envio_bool: true).group_by_month(:fecha, format: "%b %Y").sum("comision_envio / 1.16")
     comisiones << Venta.where(iva_comision_bool: false).group_by_month(:fecha, format: "%b %Y").sum("comisiones")
     comisiones << Venta.where(iva_envio_bool: false).group_by_month(:fecha, format: "%b %Y").sum("comision_envio")
     
-    return comisiones
+    comisiones.each { |subhash| subhash.each {|prod, value| comisiones_totales[prod] += value}}
+    return comisiones_totales
+  end
+  
+  def self.obtenGastosTotales
+    egresos = Array.new
+    egresos_totales = Hash.new(0)
+    
+    egresos << Egreso.where(iva_acreditable_bool: true).group_by_month(:fecha, format: "%b %Y").sum("cantidad / 1.16")
+    egresos << Egreso.where(iva_acreditable_bool: false).group_by_month(:fecha, format: "%b %Y").sum("cantidad")
+    
+    egresos.each { |subhash| subhash.each {|prod, value| egresos_totales[prod] += value}}
+    return egresos_totales
   end
   
 end
