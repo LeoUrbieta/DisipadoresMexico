@@ -9,8 +9,7 @@ class Venta < ApplicationRecord
             :precio_pasta_termica, :descuento_75mm, :descuento_87mm, :descuento_136mm,
             :descuento_28mm, :descuento_50mm, :descuento_100mm, :descuento_220mm,
             :descuento_peltier, :descuento_pasta_termica, 
-            :envio_explicito, 
-            :dinero_anadido, :subtotal, :total_productos, :total_pagado_por_cliente,
+            :envio_explicito, :dinero_anadido, :subtotal, :total_productos, :total_pagado_por_cliente,
             :comisiones, :comision_envio, :total_post_comisiones,
             :cortes_75mm, :cortes_87mm, :cortes_136mm, :cortes_28mm, :cortes_50mm,
             :cortes_100mm, :cortes_220mm,
@@ -133,6 +132,7 @@ class Venta < ApplicationRecord
     precio_productos,descuento_productos, utilidad_producto_pre_comision = Array.new(3) { [] }
     comisiones_totales = Hash.new(0)
     utilidad_por_mes_todos_los_productos = Hash.new(0)
+    dinero_anadido = Hash.new(0)
     
     
     nombre_productos.each do |producto|
@@ -146,10 +146,13 @@ class Venta < ApplicationRecord
       utilidad_producto_pre_comision << Venta.group_by_month(:fecha, format: "%b %Y").sum("(h01 - h02)-( h03 * h04)".sub("h01",precio_productos[index]).sub("h02",descuento_productos[index]).sub("h03",producto).sub("h04",costo_por_cm[index]))
     end
     
+    dinero_anadido = Venta.group_by_month(:fecha, format: "%b %Y").sum("dinero_anadido - dinero_anadido * 0.16")
     comisiones = Venta.obtenComisionesDeduciblesYNoDeducibles
   
     comisiones.each { |subhash| subhash.each {|prod, value| comisiones_totales[prod] += value}}
     utilidad_producto_pre_comision.each {|subhash| subhash.each{|key, value| utilidad_por_mes_todos_los_productos[key] += value}}
+
+    utilidad_por_mes_todos_los_productos.merge!(dinero_anadido) { |k, o ,n| (o + n) }
     
     return utilidad_producto_pre_comision, utilidad_por_mes_todos_los_productos.merge!(comisiones_totales) { |k, o, n| (o - n).round(2) }
   end
