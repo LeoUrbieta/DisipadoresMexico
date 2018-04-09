@@ -109,16 +109,6 @@ class Venta < ApplicationRecord
     
   end
   
-  def self.total_disponible(ventas,egresos)
-    
-    
-    hash_total_post_comisiones_por_mes = ventas.group_by_month(:fecha, format: "%b %Y").sum("total_post_comisiones")
-    hash_egresos_por_mes = egresos.group_by_month(:fecha, format: "%b %Y").sum("cantidad")
-    
-    return hash_total_post_comisiones_por_mes.merge!(hash_egresos_por_mes) { |k, o, n| o - n }
-    
-  end
-  
   def self.dinero_disponible_mercado_libre(ventas)
     
     ventas_mercado_libre = ventas.where("medio_de_venta = :medio_venta",{medio_venta: "MercadoLibre"})
@@ -144,16 +134,17 @@ class Venta < ApplicationRecord
       utilidad_producto_pre_comision << Venta.group_by_month(:fecha, format: "%b %Y").sum("(h01 - h02)-( h03 * h04)".sub("h01",precio_productos[index]).sub("h02",descuento_productos[index]).sub("h03",producto).sub("h04",costo_por_cm[index]))
     end
     
-    dinero_anadido = Venta.group_by_month(:fecha, format: "%b %Y").sum("dinero_anadido - dinero_anadido * 0.16")
+    dinero_anadido = Venta.group_by_month(:fecha, format: "%b %Y").sum("dinero_anadido / 1.16")
     comisiones_totales = Venta.obtenComisionesDeduciblesYNoDeducibles
     gastos_totales = Venta.obtenGastosTotales
     
     utilidad_producto_pre_comision.each {|subhash| subhash.each{|key, value| utilidad_por_mes_todos_los_productos[key] += value}}
-
+    
     utilidad_por_mes_todos_los_productos.merge!(dinero_anadido) { |k, o ,n| (o + n) }
     utilidad_por_mes_todos_los_productos.merge!(gastos_totales) { |k, o ,n| (o - n) }
+    utilidad_por_mes_todos_los_productos.merge!(comisiones_totales) { |k, o, n| (o - n) }
     
-    return utilidad_producto_pre_comision, utilidad_por_mes_todos_los_productos.merge!(comisiones_totales) { |k, o, n| (o - n).round(2) }
+    return utilidad_producto_pre_comision, utilidad_por_mes_todos_los_productos
   end
   
   def self.obtenComisionesDeduciblesYNoDeducibles

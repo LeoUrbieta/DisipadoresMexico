@@ -31,7 +31,6 @@ class PagesController < ApplicationController
   end
   
   def estadisticas
-    @dinero_disponible = Venta.total_disponible(Venta.all,Egreso.all)
     @cantidad_restante = Producto.cantidad_restante()
     @utilidad_por_producto_por_mes, @utilidad_total_por_mes = Venta.utilidad
   end
