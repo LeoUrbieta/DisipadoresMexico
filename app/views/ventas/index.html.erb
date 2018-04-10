@@ -15,12 +15,19 @@
     <th>ID Cliente</th>
     <th>Cliente</th>
     <th>28mm Longitud (cm)</th>
+    <th>28mm Cortes</th>
     <th>50mm Longitud (cm)</th>
+    <th>50mm Cortes</th>
     <th>75mm Longitud (cm)</th>
+    <th>75mm Cortes</th>
     <th>87mm Longitud (cm)</th>
+    <th>87mm Cortes</th>
     <th>100mm Longitud (cm)</th>
+    <th>100mm Cortes</th>
     <th>136mm Longitud (cm)</th>
+    <th>136mm Cortes</th>
     <th>220mm Longitud (cm)</th>
+    <th>220mm Cortes</th>
     <th>Peltier Cantidad</th>
     <th>Pasta térmica Cantidad</th>
     <th>Disipador 28mm Precio</th>
@@ -60,12 +67,19 @@
       <td><%= venta.cliente.id%></td>
       <td><%= link_to venta.cliente.nombre, cliente_path(venta.cliente)%></td>
       <td><%= venta.longitud_28mm %></td>
+      <td><%= venta.cortes_28mm %></td>
       <td><%= venta.longitud_50mm %></td>
+      <td><%= venta.cortes_50mm %></td>
       <td><%= venta.longitud_75mm %></td>
+      <td><%= venta.cortes_75mm %></td>
       <td><%= venta.longitud_87mm %></td>
+      <td><%= venta.cortes_87mm %></td>
       <td><%= venta.longitud_100mm %></td>
+      <td><%= venta.cortes_100mm %></td>
       <td><%= venta.longitud_136mm %></td>
+      <td><%= venta.cortes_136mm %></td>
       <td><%= venta.longitud_220mm %></td>
+      <td><%= venta.cortes_220mm %></td>
       <td><%= venta.cantidad_peltier %></td>
       <td><%= venta.cantidad_pasta_termica %></td>
       <td><%= number_to_currency(venta.precio_28mm) %></td>
