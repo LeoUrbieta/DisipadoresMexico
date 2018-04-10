@@ -136,11 +136,12 @@ class Venta < ApplicationRecord
     
     utilidad_producto_pre_comision.each {|subhash| subhash.each{|key, value| utilidad_por_mes_todos_los_productos[key] += value}}
     
+    envio_explicito = Venta.group_by_month(:fecha, format: "%b %Y").sum("envio_explicito / 1.16")
     dinero_anadido = Venta.group_by_month(:fecha, format: "%b %Y").sum("dinero_anadido / 1.16")
     comisiones_totales = Venta.obtenComisionesDeduciblesYNoDeducibles
     gastos_totales = Venta.obtenGastosTotales
     
-    utilidad_por_mes_todos_los_productos.merge!(dinero_anadido) { |k, o ,n| (o + n) }.merge!(gastos_totales){ |k, o ,n| (o - n) }.merge!(comisiones_totales) { |k, o, n| (o - n) }
+    utilidad_por_mes_todos_los_productos.merge!(envio_explicito) { |k, o ,n| (o + n) }.merge!(dinero_anadido) { |k, o ,n| (o + n) }.merge!(gastos_totales){ |k, o ,n| (o - n) }.merge!(comisiones_totales) { |k, o, n| (o - n) }
     
     return utilidad_producto_pre_comision, utilidad_por_mes_todos_los_productos
   end
