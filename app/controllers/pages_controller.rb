@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   
   def ingresos
-    @claveSAT = Producto.distinct.select("nombre_producto, clave_sat")
+    @claveSAT = Producto.select("nombre_producto, clave_sat").distinct
   end
 
   def buscar
@@ -18,7 +18,7 @@ class PagesController < ApplicationController
       @fecha_inicio = Date::civil(fecha_inicial[2].to_i, fecha_inicial[1].to_i,fecha_inicial[0].to_i)
       @fecha_final = Date::civil(fecha_final[2].to_i, fecha_final[1].to_i, fecha_final[0].to_i)
       
-      @claveSAT = Producto.distinct.select("nombre_producto, clave_sat")
+      @claveSAT = Producto.select("nombre_producto, clave_sat").distinct
       @ventas = Venta.busca_productos(@fecha_inicio,@fecha_final,params[:facturado]).order("fecha")
       suma = Venta.suma_productos(@ventas)
       @precios_unitarios = Venta.incluye_precio_unitario(suma)
