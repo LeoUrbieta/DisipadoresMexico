@@ -7,6 +7,8 @@
       <th>Nombre de Producto</th>
       <th>Cantidad Comprada</th>
       <th>Precio Pagado</th>
+      <th>Costo Unitario</th>
+      <th>¿Costo actual?</th>
       <th>Columna Relacionada en Ventas</th>
       <th>Clave SAT</th>
       <th>Precio (0 - 24cm)</th>
@@ -27,6 +29,8 @@
         <td><%= producto.nombre_producto %></td>
         <td><%= producto.cantidad_comprada%></td>
         <td><%= number_to_currency(producto.precio)%></td>
+        <td><%= number_to_currency(producto.costo_unitario)%></td>
+        <td><%= producto.costo_actual%></td>
         <td><%= producto.columna_relacionada_en_ventas %></td>
         <td><%= producto.clave_sat %></td>
         <td><%= number_to_currency(producto.precio_1) %></td>

@@ -2,8 +2,10 @@ class Producto < ApplicationRecord
   
   validates :nombre_producto, :precio_1, :precio_2, :precio_3,
             :precio_4, :precio_5, :precio_6, :precio_7, :precio_8,
-            :cantidad_comprada, :perdidas,
+            :cantidad_comprada, :perdidas, :costo_unitario,
              presence: true
+             
+  validates_inclusion_of :costo_actual, in: [true, false]
              
   #default_scope -> { order(fecha_de_compra: :asc)}
   
@@ -103,7 +105,18 @@ class Producto < ApplicationRecord
   def self.quitaLongitudYPonCortesEnString (nombre)
     articulo = nombre[8..-1]
     return "cortes" << articulo
+  end
+  
+  def self.fetchCostos()
+    costos_actuales = Hash.new
     
+    productos_con_costo_actual = Producto.where("costo_actual = :costo_boolean",{costo_boolean: true})
+    
+    productos_con_costo_actual.each do |producto|
+      costos_actuales[producto.columna_relacionada_en_ventas.sub("longitud","costo").sub("cantidad","costo")] = producto.costo_unitario
+    end
+    
+    return costos_actuales
   end
   
 end

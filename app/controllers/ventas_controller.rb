@@ -20,7 +20,8 @@ class VentasController < ApplicationController
   
   def create
     @clientes = Cliente.paginate(page: params[:page], per_page: 10)
-    @venta = Venta.new(venta_params)
+    costo_productos = Producto.fetchCostos()
+    @venta = Venta.new(venta_params.merge(costo_productos))
     @precios = Producto.busca_precios()
     
     if @venta.save
@@ -34,8 +35,9 @@ class VentasController < ApplicationController
     @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.find(params[:id])
     @precios = Producto.busca_precios()
+    costo_productos = Producto.fetchCostos()
     
-    if @venta.update(venta_params)
+    if @venta.update(venta_params.merge(costo_productos))
       redirect_to ventas_path
     else
       render 'edit'

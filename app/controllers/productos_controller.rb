@@ -55,7 +55,8 @@ class ProductosController < ApplicationController
     params.require(:producto).permit(:nombre_producto, :clave_sat, :precio_1, :precio_2, :precio_3,
                                      :precio_4, :precio_5, :precio_6, :precio_7, :precio_8,
                                      :perdidas, :cantidad_comprada, :precio,
-                                     :fecha_de_compra, :notas_adicionales, :columna_relacionada_en_ventas)
+                                     :fecha_de_compra, :notas_adicionales, :columna_relacionada_en_ventas,
+                                     :costo_unitario, :costo_actual)
     
   end
   

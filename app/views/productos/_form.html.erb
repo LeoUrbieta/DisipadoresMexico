@@ -51,6 +51,18 @@
   </div>
   <div class="row">
     <div class="form-group col-sm-2">
+      <%= form.label :costo_unitario, 'Costo Unitario' %>
+      <%= form.text_field :costo_unitario, :class => 'form-control'  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= form.label :costo_actual, '¿Costo actual?' %><br>
+      <%= form.select :costo_actual, [['Si','true'],['No','false']], :class => 'form-control ' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
       <%= form.label :clave_sat, 'Clave SAT' %>
       <%= form.text_field :clave_sat, :class => 'form-control'  %>
     </div>

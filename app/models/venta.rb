@@ -119,19 +119,20 @@ class Venta < ApplicationRecord
   def self.utilidad
     
     nombre_productos = ["longitud_28mm","longitud_50mm","longitud_75mm","longitud_87mm","longitud_100mm","longitud_136mm","longitud_220mm","cantidad_peltier","cantidad_pasta_termica"]
-    precio_productos,descuento_productos, utilidad_producto_pre_comision = Array.new(3) { [] }
+    precio_productos,descuento_productos, costo_productos, utilidad_producto_pre_comision = Array.new(4) { [] }
     utilidad_por_mes_todos_los_productos = Hash.new(0)
     
     
     nombre_productos.each do |producto|
       precio_productos << producto.sub("longitud","precio").sub("cantidad","precio")
       descuento_productos << producto.sub("longitud","descuento").sub("cantidad","descuento")
+      costo_productos << producto.sub("longitud","costo").sub("cantidad","costo")
     end
     
-    costo_por_cm = ["0.73","2.03","1.66","2.65","3.11","6.94","7.17","39.59","40.0"]
+    #costo_por_cm = ["0.73","2.03","1.66","2.65","3.11","6.94","7.17","39.59","40.0"]
     
     nombre_productos.each_with_index do |producto,index|
-      utilidad_producto_pre_comision << Venta.group_by_month(:fecha, format: "%b %Y").sum("(h01 - h02)-( h03 * h04)".sub("h01",precio_productos[index]).sub("h02",descuento_productos[index]).sub("h03",producto).sub("h04",costo_por_cm[index]))
+      utilidad_producto_pre_comision << Venta.group_by_month(:fecha, format: "%b %Y").sum("(h01 - h02)-( h03 * h04)".sub("h01",precio_productos[index]).sub("h02",descuento_productos[index]).sub("h03",producto).sub("h04",costo_productos[index]))
     end
     
     utilidad_producto_pre_comision.each {|subhash| subhash.each{|key, value| utilidad_por_mes_todos_los_productos[key] += value}}
