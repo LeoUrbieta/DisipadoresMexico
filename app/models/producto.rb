@@ -83,7 +83,7 @@ class Producto < ApplicationRecord
     
     precios = Hash.new
     
-    Producto.all.order(fecha_de_compra: :asc).each do |producto|
+    Producto.where("costo_actual = :costo_boolean",{costo_boolean: true}).each do |producto|
       
       array_precios = Array.new
       array_precios[0] = producto.precio_1
@@ -96,7 +96,7 @@ class Producto < ApplicationRecord
       array_precios[7] = producto.precio_8
       precios[producto.columna_relacionada_en_ventas] = array_precios
     end
-    
+
     return precios
   end
   
