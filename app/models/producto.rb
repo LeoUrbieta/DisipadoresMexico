@@ -83,7 +83,7 @@ class Producto < ApplicationRecord
     
     precios = Hash.new
     
-    Producto.all.each do |producto|
+    Producto.all.order(fecha_de_compra: :asc).each do |producto|
       
       array_precios = Array.new
       array_precios[0] = producto.precio_1
