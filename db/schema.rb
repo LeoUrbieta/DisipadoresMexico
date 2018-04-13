@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409203423) do
+ActiveRecord::Schema.define(version: 20180413140459) do
 
   create_table "clientes", force: :cascade do |t|
     t.string "nombre"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 20180409203423) do
     t.string "precio_6"
     t.string "precio_7"
     t.string "precio_8"
+    t.decimal "costo_unitario"
+    t.boolean "costo_actual"
   end
 
   create_table "ventas", force: :cascade do |t|
@@ -119,6 +121,15 @@ ActiveRecord::Schema.define(version: 20180409203423) do
     t.decimal "iva_anadido"
     t.boolean "iva_comision_bool"
     t.boolean "iva_envio_bool"
+    t.decimal "costo_28mm"
+    t.decimal "costo_50mm"
+    t.decimal "costo_75mm"
+    t.decimal "costo_87mm"
+    t.decimal "costo_100mm"
+    t.decimal "costo_136mm"
+    t.decimal "costo_220mm"
+    t.decimal "costo_peltier"
+    t.decimal "costo_pasta_termica"
   end
 
 end
