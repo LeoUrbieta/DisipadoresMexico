@@ -52,7 +52,9 @@ class ProductosController < ApplicationController
       @producto.destroy
       redirect_to productos_path
     else
-      flash[:notice] = "Ese producto no puede eliminarse ya que es único"
+      flash[:notice] = "Ese producto no puede eliminarse ya que es único. 
+                        Si 'Columna Relacionada En Ventas' esta vacía, prueba llenándola 
+                        con un producto y después eliminar el producto. "
       redirect_to productos_path
     end
       
