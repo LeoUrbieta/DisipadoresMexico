@@ -76,6 +76,8 @@ class ProductosController < ApplicationController
     if esUnico == "true"
       params[:producto][:costo_actual] = "true"
       return true
+    elsif params[:producto][:columna_relacionada_en_ventas].empty?
+      params[:producto][:costo_actual] = "false"
     end
   end
   
