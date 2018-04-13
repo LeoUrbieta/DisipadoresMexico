@@ -119,4 +119,45 @@ class Producto < ApplicationRecord
     return costos_actuales
   end
   
+  def self.asignaTrueAUnSoloProducto(costo_actual_boolean, nombre_producto, index_producto)
+    
+    if(costo_actual_boolean == "true")
+      producto_con_true_actual = Producto.where("costo_actual = :costo_boolean AND columna_relacionada_en_ventas = :nombre AND id != :index",{costo_boolean: true, nombre: nombre_producto, index: index_producto})
+      unless producto_con_true_actual.empty?
+        producto_a_cambiar = Producto.find(producto_con_true_actual.last.id)
+        producto_a_cambiar.costo_actual = false
+        producto_a_cambiar.save
+      end
+      return "true"
+    else
+      producto_con_true_actual = Producto.where("costo_actual = :costo_boolean AND columna_relacionada_en_ventas = :nombre AND id != :index",{costo_boolean: true, nombre: nombre_producto, index: index_producto})
+      if index_producto.nil?
+        return "false"
+      elsif producto_con_true_actual.empty? 
+        return "true"
+      end
+    end
+  end
+  
+  def self.buscaSiEsUnicoParaEliminar(ident)
+    producto = Producto.where("columna_relacionada_en_ventas = :producto AND id != :index",{producto: Producto.find(ident).columna_relacionada_en_ventas, index: ident})
+    if producto.empty? 
+      return true
+    else
+      return false
+    end
+  end
+  
+  def self.asignaTrueAOtroProducto(ident)
+    if Producto.find(ident).costo_actual == "false"
+      return false
+    else
+      producto_a_cambiar = Producto.where("columna_relacionada_en_ventas = :producto AND id != :index",{producto: Producto.find(ident).columna_relacionada_en_ventas, index: ident})
+      producto = Producto.find(producto_a_cambiar.last.id)
+      producto.costo_actual = true
+      producto.save
+    end
+  end
+    
+  
 end

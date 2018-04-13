@@ -18,6 +18,7 @@ class ProductosController < ApplicationController
   
   def create
     @indices = Producto.buscar_indices(Venta.column_names)
+    asignaTrueAUnicoProducto
     @producto = Producto.new(producto_params)
     
     if @producto.save
@@ -30,6 +31,7 @@ class ProductosController < ApplicationController
   def update
     @indices = Producto.buscar_indices(Venta.column_names)
     @producto = Producto.find(params[:id])
+    asignaTrueAUnicoProducto
     
     if @producto.update(producto_params)
       redirect_to productos_path
@@ -43,9 +45,18 @@ class ProductosController < ApplicationController
   end
   
   def destroy
+    @productos = Producto.all.order("fecha_de_compra")
     @producto = Producto.find(params[:id])
-    @producto.destroy
-    redirect_to productos_path
+    unless esUnicoProducto(params[:id])
+      asignaOtroProducto(params[:id])
+      @producto.destroy
+      redirect_to productos_path
+    else
+      flash[:notice] = "Ese producto no puede eliminarse ya que es único"
+      redirect_to productos_path
+    end
+      
+    
   end
   
   private
@@ -58,6 +69,22 @@ class ProductosController < ApplicationController
                                      :fecha_de_compra, :notas_adicionales, :columna_relacionada_en_ventas,
                                      :costo_unitario, :costo_actual)
     
+  end
+  
+  def asignaTrueAUnicoProducto
+    esUnico = Producto.asignaTrueAUnSoloProducto(params[:producto][:costo_actual],params[:producto][:columna_relacionada_en_ventas],params[:id])
+    if esUnico == "true"
+      params[:producto][:costo_actual] = "true"
+      return true
+    end
+  end
+  
+  def esUnicoProducto(id)
+    return Producto.buscaSiEsUnicoParaEliminar(id)
+  end
+  
+  def asignaOtroProducto(id)
+    Producto.asignaTrueAOtroProducto(id)
   end
   
 end
