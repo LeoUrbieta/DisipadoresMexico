@@ -16,26 +16,36 @@ class Venta < ApplicationRecord
              presence: true, numericality: true
              
   
-  def self.busca_productos(fecha_inicial, fecha_final, factura)
+  def self.busca_productos(fecha_inicial, fecha_final, filtro)
     tipo_de_busqueda = "fecha >= :start_date AND fecha <= :end_date"
-    facturado_bool = factura == "true"
     
-    if(factura == "")
+    if filtro == "sinFiltro"
       return Venta.where(tipo_de_busqueda,
       {start_date: fecha_inicial, end_date: fecha_final})
-    end
-    
-    if((factura == "true") || (factura == "false"))
+    elsif filtro == "facturado"
       tipo_de_busqueda << " AND facturado = :facturado_boolean"
       return Venta.where(tipo_de_busqueda,
              {start_date: fecha_inicial, end_date: fecha_final, 
-             facturado_boolean: facturado_bool})
+             facturado_boolean: true})
+    elsif filtro == "noFacturado"
+      tipo_de_busqueda << " AND facturado = :facturado_boolean"
+      return Venta.where(tipo_de_busqueda,
+             {start_date: fecha_inicial, end_date: fecha_final, 
+             facturado_boolean: false})
+    elsif filtro == "efectivoNoFacturado"
+      tipo_de_busqueda << " AND facturado = :facturado_boolean AND medio_de_venta = :medio_efectivo"
+      return Venta.where(tipo_de_busqueda,
+             {start_date: fecha_inicial, end_date: fecha_final, 
+             facturado_boolean: false, medio_efectivo: "Efectivo"})
+    elsif filtro == "noFacturadoSinEfectivo"
+      tipo_de_busqueda << " AND facturado = :facturado_boolean AND medio_de_venta != :medio_efectivo"
+      return Venta.where(tipo_de_busqueda,
+             {start_date: fecha_inicial, end_date: fecha_final, 
+             facturado_boolean: false, medio_efectivo: "Efectivo"})
+    else
+      return Venta.where(tipo_de_busqueda,
+      {start_date: fecha_inicial, end_date: fecha_final})
     end
-    
-    Venta.where("fecha >= :start_date AND fecha <= :end_date 
-    AND facturado = :facturado_boolean",
-    {start_date: fecha_inicial, end_date: fecha_final, 
-    facturado_boolean: facturado_bool})
   end
   
   def self.suma_productos(ventas)

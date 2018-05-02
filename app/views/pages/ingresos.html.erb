@@ -11,8 +11,8 @@
       <%= form.text_field :fecha_final, data:{ provide:'datepicker' }, :class => 'datepicker', :id => 'final_datepicker', :readonly => 'readonly'  %>
     </p>
     <p>
-      <%= form.label(:facturado, "¿Facturado?") %>
-      <%= form.select(:facturado, [[],['Si','true'],['No','false']]) %>
+      <%= form.label(:filtro, "Filtro: ") %>
+      <%= form.select(:filtro, [['Sin Filtro','sinFiltro'],['Ingreso Facturado','facturado'],['Ingreso No Facturado Total','noFacturado'],['Ingreso No Facturado Quitando Efectivo','noFacturadoSinEfectivo'],['Ingreso En Efectivo No Facturado','efectivoNoFacturado']]) %>
     </p>
     <p>
       <%= form.submit("Buscar") %>
@@ -34,6 +34,7 @@
         <th>Nombre de Cliente</th>
         <th>Monto de la Venta</th>
         <th>¿Facturado?</th>
+        <th>Medio de Venta</th>
       </tr>
     
       <% @ventas.each do |venta| %>
@@ -42,6 +43,7 @@
           <td><%= venta.cliente.nombre %></td> 
           <td><%= venta.total_pagado_por_cliente%></td>
           <td><%= venta.facturado %></td>
+          <td><%= venta.medio_de_venta %></td>
           <% end %>
         </tr>
       <% end %>

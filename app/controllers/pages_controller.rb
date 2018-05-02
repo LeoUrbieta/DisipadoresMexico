@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
   def buscar
     
-    if( params['fecha_inicial'].empty?)
+    if params['fecha_inicial'].empty? || params['fecha_final'].empty?
     
       render 'ingresos'
       
@@ -19,7 +19,7 @@ class PagesController < ApplicationController
       @fecha_final = Date::civil(fecha_final[2].to_i, fecha_final[1].to_i, fecha_final[0].to_i)
       
       @claveSAT = Producto.select("nombre_producto,clave_sat").distinct
-      @ventas = Venta.busca_productos(@fecha_inicio,@fecha_final,params[:facturado]).order("fecha")
+      @ventas = Venta.busca_productos(@fecha_inicio,@fecha_final,params[:filtro]).order("fecha")
       suma = Venta.suma_productos(@ventas)
       @precios_unitarios = Venta.incluye_precio_unitario(suma)
       @dinero_mercado_libre = Venta.dinero_disponible_mercado_libre(@ventas)

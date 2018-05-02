@@ -1,0 +1,2 @@
+rails generate migration AddAlgoAAlgoMas
+rails destroy migration AddAlgoAAlgoMas
