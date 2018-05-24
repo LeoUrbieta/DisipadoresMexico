@@ -35,5 +35,9 @@ class PagesController < ApplicationController
     @utilidad_por_producto_por_mes, @utilidad_total_por_mes = Venta.utilidad
   end
   
+  def calculadora
+    @precios = Producto.busca_precios()
+  end
+  
 end
 

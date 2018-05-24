@@ -1,15 +1,9 @@
-<%= column_chart [
-  {name: "28mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_28mm)},
-  {name: "50mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_50mm)},
-  {name: "75mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_75mm)},
-  {name: "87mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_87mm)},
-  {name: "100mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_100mm)},
-  {name: "136mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_136mm)},
-  {name: "220mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_220mm)},
-  {name: "Peltier", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_peltier)},
-  {name: "Pasta Térmica", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_pasta_termica)},
-  ], title: "Ingreso por Artículo" 
-%>
+<%= column_chart [ 
+  {name: "Total Pagado Por Cliente", data: Venta.group_by_month(:fecha, format: "%b %Y").sum("total_pagado_por_cliente")},
+  {name: "Subtotal", data: Venta.group_by_month(:fecha, format: "%b %Y").sum("(subtotal + dinero_anadido + envio_explicito) / 1.16")},
+  {name: "Gastos", data: Egreso.group_by_month(:fecha, format: "%b %Y").sum(:cantidad)},
+  {name: "Utilidad", data: @utilidad_total_por_mes},
+  ], title: "Ingresos - Gastos" %>
 <br>
 <%= column_chart [
   {name: "28mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:longitud_28mm)},
@@ -61,12 +55,18 @@
 </table>
   
 <br>
-<%= column_chart [ 
-  {name: "Total Pagado Por Cliente", data: Venta.group_by_month(:fecha, format: "%b %Y").sum("total_pagado_por_cliente")},
-  {name: "Subtotal", data: Venta.group_by_month(:fecha, format: "%b %Y").sum("(subtotal + dinero_anadido + envio_explicito) / 1.16")},
-  {name: "Gastos", data: Egreso.group_by_month(:fecha, format: "%b %Y").sum(:cantidad)},
-  {name: "Utilidad", data: @utilidad_total_por_mes},
-  ], title: "Ingresos - Gastos" %>
+<%= column_chart [
+  {name: "28mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_28mm)},
+  {name: "50mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_50mm)},
+  {name: "75mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_75mm)},
+  {name: "87mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_87mm)},
+  {name: "100mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_100mm)},
+  {name: "136mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_136mm)},
+  {name: "220mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_220mm)},
+  {name: "Peltier", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_peltier)},
+  {name: "Pasta Térmica", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_pasta_termica)},
+  ], title: "Ingreso por Artículo" 
+%>
 <br>
 <%= column_chart [ 
   {name: "28mm", data: @utilidad_por_producto_por_mes[0]},
@@ -78,7 +78,7 @@
   {name: "220mm", data: @utilidad_por_producto_por_mes[6]},
   {name: "Peltier", data: @utilidad_por_producto_por_mes[7]},
   {name: "Pasta térmica", data: @utilidad_por_producto_por_mes[8]},
-  ], title: "Utilidad por producto" %>
+  ], title: "Utilidad por artículo" %>
 
 
 
