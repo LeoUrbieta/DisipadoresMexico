@@ -2,10 +2,10 @@
 
 <hr/>
 
-<div class="row">
-    <div class="col-md-2">
+<div class="row" id="clone_0">
+    <div class="form-group col-md-2">
       <%= label :producto, :numero, 'Producto' %><br>
-      <%= select(:producto, :numero, nil,{},{:class => 'form-control', :id => 'tipo_producto'}) do %>
+      <%= select(:producto, :numero, nil,{},{:class => 'form-control lista_productos_calculadora', :id => 'tipo_producto_0'}) do %>
         <% if @precios.keys != nil %>
           <% @precios.keys.each do |c| %>
             <% if c.include? "longitud" %>
@@ -15,31 +15,46 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-md-1">
+    <div class="form-group col-md-1">
       <%= label :producto, :precio_unitario, 'Precio U.' %> <br>
-      <%= text_field :producto, :precio_unitario, {:class => 'form-control', :readonly => 'readonly', :id => 'precio_unitario_calculadora'} %>
+      <%= text_field :producto, :precio_unitario, {:class => 'form-control', :readonly => 'readonly', :id => 'precio_unitario_calculadora_0'} %>
     </div>
-    <div class="col-md-1">
+    <div class="form-group col-md-1">
       <%= label :producto, :cantidad, 'Longitud' %> <br>
-      <%= text_field :producto, :cantidad, {:class => 'form-control', :id => 'cantidad_calculadora'} %>
+      <%= text_field :producto, :cantidad, {:class => 'form-control campo_usuario', :id => 'cantidad_calculadora_0'} %>
     </div>
-    <div class="col-md-1">
+    <div class="form-group col-md-1">
       <%= label :producto, :cortes, 'Cortes' %> <br>
-      <%= text_field :producto, :cortes, {:class => 'form-control', :id => 'numero_cortes_calculadora'} %>
+      <%= text_field :producto, :cortes, {:class => 'form-control campo_usuario', :id => 'numero_cortes_calculadora_0'} %>
     </div>
-    <div class="col-md-1">
+    <div class="form-group col-md-1">
       <%= label :producto, :precio_sin_iva, 'Precio' %> <br>
-      <%= text_field :producto, :precio_sin_iva, {:class => 'form-control', :id => 'precio_sin_iva', :readonly => 'readonly'} %>
+      <%= text_field :producto, :precio_sin_iva, {:class => 'form-control', :id => 'precio_sin_iva_0', :readonly => 'readonly'} %>
     </div>
-    <div class="col-md-1">
+    <div class="form-group col-md-1">
       <%= label :producto, :iva, 'IVA' %> <br>
-      <%= text_field :producto, :iva, {:class => 'form-control', :id => 'iva', :readonly => 'readonly'} %>
+      <%= text_field :producto, :iva, {:class => 'form-control', :id => 'iva_0', :readonly => 'readonly'} %>
     </div>
-    <div class="col-md-1">
+    <div class="form-group col-md-1">
       <%= label :producto, :precio_neto, 'Precio Neto' %> <br>
-      <%= text_field :producto, :precio_neto, {:class => 'form-control', :id => 'precio_neto', :readonly => 'readonly'} %>
+      <%= text_field :producto, :precio_neto, {:class => 'form-control', :id => 'precio_neto_0', :readonly => 'readonly'} %>
     </div>
 </div>
+
+<div id="segundo_div">
+  
+</div>
+
+<br>
+
+<button class="btn btn-success" id="boton_agregar_campos">
+  Da click aquí para agregar mas campos
+</button>
+<br/>
+<br/>
+<button style="display: none" class="btn btn-danger" id="boton_quitar_campos">
+  Da click aquí para quitar campos
+</button>
 
 <script type="text/javascript">
 
