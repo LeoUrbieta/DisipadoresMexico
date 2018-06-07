@@ -21,7 +21,7 @@ $(document).on 'turbolinks:load', ->
     $('#final_datepicker').datepicker('update', fecha_inicial)
     $('#final_datepicker').datepicker('setStartDate', fecha_inicial)
   
-  $('.campo_usuario').on 'keypress', (e) ->
+  $('.campo_usuario').on 'keydown', (e) ->
     $(@).off().on "input", ->
       calculaPrecioParaProductos($(@))
 
