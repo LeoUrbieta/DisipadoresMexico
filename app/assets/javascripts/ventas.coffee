@@ -11,7 +11,7 @@ $(document).on 'turbolinks:load', ->
     nombres = obtenerNombresDeCampos(@)
     actualizaYAnadeIVADeEnviosYOtros('select[name="' + nombres[0] + '"]',$(@),'input[name="' + nombres[1] + '"]','input[name="' + nombres[2] + '"]')
  
-  $('.cantidad,.descuento,.comisiones,.iva').on "keypress", (e) ->
+  $('.cantidad,.descuento,.comisiones,.iva').on "keydown", (e) ->
     if (noEsNumero(e))
       false
     else
