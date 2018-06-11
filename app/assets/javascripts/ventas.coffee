@@ -12,19 +12,16 @@ $(document).on 'turbolinks:load', ->
     actualizaYAnadeIVADeEnviosYOtros('select[name="' + nombres[0] + '"]',$(@),'input[name="' + nombres[1] + '"]','input[name="' + nombres[2] + '"]')
  
   $('.cantidad,.descuento,.comisiones,.iva').on "keydown", (e) ->
-    if (noEsNumero(e))
-      false
-    else
-      $(@).off().on "input", ->
-        if($(@).attr('class').indexOf("cantidad") != -1)
-          nombre_producto = extraeNombreProductoDeSelect(@)
-          precioPorActualizar = Number($('select[name="precio[' + nombre_producto + ']"]').val())
-          actualizaPrecio(@,precioPorActualizar)
-        else if($(@).attr('class').indexOf("iva") != -1)
-          valor_campo = Number($(@).val())
-          nombres = obtenerNombresDeCampos(@)
-          actualizaYAnadeIVADeEnviosYOtros('select[name="' + nombres[0] + '"]',$(@),'input[name="' + nombres[1] + '"]','input[name="' + nombres[2] + '"]')
-        sumaTodosCampos()
+    $(@).off().on "input", ->
+      if($(@).attr('class').indexOf("cantidad") != -1)
+        nombre_producto = extraeNombreProductoDeSelect(@)
+        precioPorActualizar = Number($('select[name="precio[' + nombre_producto + ']"]').val())
+        actualizaPrecio(@,precioPorActualizar)
+      else if($(@).attr('class').indexOf("iva") != -1)
+        valor_campo = Number($(@).val())
+        nombres = obtenerNombresDeCampos(@)
+        actualizaYAnadeIVADeEnviosYOtros('select[name="' + nombres[0] + '"]',$(@),'input[name="' + nombres[1] + '"]','input[name="' + nombres[2] + '"]')
+      sumaTodosCampos()
 
   $('select[name="venta[facturado]"]').change ->
     $('.folio').css('display','none')
@@ -84,8 +81,6 @@ extraeNombreProductoDeSelect = (campo_select) ->
   final_string = $(campo_select).attr('name').indexOf("]")
   return $(campo_select).attr('name').slice(inicio_string,final_string)
 
-noEsNumero = (e) ->
-  e.which != 8 && e.which != 0 && e.which != 46 && (e.which < 48 || e.which > 57)
   
 actualizaPrecio = (campoCambiado, precio) ->
   cantidad_vendida = Number($(campoCambiado).val())
