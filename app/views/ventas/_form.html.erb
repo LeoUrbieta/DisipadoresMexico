@@ -251,6 +251,90 @@
     </div>
   </div>
   <div class="row">
+    <div class="form-group col-md-2 " >
+      <%= label :precio, :longitud_125mm, 'Precio de Venta' %><br>
+      <%= select(:precio, :longitud_125mm, nil,{},{:class => 'precio_venta form-control'}) do %>
+        <% if @precios["longitud_125mm"] != nil %>
+          <% @precios["longitud_125mm"].each do |c| %>
+            <%= content_tag(:option,number_to_currency(c),value: c) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :longitud_125mm, 'Longitud 12.5 (cm)' %> 
+      <%= form.text_field :longitud_125mm, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :cortes_125mm, 'Cortes 12.5'  %>
+      <%= form.text_field :cortes_125mm, :class => 'zero_init form-control', :type => 'number', :step => 'any' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :precio_125mm, 'Precio 12.5' %> 
+      <%= form.text_field :precio_125mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :descuento_125mm, 'Descuento 12.5'  %>
+      <%= form.text_field :descuento_125mm, :class => 'zero_init form-control descuento', :type => 'number', :step => 'any'  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-2 " >
+      <%= label :precio, :longitud_75mm_anod, 'Precio de Venta' %><br>
+      <%= select(:precio, :longitud_75mm_anod, nil,{},{:class => 'precio_venta form-control'}) do %>
+        <% if @precios["longitud_75mm_anod"] != nil %>
+          <% @precios["longitud_75mm_anod"].each do |c| %>
+            <%= content_tag(:option,number_to_currency(c),value: c) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :longitud_75mm_anod, 'Longitud 7.5 anod(cm)' %> 
+      <%= form.text_field :longitud_75mm_anod, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :cortes_75mm_anod, 'Cortes 7.5 anod'  %>
+      <%= form.text_field :cortes_75mm_anod, :class => 'zero_init form-control', :type => 'number', :step => 'any' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :precio_75mm_anod, 'Precio 7.5 anod' %> 
+      <%= form.text_field :precio_75mm_anod, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :descuento_75mm_anod, 'Descuento 7.5 anod'  %>
+      <%= form.text_field :descuento_75mm_anod, :class => 'zero_init form-control descuento', :type => 'number', :step => 'any'  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-2 " >
+      <%= label :precio, :longitud_87mm_anod, 'Precio de Venta' %><br>
+      <%= select(:precio, :longitud_87mm_anod, nil,{},{:class => 'precio_venta form-control'}) do %>
+        <% if @precios["longitud_87mm_anod"] != nil %>
+          <% @precios["longitud_87mm_anod"].each do |c| %>
+            <%= content_tag(:option,number_to_currency(c),value: c) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :longitud_87mm_anod, 'Longitud 8.7 anod (cm)' %> 
+      <%= form.text_field :longitud_87mm_anod, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :cortes_87mm_anod, 'Cortes 8.7 anod'  %>
+      <%= form.text_field :cortes_87mm_anod, :class => 'zero_init form-control', :type => 'number', :step => 'any' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :precio_87mm_anod, 'Precio 8.7 anod' %> 
+      <%= form.text_field :precio_87mm_anod, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :descuento_87mm_anod, 'Descuento 8.7 anod'  %>
+      <%= form.text_field :descuento_87mm_anod, :class => 'zero_init form-control descuento', :type => 'number', :step => 'any'  %>
+    </div>
+  </div>
+  <div class="row">
     <div class="form-group col-md-2" >
       <%= label :precio, :cantidad_peltier, 'Precio de Venta' %><br>
       <%= select(:precio, :cantidad_peltier, nil,{},{:class => 'precio_venta form-control'}) do %>
