@@ -1,3 +1,6 @@
+
+#Para correr este archivo, usa rails runner lib/tasks/nombre_archivo.rb
+
 nombre_productos = ["longitud_28mm","longitud_50mm","longitud_75mm","longitud_87mm","longitud_100mm","longitud_136mm","longitud_220mm","cantidad_peltier","cantidad_pasta_termica"]
 
 precio_productos,descuento_productos = Array.new(2) { [] }

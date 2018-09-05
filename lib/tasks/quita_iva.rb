@@ -1,3 +1,5 @@
+#Para correr este archivo, usa rails runner lib/tasks/nombre_archivo.rb
+
 h = Array.new
 j = Array.new
 iva = BigDecimal('1.16')
