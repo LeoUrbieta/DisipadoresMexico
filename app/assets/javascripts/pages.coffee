@@ -51,7 +51,13 @@ findHTMLElementsChangeIds = (html_clonado, click_counter) ->
   html_clonado.find("select")[0].id = 'tipo_producto_' + click_counter
   html_clonado.find("div #precio_unitario_calculadora_0")[0].id = 'precio_unitario_calculadora_' + click_counter
   html_clonado.find("div #cantidad_calculadora_0")[0].id = 'cantidad_calculadora_' + click_counter
-  html_clonado.find("div #numero_cortes_calculadora_0")[0].id = 'numero_cortes_calculadora_' + click_counter
+  html_clonado.find("div #numero_piezas_calculadora_0")[0].id = 'numero_piezas_calculadora_' + click_counter
+  html_clonado.find("div #longitud_total_calculadora_0")[0].id = 'longitud_total_calculadora_' + click_counter
+  html_clonado.find("div #iva_precio_unitario_calculadora_0")[0].id = 'iva_precio_unitario_calculadora_' + click_counter
+  html_clonado.find("div #precio_unitario_neto_calculadora_0")[0].id = 'precio_unitario_neto_calculadora_' + click_counter
+  html_clonado.find("div #iva_precio_por_pieza_calculadora_0")[0].id = 'iva_precio_por_pieza_calculadora_' + click_counter
+  html_clonado.find("div #precio_por_pieza_neto_calculadora_0")[0].id = 'precio_por_pieza_neto_calculadora_' + click_counter
+  html_clonado.find("div #precio_por_pieza_0")[0].id = 'precio_por_pieza_' + click_counter
   html_clonado.find("div #precio_sin_iva_0")[0].id = 'precio_sin_iva_' + click_counter
   html_clonado.find("div #iva_0")[0].id = 'iva_' + click_counter
   html_clonado.find("div #precio_neto_0")[0].id = 'precio_neto_' + click_counter
@@ -61,10 +67,10 @@ calculaPrecioParaProductos = (campo_cambiado) ->
   index = campo_cambiado[0].id.lastIndexOf("_")
   numero_de_campo = campo_cambiado[0].id.substr(index + 1)
   lista_precios_producto = precios_calculadora[$('#tipo_producto_' + numero_de_campo).val()]
-  longitud = Number($('#cantidad_calculadora_' + numero_de_campo).val())
-  cortes = Number($('#numero_cortes_calculadora_' + numero_de_campo).val())
-  actualizaPrecioUnitario(lista_precios_producto,longitud, numero_de_campo)
-  actualizaPrecioTotal(longitud,cortes, numero_de_campo)
+  longitud_total = Number($('#cantidad_calculadora_' + numero_de_campo).val()) * Number($('#numero_piezas_calculadora_' + numero_de_campo).val())
+  piezas = Number($('#numero_piezas_calculadora_' + numero_de_campo).val())
+  actualizaPrecioUnitario(lista_precios_producto,longitud_total, numero_de_campo)
+  actualizaPrecioTotal(longitud_total, piezas, numero_de_campo)
 
 actualizaPrecioUnitario = (lista_precios,longitud, numero_de_campo) ->
   for long,index in longitudes
@@ -74,9 +80,19 @@ actualizaPrecioUnitario = (lista_precios,longitud, numero_de_campo) ->
     else
       $('#precio_unitario_calculadora_' + numero_de_campo).val(lista_precios[index+1])
       
-actualizaPrecioTotal = (longitud, cortes, numero_de_campo) ->
+actualizaPrecioTotal = (longitud_total, piezas, numero_de_campo) ->
+  $('#longitud_total_calculadora_' + numero_de_campo).val((longitud_total + 0.3 * piezas).toFixed(2))
+  
   p_unit = Number($('#precio_unitario_calculadora_' + numero_de_campo).val())
-  $('#precio_sin_iva_' + numero_de_campo).val((p_unit * longitud + cortes * 0.3 * p_unit).toFixed(2))
+  $('#iva_precio_unitario_calculadora_' + numero_de_campo).val((p_unit*0.16).toFixed(2))
+  $('#precio_unitario_neto_calculadora_' + numero_de_campo).val((p_unit*1.16).toFixed(2))
+  
+  precio_por_pieza = (p_unit * longitud_total + piezas * 0.3 * p_unit)/piezas
+  $('#precio_por_pieza_' + numero_de_campo).val((precio_por_pieza).toFixed(2))
+  $('#iva_precio_por_pieza_calculadora_' + numero_de_campo).val((precio_por_pieza*0.16).toFixed(2))
+  $('#precio_por_pieza_neto_calculadora_' + numero_de_campo).val((precio_por_pieza*1.16).toFixed(2))
+  
+  $('#precio_sin_iva_' + numero_de_campo).val((p_unit * longitud_total + piezas * 0.3 * p_unit).toFixed(2))
   $('#iva_' + numero_de_campo).val(Number(($('#precio_sin_iva_' + numero_de_campo).val()) * 0.16).toFixed(2))
   $('#precio_neto_' + numero_de_campo).val((Number($('#precio_sin_iva_' + numero_de_campo).val()) + Number($('#iva_' + numero_de_campo).val())).toFixed(2))
   
