@@ -1,17 +1,15 @@
-<h1>Disipadores de Calor Mexico</h1>
+<h1 style="text-align: center; margin-bottom: 10px;">Disipadores de Calor Mexico</h1>
 
-<%= link_to 'Ir a Ingresos', pages_ingresos_path, class: 'btn btn-info' %>
-
-<%= link_to 'Ir a Ventas', ventas_path, class:'btn btn-info'%>
-
-<%= link_to 'Ir a Egresos', egresos_path, class: 'btn btn-info' %>
-
-<%= link_to 'Ir a Clientes', clientes_path, class: 'btn btn-info' %>
-
-<%= link_to 'Ir a Productos', productos_path, class: 'btn btn-info' %>
-
-<%= link_to 'Ir a Calculadora', pages_calculadora_path, class: 'btn btn-info' %>
-
-<%= link_to 'Ir a Estadísticas', pages_estadisticas_path, class: 'btn btn-info' %>
+<div class="container-fluid" >
+  <div class="row" id="links_encabezados">
+      <%= link_to 'Ingresos', pages_ingresos_path, class: 'btn col-lg-1 col-xs-6' %>
+      <%= link_to 'Ventas', ventas_path, class:'btn col-lg-1 col-xs-6'%>
+      <%= link_to 'Egresos', egresos_path, class: 'btn col-lg-1 col-xs-6' %>
+      <%= link_to 'Clientes', clientes_path, class: 'btn col-lg-1 col-xs-6' %>
+      <%= link_to 'Productos', productos_path, class: 'btn col-lg-1 col-xs-6' %>
+      <%= link_to 'Calculadora', pages_calculadora_path, class: 'btn col-lg-1 col-xs-6' %>
+      <%= link_to 'Estadísticas', pages_estadisticas_path, class: 'btn col-lg-1 col-xs-6' %>
+  </div>
+</div>
 
 <hr/>
