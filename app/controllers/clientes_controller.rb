@@ -1,7 +1,5 @@
 class ClientesController < ApplicationController
   
-  http_basic_authenticate_with name: "leo", password: "secreto", except: [:index, :show]
-  
   def index
     @clientes = Cliente.paginate(page: params[:page], per_page: 20)
   end

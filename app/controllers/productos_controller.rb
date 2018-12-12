@@ -1,7 +1,5 @@
 class ProductosController < ApplicationController
   
-  http_basic_authenticate_with name: "leo", password: "secreto", except: [:index, :show]
-  
   def index
     @productos = Producto.all.order("fecha_de_compra")
   end

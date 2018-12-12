@@ -1,7 +1,5 @@
 class EgresosController < ApplicationController
   
-  http_basic_authenticate_with name: "leo", password: "secreto", except: [:index, :show]
-  
   def index
     @egresos = Egreso.paginate(page: params[:page], per_page: 20).order('fecha DESC')
   end
