@@ -3,7 +3,7 @@
 <hr/>
 
 <div class="row" id="clone_0">
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-2 col-xs-6">
       <%= label :producto, :numero, 'Producto' %><br>
       <%= select(:producto, :numero, nil,{},{:class => 'form-control lista_productos_calculadora', :id => 'tipo_producto_0'}) do %>
         <% if @precios.keys != nil %>
@@ -15,27 +15,27 @@
         <% end %>
       <% end %>
     </div>
-    <div class="form-group col-md-1">
+    <div class="form-group col-md-1 col-xs-6">
       <%= label :producto, :precio_unitario, 'Precio U.' %> <br>
       <%= text_field :producto, :precio_unitario, {:class => 'form-control', :readonly => 'readonly', :id => 'precio_unitario_calculadora_0'} %>
     </div>
-    <div class="form-group col-md-1">
+    <div class="form-group col-md-1 col-xs-6">
       <%= label :producto, :cantidad, 'Longitud' %> <br>
       <%= text_field :producto, :cantidad, {:class => 'form-control campo_usuario', :id => 'cantidad_calculadora_0', :type => 'number'} %>
     </div>
-    <div class="form-group col-md-1">
+    <div class="form-group col-md-1 col-xs-6">
       <%= label :producto, :cortes, 'Cortes' %> <br>
       <%= text_field :producto, :cortes, {:class => 'form-control campo_usuario', :id => 'numero_cortes_calculadora_0', :type => 'number'} %>
     </div>
-    <div class="form-group col-md-1">
+    <div class="form-group col-md-1 col-xs-6">
       <%= label :producto, :precio_sin_iva, 'Precio' %> <br>
       <%= text_field :producto, :precio_sin_iva, {:class => 'form-control', :id => 'precio_sin_iva_0', :readonly => 'readonly'} %>
     </div>
-    <div class="form-group col-md-1">
+    <div class="form-group col-md-1 col-xs-6">
       <%= label :producto, :iva, 'IVA' %> <br>
       <%= text_field :producto, :iva, {:class => 'form-control', :id => 'iva_0', :readonly => 'readonly'} %>
     </div>
-    <div class="form-group col-md-1">
+    <div class="form-group col-md-1 col-xs-6">
       <%= label :producto, :precio_neto, 'Precio Neto' %> <br>
       <%= text_field :producto, :precio_neto, {:class => 'form-control', :id => 'precio_neto_0', :readonly => 'readonly'} %>
     </div>
