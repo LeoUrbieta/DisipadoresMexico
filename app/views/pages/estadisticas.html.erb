@@ -5,26 +5,6 @@
   {name: "Utilidad", data: @utilidad_total_por_mes},
   ], title: "Ingresos - Gastos" %>
 <br>
-<%= column_chart [
-  {name: "28mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:longitud_28mm)},
-  {name: "50mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:longitud_50mm)},
-  {name: "75mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:longitud_75mm)},
-  {name: "87mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:longitud_87mm)},
-  {name: "100mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:longitud_100mm)},
-  {name: "136mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:longitud_136mm)},
-  {name: "220mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:longitud_220mm)},
-  ],
-  title: "Longitud vendida"
-%>
-<br>
-<%= column_chart [
-  {name: "Peltier", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:cantidad_peltier)},
-  {name: "Pasta térmica", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:cantidad_pasta_termica)},
-  ],
-  title: "Cantidad vendida"
-%>
-<br>
-
 <h4 class="centered">Cantidad Restante: </h4>
 <br>
 <table class="table table-striped table-hover table-condensed table-bordered">
@@ -53,32 +33,6 @@
   </tr>
   <% end %>
 </table>
-  
-<br>
-<%= column_chart [
-  {name: "28mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_28mm)},
-  {name: "50mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_50mm)},
-  {name: "75mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_75mm)},
-  {name: "87mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_87mm)},
-  {name: "100mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_100mm)},
-  {name: "136mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_136mm)},
-  {name: "220mm", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_220mm)},
-  {name: "Peltier", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_peltier)},
-  {name: "Pasta Térmica", data: Venta.group_by_month(:fecha, format: "%b %Y").sum(:precio_pasta_termica)},
-  ], title: "Ingreso por Artículo" 
-%>
-<br>
-<%= column_chart [ 
-  {name: "28mm", data: @utilidad_por_producto_por_mes[0]},
-  {name: "50mm", data: @utilidad_por_producto_por_mes[1]},
-  {name: "75mm", data: @utilidad_por_producto_por_mes[2]},
-  {name: "87mm", data: @utilidad_por_producto_por_mes[3]},
-  {name: "100mm", data: @utilidad_por_producto_por_mes[4]},
-  {name: "136mm", data: @utilidad_por_producto_por_mes[5]},
-  {name: "220mm", data: @utilidad_por_producto_por_mes[6]},
-  {name: "Peltier", data: @utilidad_por_producto_por_mes[7]},
-  {name: "Pasta térmica", data: @utilidad_por_producto_por_mes[8]},
-  ], title: "Utilidad por artículo" %>
 
 
 
