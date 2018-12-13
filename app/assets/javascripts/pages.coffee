@@ -33,11 +33,13 @@ $(document).on 'turbolinks:load', ->
     container = $('#segundo_div')
     html = $('#clone_0').clone(true).appendTo(container)
     findHTMLElementsChangeIds(html, click_boton_agregar_campos_counter)
+    actualizaPrecioTotal()
     if click_boton_agregar_campos_counter == 1
       $('#boton_quitar_campos').css("display","block")
     
   $('#boton_quitar_campos').on 'click', (e) ->
     $('#clone_' + click_boton_agregar_campos_counter)[0].remove()
+    actualizaPrecioTotal()
     click_boton_agregar_campos_counter--;
     if click_boton_agregar_campos_counter == 0
       $('#boton_quitar_campos').css("display","none")
@@ -59,7 +61,7 @@ findHTMLElementsChangeIds = (html_clonado, click_counter) ->
   html_clonado.find("div #precio_por_pieza_neto_calculadora_0")[0].id = 'precio_por_pieza_neto_calculadora_' + click_counter
   html_clonado.find("div #precio_por_pieza_0")[0].id = 'precio_por_pieza_' + click_counter
   html_clonado.find("div #precio_sin_iva_0")[0].id = 'precio_sin_iva_' + click_counter
-  html_clonado.find("div #iva_0")[0].id = 'iva_' + click_counter
+  html_clonado.find("div #iva_renglon_0")[0].id = 'iva_renglon_' + click_counter
   html_clonado.find("div #precio_neto_0")[0].id = 'precio_neto_' + click_counter
   
 calculaPrecioParaProductos = (campo_cambiado) ->
@@ -70,7 +72,8 @@ calculaPrecioParaProductos = (campo_cambiado) ->
   longitud_total = Number($('#cantidad_calculadora_' + numero_de_campo).val()) * Number($('#numero_piezas_calculadora_' + numero_de_campo).val())
   piezas = Number($('#numero_piezas_calculadora_' + numero_de_campo).val())
   actualizaPrecioUnitario(lista_precios_producto,longitud_total, numero_de_campo)
-  actualizaPrecioTotal(longitud_total, piezas, numero_de_campo)
+  actualizaPrecioRenglon(longitud_total, piezas, numero_de_campo)
+  actualizaPrecioTotal()
 
 actualizaPrecioUnitario = (lista_precios,longitud, numero_de_campo) ->
   for long,index in longitudes
@@ -80,7 +83,7 @@ actualizaPrecioUnitario = (lista_precios,longitud, numero_de_campo) ->
     else
       $('#precio_unitario_calculadora_' + numero_de_campo).val(lista_precios[index+1])
       
-actualizaPrecioTotal = (longitud_total, piezas, numero_de_campo) ->
+actualizaPrecioRenglon = (longitud_total, piezas, numero_de_campo) ->
   $('#longitud_total_calculadora_' + numero_de_campo).val((longitud_total + 0.3 * piezas).toFixed(2))
   
   p_unit = Number($('#precio_unitario_calculadora_' + numero_de_campo).val())
@@ -88,13 +91,31 @@ actualizaPrecioTotal = (longitud_total, piezas, numero_de_campo) ->
   $('#precio_unitario_neto_calculadora_' + numero_de_campo).val((p_unit*1.16).toFixed(2))
   
   precio_por_pieza = (p_unit * longitud_total + piezas * 0.3 * p_unit)/piezas
+  if isNaN(precio_por_pieza) then precio_por_pieza = 0
   $('#precio_por_pieza_' + numero_de_campo).val((precio_por_pieza).toFixed(2))
   $('#iva_precio_por_pieza_calculadora_' + numero_de_campo).val((precio_por_pieza*0.16).toFixed(2))
   $('#precio_por_pieza_neto_calculadora_' + numero_de_campo).val((precio_por_pieza*1.16).toFixed(2))
   
   $('#precio_sin_iva_' + numero_de_campo).val((p_unit * longitud_total + piezas * 0.3 * p_unit).toFixed(2))
-  $('#iva_' + numero_de_campo).val(Number(($('#precio_sin_iva_' + numero_de_campo).val()) * 0.16).toFixed(2))
-  $('#precio_neto_' + numero_de_campo).val((Number($('#precio_sin_iva_' + numero_de_campo).val()) + Number($('#iva_' + numero_de_campo).val())).toFixed(2))
+  $('#iva_renglon_' + numero_de_campo).val(Number(($('#precio_sin_iva_' + numero_de_campo).val()) * 0.16).toFixed(2))
+  $('#precio_neto_' + numero_de_campo).val((Number($('#precio_sin_iva_' + numero_de_campo).val()) + Number($('#iva_renglon_' + numero_de_campo).val())).toFixed(2))
+  
+actualizaPrecioTotal = () ->
+  
+  [subtotal, iva, total] = [0,0,0]
+  
+  $('*[id*=precio_sin_iva_]').each ->
+    subtotal += Number($(this).val())
+  
+  $('*[id*=iva_renglon_]').each ->
+    iva += Number($(this).val())
+    
+  $('*[id*=precio_neto_]').each ->
+    total += Number($(this).val())
+    
+  $('#subtotal_general').val(subtotal.toFixed(2))
+  $('#iva_general').val(iva.toFixed(2))
+  $('#total_general').val(total.toFixed(2))
   
     
   
