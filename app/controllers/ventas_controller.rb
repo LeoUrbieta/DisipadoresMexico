@@ -67,6 +67,8 @@ class VentasController < ApplicationController
                                   :longitud_125mm, :precio_125mm, :descuento_125mm, :cortes_125mm,
                                   :longitud_75mm_anod, :precio_75mm_anod, :descuento_75mm_anod, :cortes_75mm_anod,
                                   :longitud_87mm_anod, :precio_87mm_anod, :descuento_87mm_anod, :cortes_87mm_anod,
+                                  :longitud_75mm_negro, :precio_75mm_negro, :descuento_75mm_negro, :cortes_75mm_negro,
+                                  :longitud_230mm, :precio_230mm, :descuento_230mm, :cortes_230mm,
                                   :iva_prod, :iva_envios, :iva_anadido, :iva_comision_bool, :iva_envio_bool)
   end
   

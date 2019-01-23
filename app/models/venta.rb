@@ -3,16 +3,16 @@ class Venta < ApplicationRecord
   belongs_to :cliente
   validates :cliente_id, :longitud_75mm, :longitud_87mm,
             :longitud_28mm, :longitud_50mm, :longitud_100mm, :longitud_220mm,
-            :longitud_136mm, :cantidad_peltier, :cantidad_pasta_termica, :longitud_75mm_anod, :longitud_87mm_anod, :longitud_125mm,
+            :longitud_136mm, :cantidad_peltier, :cantidad_pasta_termica, :longitud_75mm_anod, :longitud_87mm_anod, :longitud_125mm, :longitud_230mm, :longitud_75mm_negro,
             :precio_75mm, :precio_87mm, :precio_136mm, :precio_peltier, :precio_75mm_anod, :precio_87mm_anod, :precio_125mm,
-            :precio_28mm, :precio_50mm, :precio_100mm, :precio_220mm,
+            :precio_28mm, :precio_50mm, :precio_100mm, :precio_220mm, :precio_230mm, :precio_75mm_negro,
             :precio_pasta_termica, :descuento_75mm, :descuento_87mm, :descuento_136mm, :descuento_75mm_anod, :descuento_87mm_anod, :descuento_125mm,
-            :descuento_28mm, :descuento_50mm, :descuento_100mm, :descuento_220mm,
+            :descuento_28mm, :descuento_50mm, :descuento_100mm, :descuento_220mm, :descuento_230mm, :descuento_75mm_negro,
             :descuento_peltier, :descuento_pasta_termica, 
             :envio_explicito, :dinero_anadido, :subtotal, :total_productos, :total_pagado_por_cliente,
             :comisiones, :comision_envio, :total_post_comisiones,
-            :cortes_75mm, :cortes_87mm, :cortes_136mm, :cortes_28mm, :cortes_50mm,
-            :cortes_100mm, :cortes_220mm, :cortes_75mm_anod, :cortes_87mm_anod, :cortes_125mm,
+            :cortes_75mm, :cortes_87mm, :cortes_136mm, :cortes_28mm, :cortes_50mm, 
+            :cortes_100mm, :cortes_220mm, :cortes_75mm_anod, :cortes_87mm_anod, :cortes_125mm, :cortes_230mm, :cortes_75mm_negro,
              presence: true, numericality: true
              
   
@@ -60,6 +60,8 @@ class Venta < ApplicationRecord
                         "longitud_125mm","precio_125mm", "descuento_125mm",
                         "longitud_75mm_anod","precio_75mm_anod", "descuento_75mm_anod",
                         "longitud_87mm_anod","precio_87mm_anod", "descuento_87mm_anod",
+                        "longitud_75mm_negro","precio_75mm_negro", "descuento_75mm_negro",
+                        "longitud_230mm","precio_230mm", "descuento_230mm",
                         "cantidad_peltier","precio_peltier","descuento_peltier", 
                         "cantidad_pasta_termica","precio_pasta_termica","descuento_pasta_termica",
                         "total_productos","envio_explicito",
@@ -84,7 +86,7 @@ class Venta < ApplicationRecord
   def self.incluye_precio_unitario(suma)
     
     precio_unitario = Hash.new
-    nombre_producto = ["28mm","50mm","75mm","87mm","100mm","136mm","220mm","125mm","75mm_anod","87mm_anod","peltier","pasta_termica"]
+    nombre_producto = ["28mm","50mm","75mm","87mm","100mm","136mm","220mm","125mm","75mm_anod","87mm_anod","75mm_negro","230mm","peltier","pasta_termica"]
     
     nombre_producto.each do |producto|
       if(suma["longitud_"<< producto] != nil && suma["longitud_"<< producto] != 0)
@@ -131,7 +133,7 @@ class Venta < ApplicationRecord
   
   def self.utilidad
     
-    nombre_productos = ["longitud_28mm","longitud_50mm","longitud_75mm","longitud_87mm","longitud_100mm","longitud_136mm","longitud_220mm","longitud_125mm","longitud_75mm_anod","longitud_87mm_anod","cantidad_peltier","cantidad_pasta_termica"]
+    nombre_productos = ["longitud_28mm","longitud_50mm","longitud_75mm","longitud_87mm","longitud_100mm","longitud_136mm","longitud_220mm","longitud_125mm","longitud_75mm_anod","longitud_87mm_anod","longitud_230mm","longitud_75mm_negro","cantidad_peltier","cantidad_pasta_termica"]
     precio_productos,descuento_productos, costo_productos, utilidad_producto_pre_comision = Array.new(4) { [] }
     utilidad_por_mes_todos_los_productos = Hash.new(0)
     

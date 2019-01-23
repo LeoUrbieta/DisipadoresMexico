@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180626213251) do
+ActiveRecord::Schema.define(version: 20190123175456) do
 
   create_table "clientes", force: :cascade do |t|
     t.string "nombre"
@@ -145,6 +145,16 @@ ActiveRecord::Schema.define(version: 20180626213251) do
     t.decimal "costo_125mm"
     t.decimal "costo_75mm_anod"
     t.decimal "costo_87mm_anod"
+    t.decimal "longitud_230mm"
+    t.decimal "longitud_75mm_negro"
+    t.decimal "precio_230mm"
+    t.decimal "precio_75mm_negro"
+    t.decimal "descuento_230mm"
+    t.decimal "descuento_75mm_negro"
+    t.decimal "cortes_230mm"
+    t.decimal "cortes_75mm_negro"
+    t.decimal "costo_230mm"
+    t.decimal "costo_75mm_negro"
   end
 
 end
