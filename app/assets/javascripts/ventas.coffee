@@ -44,6 +44,8 @@ $(document).on 'turbolinks:load', ->
     actualizaPrecio($('input[name="venta[' + nombre_producto + ']"]'), precioDeCampoSelect)
     sumaTodosCampos()
     
+  $('input').focus ->
+    this.select()
     
 #Funciones
 
