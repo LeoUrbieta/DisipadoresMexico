@@ -57,8 +57,8 @@
       <table class="table-striped table-hover table-condensed table-bordered table-centered">
       <% @claveSAT.each do |clave| %>
         <tr>
-          <td><%= clave.nombre_producto %></td>
-          <td><%= clave.clave_sat %></td> 
+          <td class="celda_ingresos"><%= clave.nombre_producto %></td>
+          <td class="celda_ingresos"><%= clave.clave_sat %></td> 
         </tr>
       <% end %>
       </table>
@@ -79,7 +79,7 @@
           <% @precios_unitarios.each do |nombre,concepto| %>
             <tr>
               <% concepto.each do |concept| %>
-                <td> <%= concept %> </td>
+                <td class="celda_ingresos"> <%= concept %> </td>
               <% end %>
             </tr>
           <% end %>

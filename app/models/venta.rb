@@ -91,7 +91,7 @@ class Venta < ApplicationRecord
     nombre_producto.each do |producto|
       if(suma["longitud_"<< producto] != nil && suma["longitud_"<< producto] != 0)
        precio_unitario_producto = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["longitud_"<< producto]))).round(2)
-       precio_unitario["precio_unitario_" << producto << "_sin_IVA"] = ["30102306","Disipador de Calor de Alumino de " + producto + " de ancho",suma["longitud_"<< producto],precio_unitario_producto]
+       precio_unitario["precio_unitario_" << producto << "_sin_IVA"] = ["30102306","Disipador de Calor de Aluminio de " + producto + " de ancho",suma["longitud_"<< producto],precio_unitario_producto]
        
       elsif (suma["cantidad_"<< producto] != nil  && suma["cantidad_"<< producto] != 0)
         precio_unitario_producto = (((suma["precio_"<< producto] - suma["descuento_"<< producto]) / (suma["cantidad_"<< producto]))).round(2)
