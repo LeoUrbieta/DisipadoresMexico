@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'chartkick', '~> 2.2', '>= 2.2.5'
 gem 'groupdate'
 gem 'bootstrap-datepicker-rails'
-gem 'will_paginate', '3.1.0'
+gem 'will_paginate', '3.1.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 
 # Use Capistrano for deployment

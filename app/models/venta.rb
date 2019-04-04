@@ -68,7 +68,7 @@ class Venta < ApplicationRecord
                         "dinero_anadido","total_pagado_por_cliente"]
                            
     nombre_productos.each do |suma_producto|
-      suma_producto_actual = BigDecimal.new('0.0')
+      suma_producto_actual = BigDecimal('0.0')
       ventas.each do |venta|
         suma_producto_actual = (venta.attributes[suma_producto] + suma_producto_actual).round(2)
       end
