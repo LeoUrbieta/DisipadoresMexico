@@ -1,7 +1,7 @@
 class VentasController < ApplicationController
   
   def index
-    @ventas = Venta.paginate(page: params[:page], per_page: 20).order('fecha DESC')
+    @ventas = Venta.paginate(page: params[:page], per_page: 20).order('fecha DESC, id')
   end
   
   def new
