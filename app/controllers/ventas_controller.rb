@@ -1,7 +1,7 @@
 class VentasController < ApplicationController
   
   def index
-    @ventas = Venta.paginate(page: params[:page], per_page: 20).order('fecha DESC, id')
+    @ventas = Venta.paginate(page: params[:page], per_page: 20).order('fecha DESC, id') #El id lo agregué porque hay problemas con postgresSQL y will paginate donde will paginate duplica ventas a pesar de que solo hay una en la base de datos.
   end
   
   def new
