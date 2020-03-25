@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20190123175456) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "estado"
-    t.string "string"
   end
 
   create_table "egresos", force: :cascade do |t|
