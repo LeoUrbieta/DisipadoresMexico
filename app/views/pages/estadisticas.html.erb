@@ -1,4 +1,4 @@
-<%= column_chart [ 
+<%= column_chart [
   {name: "Total Pagado Por Cliente", data: Venta.group_by_month(:fecha, format: "%b %Y").sum("total_pagado_por_cliente")},
   {name: "Subtotal", data: Venta.group_by_month(:fecha, format: "%b %Y").sum("(subtotal + dinero_anadido + envio_explicito) / 1.16")},
   {name: "Gastos", data: Egreso.group_by_month(:fecha, format: "%b %Y").sum(:cantidad)},
@@ -19,12 +19,12 @@
   <% @cantidad_restante.each do |nombre,cantidad| %>
   <tr>
     <td><%= "#{nombre.titleize}" %></td>
-    <td><%= "#{cantidad[0]}"%></td>
-    <td><%= "#{cantidad[1]}"%></td>
+    <td><%= "#{cantidad[0]/100}"%></td>
+    <td><%= "#{cantidad[1]/100}"%></td>
     <% if(nombre.include? "longitud") %>
-      <td> <%="#{cantidad[2]}"%></td>
-      <td><%= "#{cantidad[3]}"%></td>
-      <td><%= "#{cantidad[4]}"%></td>
+      <td> <%="#{cantidad[2]/100}"%></td>
+      <td><%= "#{cantidad[3]/100}"%></td>
+      <td><%= "#{cantidad[4]/100}"%></td>
     <% else %>
       <td> 0 </td>
       <td> <%="#{cantidad[2]}"%></td>
@@ -33,9 +33,3 @@
   </tr>
   <% end %>
 </table>
-
-
-
-
-
-
