@@ -7,7 +7,7 @@
     <th>Número de Cliente</th>
     <th>Cliente</th>
   </tr>
-  
+
   <% @clientes.each do |cliente| %>
     <tr>
       <td><%= cliente.id %></td>
@@ -53,7 +53,7 @@
     </div>
   </div>
   <hr />
-  
+
   <div class="row">
     <div class="form-group col-md-2 " >
       <%= label :precio, :longitud_28mm, 'Precio de Venta' %><br>
@@ -66,7 +66,7 @@
       <% end %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :longitud_28mm, 'Longitud 2.8 (cm)' %> 
+      <%= form.label :longitud_28mm, 'Longitud 2.8 (cm)' %>
       <%= form.text_field :longitud_28mm, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
     </div>
     <div class="form-group col-md-2">
@@ -74,7 +74,7 @@
       <%= form.text_field :cortes_28mm, :class => 'zero_init form-control', :type => 'number', :step => 'any' %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :precio_28mm, 'Precio 2.8' %> 
+      <%= form.label :precio_28mm, 'Precio 2.8' %>
       <%= form.text_field :precio_28mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
@@ -82,7 +82,7 @@
       <%= form.text_field :descuento_28mm, :class => 'zero_init form-control descuento', :type => 'number', :step => 'any'  %>
     </div>
   </div>
-  <div class="row">
+  <div class="row ocultos">
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_50mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_50mm, nil,{},{:class => 'precio_venta form-control'}) do %>
@@ -94,7 +94,7 @@
       <% end %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :longitud_50mm, 'Longitud 5.0 (cm)' %> 
+      <%= form.label :longitud_50mm, 'Longitud 5.0 (cm)' %>
       <%= form.text_field :longitud_50mm, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
     </div>
     <div class="form-group col-md-2">
@@ -102,7 +102,7 @@
       <%= form.text_field :cortes_50mm, :class => 'zero_init form-control', :type => 'number', :step => 'any'  %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :precio_50mm, 'Precio 5.0' %> 
+      <%= form.label :precio_50mm, 'Precio 5.0' %>
       <%= form.text_field :precio_50mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
@@ -110,7 +110,7 @@
       <%= form.text_field :descuento_50mm, :class => 'zero_init form-control descuento', :type => 'number', :step => 'any'  %>
     </div>
   </div>
-  <div class="row">
+  <div class="row ocultos">
     <div class="form-group col-md-2 ">
       <%= label :precio, :longitud_75mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_75mm, nil,{},{:class => 'precio_venta form-control'}) do %>
@@ -122,7 +122,7 @@
       <% end %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :longitud_75mm, 'Longitud 7.5 (cm)' %> 
+      <%= form.label :longitud_75mm, 'Longitud 7.5 (cm)' %>
       <%= form.text_field :longitud_75mm, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
     </div>
     <div class="form-group col-md-2">
@@ -130,7 +130,7 @@
       <%= form.text_field :cortes_75mm, :class => 'zero_init form-control', :type => 'number', :step => 'any'  %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :precio_75mm, 'Precio 7.5' %> 
+      <%= form.label :precio_75mm, 'Precio 7.5' %>
       <%= form.text_field :precio_75mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
@@ -150,7 +150,7 @@
       <% end %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :longitud_87mm, 'Longitud 8.7 (cm)' %> 
+      <%= form.label :longitud_87mm, 'Longitud 8.7 (cm)' %>
       <%= form.text_field :longitud_87mm, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
     </div>
     <div class="form-group col-md-2">
@@ -158,7 +158,7 @@
       <%= form.text_field :cortes_87mm, :class => 'zero_init form-control', :type => 'number', :step => 'any'  %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :precio_87mm, 'Precio 8.7' %> 
+      <%= form.label :precio_87mm, 'Precio 8.7' %>
       <%= form.text_field :precio_87mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly' %>
     </div>
     <div class="form-group col-md-2">
@@ -178,7 +178,7 @@
       <% end %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :longitud_100mm, 'Longitud 10.0 (cm)' %> 
+      <%= form.label :longitud_100mm, 'Longitud 10.0 (cm)' %>
       <%= form.text_field :longitud_100mm, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
     </div>
     <div class="form-group col-md-2">
@@ -186,7 +186,7 @@
       <%= form.text_field :cortes_100mm, :class => 'zero_init form-control', :type => 'number' , :step => 'any' %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :precio_100mm, 'Precio 10.0' %> 
+      <%= form.label :precio_100mm, 'Precio 10.0' %>
       <%= form.text_field :precio_100mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
@@ -194,7 +194,7 @@
       <%= form.text_field :descuento_100mm, :class => 'zero_init form-control descuento', :type => 'number' , :step => 'any' %>
     </div>
   </div>
-  <div class="row">
+  <div class="row ocultos">
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_136mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_136mm, nil,{},{:class => 'precio_venta form-control'}) do %>
@@ -222,7 +222,7 @@
       <%= form.text_field :descuento_136mm, :class => 'zero_init form-control descuento', :type => 'number', :step => 'any' %>
     </div>
   </div>
-  <div class="row">
+  <div class="row ocultos">
     <div class="form-group col-md-2">
       <%= label :precio, :longitud_220mm, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_220mm, nil,{},{:class => 'precio_venta form-control'}) do %>
@@ -234,7 +234,7 @@
       <% end %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :longitud_220mm, 'Longitud 22.0 (cm)' %> 
+      <%= form.label :longitud_220mm, 'Longitud 22.0 (cm)' %>
       <%= form.text_field :longitud_220mm, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
     </div>
     <div class="form-group col-md-2">
@@ -242,7 +242,7 @@
       <%= form.text_field :cortes_220mm, :class => 'zero_init form-control', :type => 'number', :step => 'any'  %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :precio_220mm, 'Precio 22.0' %> 
+      <%= form.label :precio_220mm, 'Precio 22.0' %>
       <%= form.text_field :precio_220mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
@@ -262,7 +262,7 @@
       <% end %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :longitud_125mm, 'Longitud 12.5 (cm)' %> 
+      <%= form.label :longitud_125mm, 'Longitud 12.5 (cm)' %>
       <%= form.text_field :longitud_125mm, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
     </div>
     <div class="form-group col-md-2">
@@ -270,7 +270,7 @@
       <%= form.text_field :cortes_125mm, :class => 'zero_init form-control', :type => 'number', :step => 'any' %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :precio_125mm, 'Precio 12.5' %> 
+      <%= form.label :precio_125mm, 'Precio 12.5' %>
       <%= form.text_field :precio_125mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
@@ -278,7 +278,7 @@
       <%= form.text_field :descuento_125mm, :class => 'zero_init form-control descuento', :type => 'number', :step => 'any'  %>
     </div>
   </div>
-  <div class="row">
+  <div class="row ocultos">
     <div class="form-group col-md-2 " >
       <%= label :precio, :longitud_75mm_anod, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_75mm_anod, nil,{},{:class => 'precio_venta form-control'}) do %>
@@ -290,7 +290,7 @@
       <% end %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :longitud_75mm_anod, 'Longitud 7.5 anod(cm)' %> 
+      <%= form.label :longitud_75mm_anod, 'Longitud 7.5 anod(cm)' %>
       <%= form.text_field :longitud_75mm_anod, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
     </div>
     <div class="form-group col-md-2">
@@ -298,7 +298,7 @@
       <%= form.text_field :cortes_75mm_anod, :class => 'zero_init form-control', :type => 'number', :step => 'any' %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :precio_75mm_anod, 'Precio 7.5 anod' %> 
+      <%= form.label :precio_75mm_anod, 'Precio 7.5 anod' %>
       <%= form.text_field :precio_75mm_anod, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
@@ -306,7 +306,7 @@
       <%= form.text_field :descuento_75mm_anod, :class => 'zero_init form-control descuento', :type => 'number', :step => 'any'  %>
     </div>
   </div>
-  <div class="row">
+  <div class="row ocultos">
     <div class="form-group col-md-2 " >
       <%= label :precio, :longitud_87mm_anod, 'Precio de Venta' %><br>
       <%= select(:precio, :longitud_87mm_anod, nil,{},{:class => 'precio_venta form-control'}) do %>
@@ -318,7 +318,7 @@
       <% end %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :longitud_87mm_anod, 'Longitud 8.7 anod (cm)' %> 
+      <%= form.label :longitud_87mm_anod, 'Longitud 8.7 anod (cm)' %>
       <%= form.text_field :longitud_87mm_anod, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
     </div>
     <div class="form-group col-md-2">
@@ -326,7 +326,7 @@
       <%= form.text_field :cortes_87mm_anod, :class => 'zero_init form-control', :type => 'number', :step => 'any' %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :precio_87mm_anod, 'Precio 8.7 anod' %> 
+      <%= form.label :precio_87mm_anod, 'Precio 8.7 anod' %>
       <%= form.text_field :precio_87mm_anod, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
@@ -346,7 +346,7 @@
       <% end %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :longitud_75mm_negro, 'Longitud 7.5 negro (cm)' %> 
+      <%= form.label :longitud_75mm_negro, 'Longitud 7.5 negro (cm)' %>
       <%= form.text_field :longitud_75mm_negro, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
     </div>
     <div class="form-group col-md-2">
@@ -354,7 +354,7 @@
       <%= form.text_field :cortes_75mm_negro, :class => 'zero_init form-control', :type => 'number', :step => 'any' %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :precio_75mm_negro, 'Precio 7.5 negro' %> 
+      <%= form.label :precio_75mm_negro, 'Precio 7.5 negro' %>
       <%= form.text_field :precio_75mm_negro, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
@@ -374,7 +374,7 @@
       <% end %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :longitud_230mm, 'Longitud 23.0 (cm)' %> 
+      <%= form.label :longitud_230mm, 'Longitud 23.0 (cm)' %>
       <%= form.text_field :longitud_230mm, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any'%>
     </div>
     <div class="form-group col-md-2">
@@ -382,7 +382,7 @@
       <%= form.text_field :cortes_230mm, :class => 'zero_init form-control', :type => 'number', :step => 'any' %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :precio_230mm, 'Precio 23.0' %> 
+      <%= form.label :precio_230mm, 'Precio 23.0' %>
       <%= form.text_field :precio_230mm, :class => 'subtotal zero_init form-control precio', :readonly => 'readonly'%>
     </div>
     <div class="form-group col-md-2">
@@ -390,7 +390,7 @@
       <%= form.text_field :descuento_230mm, :class => 'zero_init form-control descuento', :type => 'number', :step => 'any'  %>
     </div>
   </div>
-  <div class="row">
+  <div class="row ocultos">
     <div class="form-group col-md-2" >
       <%= label :precio, :cantidad_peltier, 'Precio de Venta' %><br>
       <%= select(:precio, :cantidad_peltier, nil,{},{:class => 'precio_venta form-control'}) do %>
@@ -402,7 +402,7 @@
       <% end %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :cantidad_peltier %> 
+      <%= form.label :cantidad_peltier %>
       <%= form.text_field :cantidad_peltier, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any' %>
     </div>
     <div class="form-group col-md-2 col-md-offset-2">
@@ -414,7 +414,7 @@
       <%= form.text_field :descuento_peltier, :class => 'zero_init form-control descuento', :type => 'number' , :step => 'any'%>
     </div>
   </div>
-  <div class="row">
+  <div class="row ocultos">
     <div class="form-group col-md-2">
       <%= label :precio, :cantidad_pasta_termica, 'Precio de Venta' %><br>
       <%= select(:precio, :cantidad_pasta_termica, nil,{},{:class => 'precio_venta form-control'}) do %>
@@ -426,11 +426,11 @@
       <% end %>
     </div>
     <div class="form-group col-md-2 ">
-      <%= form.label :cantidad_pasta_termica %> 
+      <%= form.label :cantidad_pasta_termica %>
       <%= form.text_field :cantidad_pasta_termica, :class => 'zero_init form-control cantidad', :type => 'number', :step => 'any' %>
     </div>
     <div class="form-group col-md-2 col-md-offset-2">
-      <%= form.label :precio_pasta_termica %> 
+      <%= form.label :precio_pasta_termica %>
       <%= form.text_field :precio_pasta_termica, :class => 'subtotal zero_init form-control', :readonly => 'readonly' %>
     </div>
     <div class="form-group col-md-2">
@@ -440,7 +440,7 @@
   </div>
   <div class="row">
     <div class="form-group col-md-2 col-md-offset-8">
-      <%= form.label :subtotal, 'Sub-total (Pre-Descuentos)' %> 
+      <%= form.label :subtotal, 'Sub-total (Pre-Descuentos)' %>
       <%= form.text_field :subtotal, :id => 'subtotal', :readonly => 'readonly', :class => 'form-control zero_init' %>
     </div>
   </div>
@@ -477,7 +477,7 @@
   </div>
   <div class="row">
     <div class="form-group col-md-2 col-md-offset-8">
-      <%= form.label :envio_explicito, 'Total Envío explícito'  %> 
+      <%= form.label :envio_explicito, 'Total Envío explícito'  %>
       <%= form.text_field :envio_explicito, :class => 'zero_init form-control totales iva', :type => 'number', :step => 'any' %>
     </div>
   </div>
@@ -512,7 +512,7 @@
   <hr />
   <div class="row">
     <div class="form-group col-md-2">
-      <%= form.label :comisiones %> 
+      <%= form.label :comisiones %>
       <%= form.text_field :comisiones, :class => 'comisiones zero_init form-control', :type => 'number', :step => 'any' %>
     </div>
     <div class="form-group col-md-2">
@@ -528,14 +528,14 @@
       <%= form.select :iva_envio_bool, [['Si','true'],['No','false']], :class => 'form-control ' %>
     </div>
     <div class="form-group col-md-2">
-      <%= form.label :total_post_comisiones %> 
+      <%= form.label :total_post_comisiones %>
       <%= form.text_field :total_post_comisiones, :id => 'total_post_comisiones', :readonly => 'readonly', :class => 'form-control' %>
     </div>
   </div>
-    
-  
+
+
   <hr />
-   
+
   <div class="row">
     <div class="form-group col-md-2">
         <%= form.label :medio_de_venta %> <br>
@@ -548,13 +548,13 @@
       <%= form.select :facturado, [['False','false'],['True','true']], :id => "boolean_factura", :class => 'form-control' %>
     </div>
     <div class="form-group col-md-2 folio">
-      <%= form.label :folio_factura %> 
+      <%= form.label :folio_factura %>
       <%= form.text_field :folio_factura, :class => 'zero_init form-control' %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-md-2">
-      <%= form.label :notas_adicionales %> 
+      <%= form.label :notas_adicionales %>
       <%= form.text_area :notas_adicionales, :class => 'zero_init form-control' %>
     </div>
   </div>
