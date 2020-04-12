@@ -85,7 +85,7 @@ class Producto < ApplicationRecord
 
     Producto.where("costo_actual = :costo_boolean",{costo_boolean: true}).each do |producto|
 
-      if(producto.notas_adicionales == "DESCONTINUADO")
+      if producto.notas_adicionales.include? "DESCONTINUADO"
         next
       else
         array_precios = Array.new
