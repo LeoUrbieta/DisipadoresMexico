@@ -28,48 +28,56 @@ class Producto < ApplicationRecord
 
     Producto.all.each do |producto|
 
-      nombre_columna = producto.columna_relacionada_en_ventas
+      if producto.notas_adicionales.include? "DESCONTINUADO"
+        next
+      else
+        nombre_columna = producto.columna_relacionada_en_ventas
 
-      if(nombre_columna != "")
-        cantidad_restante[nombre_columna] = Array.new
-        if(cantidad_comprada[nombre_columna] != nil)
-          cantidad_comprada[nombre_columna] = cantidad_comprada[nombre_columna] + producto.cantidad_comprada
-        else
-          cantidad_comprada[nombre_columna] = producto.cantidad_comprada
+        if(nombre_columna != "")
+          cantidad_restante[nombre_columna] = Array.new
+          if(cantidad_comprada[nombre_columna] != nil)
+            cantidad_comprada[nombre_columna] = cantidad_comprada[nombre_columna] + producto.cantidad_comprada
+          else
+            cantidad_comprada[nombre_columna] = producto.cantidad_comprada
+          end
         end
       end
     end
 
     Producto.all.each do |producto|
 
-      nombre_columna = producto.columna_relacionada_en_ventas
+      if producto.notas_adicionales.include? "DESCONTINUADO"
+        next
+      else
+        nombre_columna = producto.columna_relacionada_en_ventas
 
-      if(nombre_columna != "")
-        if(cantidad_restante[nombre_columna] === [])
-          if(nombre_columna.include? "longitud")
-            nombre_cortes_producto = Producto.quitaLongitudYPonCortesEnString (nombre_columna)
-            longitudPerdidaPorCortes = (Venta.all.sum(nombre_cortes_producto) * 0.3 ).round
-            cantidad_restante[nombre_columna] = [cantidad_comprada[nombre_columna],
-                                                Venta.all.sum(nombre_columna),
-                                                longitudPerdidaPorCortes,
-                                                producto.perdidas,
-                                                cantidad_comprada[nombre_columna] -
-                                                Venta.all.sum(nombre_columna) -
-                                                longitudPerdidaPorCortes -
-                                                producto.perdidas]
+        if(nombre_columna != "")
+          if(cantidad_restante[nombre_columna] === [])
+            if(nombre_columna.include? "longitud")
+              nombre_cortes_producto = Producto.quitaLongitudYPonCortesEnString (nombre_columna)
+              longitudPerdidaPorCortes = (Venta.all.sum(nombre_cortes_producto) * 0.3 ).round
+              cantidad_restante[nombre_columna] = [cantidad_comprada[nombre_columna],
+                                                  Venta.all.sum(nombre_columna),
+                                                  longitudPerdidaPorCortes,
+                                                  producto.perdidas,
+                                                  cantidad_comprada[nombre_columna] -
+                                                  Venta.all.sum(nombre_columna) -
+                                                  longitudPerdidaPorCortes -
+                                                  producto.perdidas]
+            else
+              cantidad_restante[nombre_columna] = [cantidad_comprada[nombre_columna],
+                                                  Venta.all.sum(nombre_columna),
+                                                  producto.perdidas,
+                                                  cantidad_comprada[nombre_columna] -
+                                                  Venta.all.sum(nombre_columna) -
+                                                  producto.perdidas]
+            end
           else
-            cantidad_restante[nombre_columna] = [cantidad_comprada[nombre_columna],
-                                                Venta.all.sum(nombre_columna),
-                                                producto.perdidas,
-                                                cantidad_comprada[nombre_columna] -
-                                                Venta.all.sum(nombre_columna) -
-                                                producto.perdidas]
-          end
-        else
-          if(nombre_columna.include? "longitud")
-          cantidad_restante[nombre_columna] = cantidad_restante[nombre_columna].zip([0,0,0,producto.perdidas,-producto.perdidas]).map { |x,y| x + y }
-          else
-          cantidad_restante[nombre_columna] = cantidad_restante[nombre_columna].zip([0,0,producto.perdidas,-producto.perdidas]).map { |x,y| x + y }
+            if(nombre_columna.include? "longitud")
+            cantidad_restante[nombre_columna] = cantidad_restante[nombre_columna].zip([0,0,0,producto.perdidas,-producto.perdidas]).map { |x,y| x + y }
+            else
+            cantidad_restante[nombre_columna] = cantidad_restante[nombre_columna].zip([0,0,producto.perdidas,-producto.perdidas]).map { |x,y| x + y }
+            end
           end
         end
       end
