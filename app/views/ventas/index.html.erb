@@ -28,7 +28,6 @@
     <th>Total post-comisiones</th>
     <th>Medio de Ventas</th>
     <th>¿Facturado?</th>
-    <th>Folio Factura</th>
   </tr>
 
   <% @ventas.each do |venta| %>
@@ -52,7 +51,6 @@
       <td><%= number_to_currency(venta.total_post_comisiones) %></td>
       <td><%= venta.medio_de_venta %></td>
       <td><%= venta.facturado %></td>
-      <td><%= venta.folio_factura %></td>
       <!--<td><%= link_to 'Ver mas detalle', venta_path(venta), class: 'btn btn-info' %></td>-->
       <td><%= link_to 'Editar venta', edit_venta_path(venta), class: 'btn btn-warning' %></td>
       <td><%= link_to 'Eliminar venta' , venta_path(venta), method: :delete, class: 'btn btn-danger' , data: { confirm: '¿Estás seguro de borrar esta venta?'}%></td>
