@@ -25,6 +25,10 @@ $(document).on 'turbolinks:load', ->
     $(@).off().on "input", ->
       calculaPrecioParaProductos($(@))
 
+  $('#envio').on 'keydown', (e) ->
+    $(@).off().on "input", ->
+      calculaPrecioConEnvio($(@))
+
   $('.lista_productos_calculadora').on 'change', (e) ->
     calculaPrecioParaProductos($(@))
 
@@ -81,9 +85,11 @@ calculaPrecioParaProductos = (campo_cambiado) ->
   piezas = Number($('#numero_piezas_calculadora_' + numero_de_campo).val())
   lista_productos_repetidos = actualizaPrecioUnitario(lista_precios_producto,longitud_total, numero_de_campo,lista_productos_en_calculo,producto,piezas)
   actualizaPrecioRenglon(longitud_total, piezas, numero_de_campo,lista_productos_repetidos)
-  actualizaPrecioTotal()
+  total = actualizaPrecioTotal()
 
 actualizaPrecioUnitario = (lista_precios,longitud, numero_de_campo,lista_productos_en_calculo,producto,piezas) ->
+
+  Number($('#longitud_total_calculadora_' + numero_de_campo).val(longitud + 0.3 * piezas))
 
   lista_productos_repetidos = []
 
@@ -165,3 +171,8 @@ actualizaPrecioTotal = () ->
   $('#subtotal_general').val(subtotal.toFixed(2))
   $('#iva_general').val(iva.toFixed(2))
   $('#total_general').val(total.toFixed(2))
+  $('#total_con_envio').val((total + Number($('#envio').val())).toFixed(2))
+
+calculaPrecioConEnvio = () ->
+
+  $('#total_con_envio').val(Number($('#envio').val()) + Number($('#total_general').val()))

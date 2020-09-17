@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row" id="clone_0">
-      <div class="form-group col-md-12 col-xs-12">
+      <div class="form-group col-md-offset-3 col-md-6 col-xs-12">
         <%= label :producto, :numero, 'Producto' %><br>
         <%= select(:producto, :numero, nil,{},{:class => 'form-control lista_productos_calculadora', :id => 'tipo_producto_0'}) do %>
           <% if @precios.keys != nil %>
@@ -12,55 +12,55 @@
           <% end %>
         <% end %>
       </div>
-      <div class="form-group col-md-4 col-xs-4">
+      <div class="form-group col-md-offset-3 col-md-2 col-xs-4">
         <%= label :producto, :cantidad, 'Longitud por pieza' %> <br>
         <%= text_field :producto, :cantidad, {:class => 'form-control campo_usuario', :id => 'cantidad_calculadora_0', :type => 'number'} %>
       </div>
-      <div class="form-group col-md-4 col-xs-4">
+      <div class="form-group col-md-2 col-xs-4">
         <%= label :producto, :piezas, 'Número de piezas' %> <br>
         <%= text_field :producto, :piezas, {:class => 'form-control campo_usuario', :id => 'numero_piezas_calculadora_0', :type => 'number'} %>
       </div>
-      <div class="form-group col-md-4 col-xs-4">
+      <div class="form-group col-md-2 col-xs-4">
         <%= label :producto, :long_total, 'Long. total (con cortes)' %> <br>
         <%= text_field :producto, :long_total, {:class => 'form-control', :readonly => 'readonly', :id => 'longitud_total_calculadora_0'} %>
       </div>
-      <div class="form-group col-md-4 col-xs-4">
+      <div class="form-group col-md-offset-3 col-md-2 col-xs-4">
         <%= label :producto, :precio_unitario, '$/cm' %> <br>
         <%= text_field :producto, :precio_unitario, {:class => 'form-control', :readonly => 'readonly', :id => 'precio_unitario_calculadora_0'} %>
       </div>
-      <div class="form-group col-md-4 col-xs-4">
+      <div class="form-group col-md-2 col-xs-4">
         <%= label :producto, :iva_precio_unitario, 'IVA' %> <br>
         <%= text_field :producto, :iva_precio_unitario, {:class => 'form-control', :readonly => 'readonly', :id => 'iva_precio_unitario_calculadora_0'} %>
       </div>
-      <div class="form-group col-md-4 col-xs-4">
+      <div class="form-group col-md-2 col-xs-4">
         <%= label :producto, :precio_unitario_neto, '$/cm neto' %> <br>
         <%= text_field :producto, :precio_unitario_neto, {:class => 'form-control', :readonly => 'readonly', :id => 'precio_unitario_neto_calculadora_0'} %>
       </div>
-       <div class="form-group col-md-4 col-xs-4">
+       <div class="form-group col-md-offset-3 col-md-2 col-xs-4">
         <%= label :producto, :precio_por_pieza, '$/Pieza' %> <br>
         <%= text_field :producto, :precio_por_pieza, {:class => 'form-control', :id => 'precio_por_pieza_0', :readonly => 'readonly'} %>
       </div>
-      <div class="form-group col-md-4 col-xs-4">
+      <div class="form-group col-md-2 col-xs-4">
         <%= label :producto, :iva_precio_por_pieza, 'IVA' %> <br>
         <%= text_field :producto, :iva_precio_por_pieza, {:class => 'form-control', :readonly => 'readonly', :id => 'iva_precio_por_pieza_calculadora_0'} %>
       </div>
-      <div class="form-group col-md-4 col-xs-4">
+      <div class="form-group col-md-2 col-xs-4">
         <%= label :producto, :precio_por_pieza_neto, '$/Pieza Neto' %> <br>
         <%= text_field :producto, :precio_por_pieza_neto, {:class => 'form-control', :readonly => 'readonly', :id => 'precio_por_pieza_neto_calculadora_0'} %>
       </div>
-      <div class="form-group col-md-4 col-xs-4">
+      <div class="form-group col-md-offset-3 col-md-2 col-xs-4">
         <%= label :producto, :precio_sin_iva, 'Sub-total' %> <br>
         <%= text_field :producto, :precio_sin_iva, {:class => 'form-control', :id => 'precio_sin_iva_0', :readonly => 'readonly'} %>
       </div>
-      <div class="form-group col-md-4 col-xs-4">
+      <div class="form-group col-md-2 col-xs-4">
         <%= label :producto, :iva_renglon, 'IVA' %> <br>
         <%= text_field :producto, :iva_renglon, {:class => 'form-control', :id => 'iva_renglon_0', :readonly => 'readonly'} %>
       </div>
-      <div class="form-group col-md-4 col-xs-4">
+      <div class="form-group col-md-2 col-xs-4">
         <%= label :producto, :precio_neto, 'Precio Neto' %> <br>
         <%= text_field :producto, :precio_neto, {:class => 'form-control', :id => 'precio_neto_0', :readonly => 'readonly'} %>
       </div>
-      <div class="form-group col-md-12 col-xs-12">
+      <div class="form-group col-md-offset-3 col-md-6 col-xs-12">
         <hr/>
       </div>
   </div>
@@ -73,17 +73,25 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="form-group col-md-4 col-xs-4">
+    <div class="form-group col-md-offset-3 col-md-2 col-xs-4">
       <%= label :producto, :subtotal_general, 'Subtotal' %>
       <%= text_field :producto, :subtotal_general, {:class => 'form-control', :id => 'subtotal_general', :readonly => 'readonly'} %>
     </div>
-    <div class="form-group col-md-4 col-xs-4">
+    <div class="form-group col-md-2 col-xs-4">
       <%= label :producto, :iva_general, 'IVA' %>
       <%= text_field :producto, :iva_general, {:class => 'form-control', :id => 'iva_general', :readonly => 'readonly'} %>
     </div>
-    <div class="form-group col-md-4 col-xs-4">
+    <div class="form-group col-md-2 col-xs-4">
       <%= label :producto, :total_general, 'Total' %>
       <%= text_field :producto, :total_general, {:class => 'form-control', :id => 'total_general', :readonly => 'readonly'} %>
+    </div>
+    <div class="form-group col-md-offset-7 col-md-2 col-xs-offset-8 col-xs-4">
+      <%= label :producto, :envio, 'Envio' %>
+      <%= text_field :producto, :envio, {:class => 'form-control', :id => 'envio', :type => 'number'} %>
+    </div>
+    <div class="form-group col-md-offset-7 col-md-2 col-xs-offset-8 col-xs-4">
+      <%= label :producto, :total_con_envio, 'Total Con Envio' %>
+      <%= text_field :producto, :total_con_envio, {:class => 'form-control', :id => 'total_con_envio', :readonly => 'readonly'} %>
     </div>
   </div>
 </div>
