@@ -8,6 +8,8 @@ click_boton_agregar_campos_counter = 0;
 
 $(document).on 'turbolinks:load', ->
 
+  prellenarEnvioEnCalculadora()
+
   $('.datepicker').datepicker({
     format: 'dd/mm/yyyy',
     autoclose: true,
@@ -85,7 +87,7 @@ calculaPrecioParaProductos = (campo_cambiado) ->
   piezas = Number($('#numero_piezas_calculadora_' + numero_de_campo).val())
   lista_productos_repetidos = actualizaPrecioUnitario(lista_precios_producto,longitud_total, numero_de_campo,lista_productos_en_calculo,producto,piezas)
   actualizaPrecioRenglon(longitud_total, piezas, numero_de_campo,lista_productos_repetidos)
-  total = actualizaPrecioTotal()
+  actualizaPrecioTotal()
 
 actualizaPrecioUnitario = (lista_precios,longitud, numero_de_campo,lista_productos_en_calculo,producto,piezas) ->
 
@@ -113,16 +115,18 @@ actualizaPrecioUnitario = (lista_precios,longitud, numero_de_campo,lista_product
     if(suma_longitud_total < long)
       $('#precio_unitario_calculadora_' + numero_de_campo).val(lista_precios[index])
       if lista_productos_repetidos.length != 0
-        for numero_de_renglon_de_elemento_repetido in lista_productos_repetidos
-          $('#precio_unitario_calculadora_' + numero_de_renglon_de_elemento_repetido).val(lista_precios[index])
+        llenaCampoPrecioUnitarioProductoRepetido(numero_de_renglon_de_elemento_repetido,lista_productos_repetidos,lista_precios,index)
       break
     else
       $('#precio_unitario_calculadora_' + numero_de_campo).val(lista_precios[index+1])
       if lista_productos_repetidos.length != 0
-        for numero_de_renglon_de_elemento_repetido in lista_productos_repetidos
-          $('#precio_unitario_calculadora_' + numero_de_renglon_de_elemento_repetido).val(lista_precios[index+1])
+        llenaCampoPrecioUnitarioProductoRepetido(numero_de_renglon_de_elemento_repetido,lista_productos_repetidos,lista_precios,index)
 
   return lista_productos_repetidos
+
+llenaCampoPrecioUnitarioProductoRepetido = (numero_renglon_producto_repetido,lista_productos_repetidos,lista_precios,index) ->
+  for numero_de_renglon_de_elemento_repetido in lista_productos_repetidos
+    $('#precio_unitario_calculadora_' + numero_de_renglon_de_elemento_repetido).val(lista_precios[index])
 
 actualizaPrecioRenglon = (longitud_total, piezas, numero_de_campo,lista_productos_repetidos) ->
 
@@ -176,3 +180,6 @@ actualizaPrecioTotal = () ->
 calculaPrecioConEnvio = () ->
 
   $('#total_con_envio').val(Number($('#envio').val()) + Number($('#total_general').val()))
+
+prellenarEnvioEnCalculadora = () ->
+    $('#envio').val('65.5')
