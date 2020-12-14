@@ -1,59 +1,68 @@
 class VentasController < ApplicationController
-  
+
   def index
     @ventas = Venta.paginate(page: params[:page], per_page: 20).order('fecha DESC, id') #El id lo agregué porque hay problemas con postgresSQL y will paginate donde will paginate duplica ventas a pesar de que solo hay una en la base de datos.
   end
-  
+
   def new
     @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.new
     @precios = Producto.busca_precios()
   end
-  
+
   def edit
     @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.find(params[:id])
     @precios = Producto.busca_precios()
   end
-  
+
   def create
     @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     costo_productos = Producto.fetchCostos()
     @venta = Venta.new(venta_params.merge(costo_productos))
     @precios = Producto.busca_precios()
-    
+
     if @venta.save
       redirect_to ventas_path
     else
       render 'new'
     end
   end
-  
+
   def update
     @clientes = Cliente.paginate(page: params[:page], per_page: 10)
     @venta = Venta.find(params[:id])
     @precios = Producto.busca_precios()
     costo_productos = Producto.fetchCostos()
-    
+
     if @venta.update(venta_params.merge(costo_productos))
       redirect_to ventas_path
     else
       render 'edit'
     end
   end
-  
+
   def show
     @venta = Venta.find(params[:id])
   end
-  
+
   def destroy
     @venta = Venta.find(params[:id])
     @venta.destroy
     redirect_to ventas_path
   end
-  
+
+  def buscar_clientes
+    @clientes = Cliente.paginate(page: params[:page], per_page: 20)
+    @ventas = Venta.paginate(page: params[:page], per_page: 20).order('fecha DESC, id') #El id lo agregué porque hay problemas con postgresSQL y will paginate donde will paginate duplica ventas a pesar de que solo hay una en la base de datos.
+    if params[:nombre] != nil #para evitar que el request GET cause un error
+      @clientes_encontrados = Venta.busca_cliente(params[:nombre].mb_chars.upcase.to_s)
+    end
+    render 'ventas/index'
+  end
+
   private
-  
+
   def venta_params
     params.require(:venta).permit(:fecha, :longitud_75mm, :longitud_87mm, :longitud_136mm, :cantidad_peltier, :cantidad_pasta_termica, :precio_75mm, :precio_87mm,
                                   :precio_136mm, :precio_peltier, :precio_pasta_termica, :subtotal, :descuento_75mm, :descuento_87mm, :descuento_136mm,
@@ -71,5 +80,5 @@ class VentasController < ApplicationController
                                   :longitud_230mm, :precio_230mm, :descuento_230mm, :cortes_230mm,
                                   :iva_prod, :iva_envios, :iva_anadido, :iva_comision_bool, :iva_envio_bool)
   end
-  
+
 end

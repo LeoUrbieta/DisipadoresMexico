@@ -1,29 +1,13 @@
-<%= form_with url: clientes_busqueda_path, local: true, :html => {class: "form-inline"} do |form| %>
-  <%= form.label :nombre, 'Busqueda de Clientes: ', :class => 'sr-only' %>
-  <%= form.text_field :nombre, :class => 'form-control', :style => 'margin-bottom: 5px;', :placeholder => 'Búsqueda por nombre' %>
-  <%= form.submit("Buscar cliente", :class => 'form-control btn btn-success', :style => 'margin-bottom: 5px;') %>
-<% end %>
-
-<hr/>
-
 <%= link_to 'Nuevo cliente', new_cliente_path, class: 'btn btn-primary' %>
-
-<% if @clientes_encontrados != nil %>
-
-<br />
-    
-  <%= render 'cliente_info', obj: @clientes_encontrados %>
-  
-<% end %>
 
 <div align="center">
   <%= will_paginate %>
 </div>
 
 <br />
- 
-<%= render 'cliente_info', obj: @clientes %>
- 
+
+<%= render 'shared/cliente_info', obj: @clientes %>
+
 <div align="center">
   <%= will_paginate %>
 </div>
