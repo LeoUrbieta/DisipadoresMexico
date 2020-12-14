@@ -190,7 +190,7 @@ class Venta < ApplicationRecord
     if(nombre_cliente == "")
       return nil
     else
-      return Cliente.where('nombre LIKE ? or persona_contacto LIKE ?', '%' + nombre_cliente + '%', '%' + nombre_cliente + '%').all
+      return Cliente.where('nombre LIKE ? OR persona_contacto LIKE ?', '%' + nombre_cliente + '%', '%' + nombre_cliente + '%').all
     end
   end
 
