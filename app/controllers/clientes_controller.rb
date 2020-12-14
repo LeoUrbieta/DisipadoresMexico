@@ -46,6 +46,7 @@ class ClientesController < ApplicationController
 
   def cliente_params
     params[:cliente][:nombre] = params[:cliente][:nombre].mb_chars.upcase.to_s
+    #params[:cliente][:persona_contacto] = params[:cliente][:persona_contacto].mb_chars.upcase.to_s
     params.require(:cliente).permit(:nombre, :rfc, :calle, :numero_exterior, :numero_interior, :colonia, :municipio_delegacion,
     :ciudad, :estado ,:codigo_postal, :telefono, :email, :persona_contacto)
   end

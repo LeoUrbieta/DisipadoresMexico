@@ -56,7 +56,7 @@ class VentasController < ApplicationController
     @clientes = Cliente.paginate(page: params[:page], per_page: 20)
     @ventas = Venta.paginate(page: params[:page], per_page: 20).order('fecha DESC, id') #El id lo agregué porque hay problemas con postgresSQL y will paginate donde will paginate duplica ventas a pesar de que solo hay una en la base de datos.
     if params[:nombre] != nil #para evitar que el request GET cause un error
-      @clientes_encontrados = Venta.busca_cliente(params[:nombre].mb_chars.upcase.to_s)
+      @clientes_encontrados = Venta.busca_cliente(params[:nombre])
     end
     render 'ventas/index'
   end
