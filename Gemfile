@@ -36,6 +36,7 @@ gem 'groupdate'
 gem 'bootstrap-datepicker-rails'
 gem 'will_paginate', '3.1.7'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'pg'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -59,7 +60,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
